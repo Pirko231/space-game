@@ -4,10 +4,23 @@ Program::Program()
 {
     window = new sf::RenderWindow;
     window->create({1280, 720}, "Space", sf::Style::Titlebar | sf::Style::Close);
+
+    //cala alokacja dodana tutaj
+    #if MEMTRACKER
+
+    perf::MemTracker::get().addAlloc(sizeof(*window));
+
+    #endif
 }
 
 Program::~Program()
 {
+    delete window;
+
+    //dealokacja pamieci
+    #if MEMTRACKER
+    perf::MemTracker::get().addFree(sizeof(*window));
+    #endif
 }
 
 void Program::handleEvents()
@@ -26,4 +39,7 @@ void Program::update()
 
 void Program::display()
 {
+    window->clear();
+
+    window->display();
 }

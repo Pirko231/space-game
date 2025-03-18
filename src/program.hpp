@@ -2,9 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#ifdef MEMTRACKER
-#include "perf/memTracker.hpp"
-#endif
+#include "game/player.hpp"
 
 class Program
 {
@@ -17,4 +15,7 @@ public:
     void display();
 private:
     sf::RenderWindow* window;
+
+    Player player1;
+    Player player2;
 };

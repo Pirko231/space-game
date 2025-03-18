@@ -37,8 +37,12 @@ add_executable(main
     src/main.cpp 
     src/program.cpp 
 
+    src/game/player.cpp
+
     src/perf/memTracker.cpp
 )
+
+add_compile_definitions(MEMTRACKER)
 
 if(NOT MSVC)
 	target_compile_options(main PRIVATE -Wall -Wextra -pedantic)

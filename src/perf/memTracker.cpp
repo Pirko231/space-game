@@ -24,9 +24,9 @@ void perf::MemTracker::addAlloc(std::size_t size)
 
 void perf::MemTracker::addFree(std::size_t size)
 {
-    allocatedMemory -= size;
+    freedMemory += size;
     addMessage("Freed allocation: " + std::to_string(size));
-    addMessage("Currently allocated: " + std::to_string(allocatedMemory));
+    addMessage("Currently allocated: " + std::to_string(allocatedMemory - freedMemory));
     addMessage("Currently freed: " + std::to_string(freedMemory));
 }
 
