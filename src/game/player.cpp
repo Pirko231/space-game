@@ -2,6 +2,6 @@
 
 Player::Player()
 {
-    mainTexture.loadFromFile("resources/textures/");
+    mainTexture.loadFromFile("resources/textures/gameBackground.png");
     sprite.setTexture(mainTexture);
 }

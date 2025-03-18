@@ -41,5 +41,7 @@ void Program::display()
 {
     window->clear();
 
+    window->draw(player1);
+
     window->display();
 }

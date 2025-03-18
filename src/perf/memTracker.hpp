@@ -29,5 +29,7 @@ private:
     long long int allocatedMemory{0};
 
     long long int freedMemory{0};
+
+    long long int maxAllocatedMemory{0};
 };
 };
