@@ -31,7 +31,7 @@ int main()
 
         #if SPEEDTRACKER
         if (perf::SpeedTracker::get().working())
-            perf::SpeedTracker::get().frameTime = perf::SpeedTracker::get().frameClock.getElapsedTime() - currentTime;
+            perf::SpeedTracker::get().frameTime = perf::SpeedTracker::get().frameClock.getElapsedTime();
         perf::SpeedTracker::get().update();
         #endif
     }

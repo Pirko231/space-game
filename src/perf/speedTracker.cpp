@@ -16,7 +16,6 @@ perf::SpeedTracker::~SpeedTracker()
     if (stream.good())
     {
         stream << "!----------------podsumowanie-----------------!" << '\n';
-        stream << "Czas na klatke(miliskendy): " << frameTime.asMilliseconds() << '\n';
         stream << "Maksymalny czas(milisekundy): " << maxTime.asMilliseconds() << '\n';
     }
     else 
@@ -52,10 +51,4 @@ void perf::SpeedTracker::update()
         times = 0;
     }
     return;
-}
-
-void foo()
-{
-    perf::SpeedTracker::get().frameClock.restart();
-    sf::Time time = perf::SpeedTracker::get().frameClock.getElapsedTime();
 }
