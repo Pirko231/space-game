@@ -24,6 +24,11 @@ public:
 private:
     sf::RenderWindow* window;
 
+    sf::Texture p1BackgroundTxt;
+    sf::Sprite p1Background;
+    sf::Texture p2BackgroundTxt;
+    sf::Sprite p2Background;
+
     Player player1;
     Player player2;
 };

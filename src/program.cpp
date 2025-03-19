@@ -6,6 +6,12 @@ Program::Program()
     window->create({1280, 720}, "Space", sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);
 
+    p1BackgroundTxt.loadFromFile("resources/textures/gameBackground.png");
+    p1Background.setTexture(p1BackgroundTxt);
+
+    p2BackgroundTxt.loadFromFile("resources/textures/gameBackground.png");
+    p2Background.setTexture(p2BackgroundTxt);
+
     //cala alokacja dodana tutaj
     #if MEMTRACKER
 
@@ -42,6 +48,7 @@ void Program::display()
 {
     window->clear();
 
+    window->setView(sf::View{player1.getCenter(), {window->getSize().x / 2.f, 0.f}});
     window->draw(player1);
 
     window->display();
