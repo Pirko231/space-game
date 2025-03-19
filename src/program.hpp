@@ -4,6 +4,14 @@
 
 #include "game/player.hpp"
 
+#ifdef MEMTRACKER
+#include "perf/memTracker.hpp"
+#endif
+
+#ifdef SPEEDTRACKER
+#include "perf/speedTracker.hpp"
+#endif
+
 class Program
 {
 public:

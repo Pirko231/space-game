@@ -4,6 +4,7 @@ Program::Program()
 {
     window = new sf::RenderWindow;
     window->create({1280, 720}, "Space", sf::Style::Titlebar | sf::Style::Close);
+    window->setFramerateLimit(60);
 
     //cala alokacja dodana tutaj
     #if MEMTRACKER

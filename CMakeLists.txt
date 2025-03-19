@@ -40,9 +40,11 @@ add_executable(main
     src/game/player.cpp
 
     src/perf/memTracker.cpp
+    src/perf/speedTracker.cpp
 )
 
 add_compile_definitions(MEMTRACKER)
+add_compile_definitions(SPEEDTRACKER)
 
 if(NOT MSVC)
 	target_compile_options(main PRIVATE -Wall -Wextra -pedantic)
