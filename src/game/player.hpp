@@ -10,13 +10,15 @@
 class Player : public sf::Drawable
 {
 public:
-    Player();
+    Player(const std::string&);
 
     void handleEvents(sf::Event);
 
     void update();
 
     sf::Vector2f getCenter() const {return {sprite.getPosition().x + sprite.getLocalBounds().width / 2.f, sprite.getPosition().y + sprite.getLocalBounds().height / 2.f};}
+
+    sf::Vector2f getPosition() const {return sprite.getPosition();}
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

@@ -1,8 +1,8 @@
 #include "player.hpp"
 
-Player::Player()
+Player::Player(const std::string& textureFilename)
 {
-    mainTexture.loadFromFile("resources/textures/Spaceship_tut.png");
+    mainTexture.loadFromFile(textureFilename);
     sprite.setTexture(mainTexture);
 }
 
@@ -39,8 +39,16 @@ void Player::update()
     {
         moveBy.y += throttle;
     }
-    if (pressed.w)
+    else if (pressed.s)
     {
         moveBy.y -= throttle;
     }
+    else
+    {
+        if (moveBy.y > 0)
+            moveBy.y -= throttle / 4.f;
+        if (moveBy.y < 0)
+            moveBy.y += throttle / 4.f;
+    }
+    sprite.move(moveBy);
 }
