@@ -45,13 +45,15 @@ add_executable(main
 
 add_compile_definitions(MEMTRACKER)
 add_compile_definitions(SPEEDTRACKER)
+add_compile_definitions(UNITTESTS)
+add_compile_definitions(DEVINFO)
 
 if(NOT MSVC)
 	target_compile_options(main PRIVATE -Wall -Wextra -pedantic)
 endif()
 
 # Ustawienie wersji standardu C++
-target_compile_features(main PRIVATE cxx_std_17)
+target_compile_features(main PRIVATE cxx_std_20)
 
 # Linkowanie SFML
 target_link_libraries(main PRIVATE ${SFML_LIBS})

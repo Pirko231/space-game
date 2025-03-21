@@ -59,14 +59,16 @@ void Program::display()
     p1Background.setPosition(0.f,0.f);
     window->draw(p1Background);
     
-    p1View.setCenter(player1.getCenter());
+    //p1View.setCenter(player1.getCenter());
     p1View.zoom(1.f);
     window->setView(p1View);
     window->draw(player1);
 
-    p2View.setCenter(player2.getCenter());
+    p2View.setCenter(0.f,0.f);
     window->setView(p2View);
     window->draw(p2Background);
+    p2View.setCenter(player2.getCenter());
+    window->setView(p2View);
     window->draw(player2);
 
     window->display();
