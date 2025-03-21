@@ -16,7 +16,7 @@ perf::SpeedTracker::~SpeedTracker()
     if (stream.good())
     {
         stream << "!----------------podsumowanie-----------------!" << '\n';
-        stream << "Maksymalny czas(milisekundy): " << maxTime.asMilliseconds() << '\n';
+        stream << "Maksymalny czas(mikrosekundy): " << maxTime.asMicroseconds() << '\n';
     }
     else 
     {
@@ -37,10 +37,10 @@ void perf::SpeedTracker::update()
 
         if (stream.good())
         {
-            stream << "Czas na klatke(milisekundy): " << frameTime.asMilliseconds() << '\n';
-            stream << "Czas na funkcje update(milisekundy): " << updateTime.asMilliseconds() << '\n';
-            stream << "Czas na funkcje handleEvents(milisekundy): " << handleEventsTime.asMilliseconds() << '\n';
-            stream << "Czas na funkcje display(milisekundy): " << displayTime.asMilliseconds() << '\n';
+            stream << "Czas na klatke(mikrosekundy): " << frameTime.asMicroseconds() << '\n';
+            stream << "Czas na funkcje update(mikrosekundy): " << updateTime.asMicroseconds() << '\n';
+            stream << "Czas na funkcje handleEvents(mikrosekundy): " << handleEventsTime.asMicroseconds() << '\n';
+            stream << "Czas na funkcje display(mikrosekundy): " << displayTime.asMicroseconds() << '\n';
         }
         else
         {

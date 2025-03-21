@@ -36,6 +36,8 @@ private:
     Player player2{"resources/textures/Spaceship_tut_thin.png", sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right};
     sf::View p2View;
 
+    sf::View UIView;
+
 private:
     #if DEVINFO
     

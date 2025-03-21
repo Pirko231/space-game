@@ -4,10 +4,20 @@ Player::Player(const std::string& textureFilename, sf::Keyboard::Key _up, sf::Ke
 {
     mainTexture.loadFromFile(textureFilename);
     sprite.setTexture(mainTexture);
+    sprite.setScale(0.1f,0.1f);
     up = _up;
     down = _down;
     left = _left;
     right = _right;
+
+    #if DEVINFO
+    devInfo.font.loadFromFile("resources/fonts/defaultFont.ttf");
+    devInfo.speed.setFont(devInfo.font);
+    devInfo.pos.setFont(devInfo.font);
+    devInfo.pos.setPosition(getPosition());
+    //devInfo.pos.setCharacterSize(2);
+    devInfo.speed.setPosition(50.f,20.f);
+    #endif
 }
 
 void Player::handleEvents(const sf::Event& ev)
@@ -46,13 +56,14 @@ void Player::update()
     else if (pressed.s && moveBy.y > -(maxSpeed / 4.f))
     {
         moveBy.y += throttle / 2.5f;
-    }
-    else
-    {
-        if (moveBy.y > 0)
-            moveBy.y -= throttle / 5.f;
         if (moveBy.y < 0)
-            moveBy.y += throttle / 5.f;
+            moveBy.y += throttle;
     }
+    
+    if (moveBy.y > 0)
+        moveBy.y -= throttle / 5.f;
+    if (moveBy.y < 0)
+        moveBy.y += throttle / 5.f;
+    
     sprite.move(moveBy);
 }
