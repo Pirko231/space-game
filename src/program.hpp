@@ -26,10 +26,10 @@ public:
 private:
     sf::RenderWindow* window;
 
-    sf::Texture p1BackgroundTxt;
-    sf::Sprite p1Background;
-    sf::Texture p2BackgroundTxt;
-    sf::Sprite p2Background;
+    sf::Texture backgroundTxt;
+    sf::Sprite background;
+    //sf::Texture p2BackgroundTxt;
+    //sf::Sprite p2Background;
 
     Player player1{"resources/textures/Spaceship_tut.png", sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D};
     sf::View p1View;
