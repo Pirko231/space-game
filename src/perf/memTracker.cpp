@@ -1,17 +1,17 @@
 #include "memTracker.hpp"
 
-#define FILENAME "memTracker.txt"
+static constexpr std::string_view FILENAME {"memTracker.txt"};
 
 perf::MemTracker::MemTracker()
 {
     //wyczyszczenie pliku
-    std::ofstream stream(FILENAME, std::ios::out | std::ios::trunc);
+    std::ofstream stream(FILENAME.data(), std::ios::out | std::ios::trunc);
 		stream.close();
 }
 
 perf::MemTracker::~MemTracker()
 {
-    std::ofstream stream(FILENAME, std::ios::out | std::ios::app);
+    std::ofstream stream(FILENAME.data(), std::ios::out | std::ios::app);
     if (stream.good()) 
     {
         stream << "!----------------podsumowanie-----------------!" << '\n';
@@ -46,7 +46,7 @@ void perf::MemTracker::addFree(std::size_t size)
 
 void perf::MemTracker::addMessage(const std::string &message)
 {
-    std::ofstream stream(FILENAME, std::ios::out | std::ios::app);
+    std::ofstream stream(FILENAME.data(), std::ios::out | std::ios::app);
 
     if (stream.good()) 
     {

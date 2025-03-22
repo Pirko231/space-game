@@ -1,18 +1,18 @@
 #include "speedTracker.hpp"
 
-#define FILENAME "speedTracker.txt"
+static constexpr std::string_view FILENAME {"speedTracker.txt"};
 
 perf::SpeedTracker::SpeedTracker(int _logTime)
 {
     logTime = _logTime;
     times = _logTime;
-    std::ofstream stream(FILENAME, std::ios::out | std::ios::trunc);
+    std::ofstream stream(FILENAME.data(), std::ios::out | std::ios::trunc);
 		stream.close();
 }
 
 perf::SpeedTracker::~SpeedTracker()
 {
-    std::ofstream stream(FILENAME, std::ios::out | std::ios::app);
+    std::ofstream stream(FILENAME.data(), std::ios::out | std::ios::app);
     if (stream.good())
     {
         stream << "!----------------podsumowanie-----------------!" << '\n';
@@ -33,7 +33,7 @@ void perf::SpeedTracker::update()
     times++;
     if (times >= logTime)
     {
-        std::ofstream stream(FILENAME, std::ios::out | std::ios::app);
+        std::ofstream stream(FILENAME.data(), std::ios::out | std::ios::app);
 
         if (stream.good())
         {

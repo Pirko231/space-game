@@ -91,6 +91,11 @@ void Player::update()
             moveBy.y += throttle;
     }
 
+    if (moveBy.y > 0)
+        moveBy.y -= throttle / 5.f;
+    if (moveBy.y < 0)
+        moveBy.y += throttle / 5.f;
+
     
     sprite.move(moveBy);
     crosshairPlayer.move(moveBy);
@@ -104,28 +109,23 @@ std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
 {
     sf::Vector2f moveCross;
     if (pressed.upCross)
-        moveCross.y -= 0.4f;
+        moveCross.y -= 0.5f;
     if (pressed.downCross)
-        moveCross.y += 0.4f;
+        moveCross.y += 0.5f;
     if (pressed.leftCross)
-        moveCross.x -= 0.4f;
+        moveCross.x -= 0.5f;
     if (pressed.rightCross)
-        moveCross.x += 0.4f;
-    
-    if (moveBy.y > 0)
-        moveBy.y -= throttle / 5.f;
-    if (moveBy.y < 0)
-        moveBy.y += throttle / 5.f;
+        moveCross.x += 0.5f;
 
     //check kolizji
-    if (crosshairPlayer.getPosition().x > view.getSize().x / 2.f)
-        crosshairPlayer.setPosition(view.getSize().x / 2.f, crosshairPlayer.getPosition().y);
-    if (crosshairPlayer.getPosition().x < 0 - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width)
-        crosshairPlayer.setPosition(0.f - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width, crosshairPlayer.getPosition().y);
-    if (crosshairPlayer.getPosition().y > view.getSize().y / 2.f)
-        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, view.getSize().y / 2.f);
-    if (crosshairPlayer.getPosition().y < 0 - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f)
-        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, 0.f - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f);
+    if (crosshairPlayer.getPosition().x > getPosition().x + view.getSize().x / 2.f)
+        crosshairPlayer.setPosition(getPosition().x + view.getSize().x / 2.f, crosshairPlayer.getPosition().y);
+    if (crosshairPlayer.getPosition().x < getPosition().x - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width)
+        crosshairPlayer.setPosition(getPosition().x - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width, crosshairPlayer.getPosition().y);
+    if (crosshairPlayer.getPosition().y > getPosition().y + view.getSize().y / 2.f)
+        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y + view.getSize().y / 2.f);
+    if (crosshairPlayer.getPosition().y < getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f)
+        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f);
     
     return {moveCross, {0.f,0.f}};
 }

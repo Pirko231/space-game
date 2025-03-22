@@ -28,8 +28,6 @@ private:
 
     sf::Texture backgroundTxt;
     sf::Sprite background;
-    //sf::Texture p2BackgroundTxt;
-    //sf::Sprite p2Background;
 
     PlayerKeyBinds p1Binds;
     PlayerKeyBinds p2Binds;
