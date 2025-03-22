@@ -1,6 +1,9 @@
 #include "program.hpp"
 
-Program::Program()
+Program::Program() :
+    p1Binds{sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::T, sf::Keyboard::G, sf::Keyboard::F, sf::Keyboard::H},
+    p2Binds{sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::I, sf::Keyboard::K, sf::Keyboard::J, sf::Keyboard::L}, 
+    player1{"resources/textures/Spaceship_tut.png", p1Binds}, player2{"resources/textures/Spaceship_tut_thin.png", p2Binds}
 {
     window = new sf::RenderWindow;
     window->create({1280, 720}, "Space", sf::Style::Titlebar | sf::Style::Close);

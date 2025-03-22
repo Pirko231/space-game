@@ -1,14 +1,27 @@
 #include "player.hpp"
 
-Player::Player(const std::string& textureFilename, sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right)
+Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBinds)
 {
     mainTexture.loadFromFile(textureFilename);
     sprite.setTexture(mainTexture);
+
+    crosshairPlayerTxt.loadFromFile("resources/textures/crosshair108.png");
+    crosshairPlayer.setTexture(crosshairPlayerTxt);
+    crosshairPlayer.setScale(0.06f,0.06f);
+    crosshairShipTxt.loadFromFile("resources/textures/crosshair111.png");
+    crosshairShip.setTexture(crosshairShipTxt);
+    crosshairShip.setScale(0.06f,0.06f);
+
     sprite.setScale(0.1f,0.1f);
-    up = _up;
-    down = _down;
-    left = _left;
-    right = _right;
+    up = keyBinds.up;
+    down = keyBinds.down;
+    left = keyBinds.left;
+    right = keyBinds.right;
+
+    crossUp = keyBinds.crossUp;
+    crossDown = keyBinds.crossDown;
+    crossLeft = keyBinds.crossLeft;
+    crossRight = keyBinds.crossRight;
 
     #if DEVINFO
     devInfo.font.loadFromFile("resources/fonts/defaultFont.ttf");
@@ -32,6 +45,15 @@ void Player::handleEvents(const sf::Event& ev)
             pressed.a = true;
         if (ev.key.code == right)
             pressed.d = true;
+
+        if (ev.key.code == crossUp)
+            pressed.upCross = true;
+        if (ev.key.code == crossDown)
+            pressed.downCross = true;
+        if (ev.key.code == crossLeft)
+            pressed.leftCross = true;
+        if (ev.key.code == crossRight)
+            pressed.rightCross = true;
     }
 
     if (ev.type == sf::Event::KeyReleased)
@@ -44,6 +66,15 @@ void Player::handleEvents(const sf::Event& ev)
             pressed.a = false;
         if (ev.key.code == right)
             pressed.d = false;
+
+        if (ev.key.code == crossUp)
+            pressed.upCross = false;
+        if (ev.key.code == crossDown)
+            pressed.downCross = false;
+        if (ev.key.code == crossLeft)
+            pressed.leftCross = false;
+        if (ev.key.code == crossRight)
+            pressed.rightCross = false;
     }
 }
 
@@ -59,11 +90,34 @@ void Player::update()
         if (moveBy.y < 0)
             moveBy.y += throttle;
     }
+
+    
+    sprite.move(moveBy);
+    crosshairPlayer.move(moveBy);
+    crosshairShip.move(moveBy);
+
+    crosshairPlayer.move(moveCross().first);
+    crosshairPlayer.move(moveCross().second);
+}
+
+std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
+{
+    sf::Vector2f moveCross;
+    if (pressed.upCross)
+        moveCross.y -= 0.4f;
+    if (pressed.downCross)
+        moveCross.y += 0.4f;
+    if (pressed.leftCross)
+        moveCross.x -= 0.4f;
+    if (pressed.rightCross)
+        moveCross.x += 0.4f;
     
     if (moveBy.y > 0)
         moveBy.y -= throttle / 5.f;
     if (moveBy.y < 0)
         moveBy.y += throttle / 5.f;
+
     
-    sprite.move(moveBy);
+    
+    return {moveCross, {0.f,0.f}};
 }

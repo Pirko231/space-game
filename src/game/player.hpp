@@ -7,11 +7,19 @@
 #include "../perf/memTracker.hpp"
 #endif
 
+struct PlayerKeyBinds
+{
+    sf::Keyboard::Key up, down, left, right;
+    sf::Keyboard::Key crossUp, crossDown, crossLeft, crossRight;
+};
+
 class Player : public sf::Drawable
 {
 public:
-    Player(const std::string& textureFilename, sf::Keyboard::Key up, sf::Keyboard::Key down, sf::Keyboard::Key left, sf::Keyboard::Key right);
+    //Player(const std::string& textureFilename, sf::Keyboard::Key up, sf::Keyboard::Key down, sf::Keyboard::Key left, sf::Keyboard::Key right);
 
+    Player(const std::string& textureFilename, const PlayerKeyBinds& keyBinds);
+    
     void handleEvents(const sf::Event&);
 
     void update();
@@ -24,17 +32,28 @@ public:
 
     sf::Vector2f getPosition() const {return sprite.getPosition();}
 
-    void setPosition(sf::Vector2f pos) {sprite.setPosition(pos);}
+    void setPosition(sf::Vector2f pos) 
+    {
+        sprite.setPosition(pos);
+        crosshairPlayer.setPosition(pos.x + sprite.getGlobalBounds().width / 2.f, pos.y - sprite.getGlobalBounds().height);
+        crosshairShip.setPosition(crosshairPlayer.getPosition());
+    }
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         target.draw(sprite, states);
+        target.draw(crosshairPlayer);
+        target.draw(crosshairShip);
     }
 
-    sf::Keyboard::Key up;
-    sf::Keyboard::Key down;
-    sf::Keyboard::Key left;
-    sf::Keyboard::Key right;
+    //first - pozycja playerCrosshair
+    //second - pozycja shipCrosshair
+    std::pair<sf::Vector2f, sf::Vector2f> moveCross();
+
+    sf::Keyboard::Key up, crossUp;
+    sf::Keyboard::Key down, crossDown;
+    sf::Keyboard::Key left, crossLeft;
+    sf::Keyboard::Key right, crossRight;
 
     Pressed pressed;
 
@@ -46,6 +65,11 @@ private:
 
     sf::Sprite sprite;
     sf::Texture mainTexture;
+
+    sf::Sprite crosshairPlayer;
+    sf::Texture crosshairPlayerTxt;
+    sf::Sprite crosshairShip;
+    sf::Texture crosshairShipTxt;
 
     #if DEVINFO
 public:

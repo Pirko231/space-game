@@ -31,9 +31,12 @@ private:
     //sf::Texture p2BackgroundTxt;
     //sf::Sprite p2Background;
 
-    Player player1{"resources/textures/Spaceship_tut.png", sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D};
+    PlayerKeyBinds p1Binds;
+    PlayerKeyBinds p2Binds;
+
+    Player player1;
     sf::View p1View;
-    Player player2{"resources/textures/Spaceship_tut_thin.png", sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right};
+    Player player2;
     sf::View p2View;
 
     sf::View UIView;
