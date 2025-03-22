@@ -49,11 +49,11 @@ void Player::handleEvents(const sf::Event& ev)
 
 void Player::update()
 {
-    if (pressed.w && moveBy.y < maxSpeed)
+    if (pressed.w && moveBy.y > -maxSpeed)
     {
         moveBy.y -= throttle;
     }
-    else if (pressed.s && moveBy.y > -(maxSpeed / 4.f))
+    if (pressed.s && moveBy.y < (maxSpeed / 2.f))
     {
         moveBy.y += throttle / 2.5f;
         if (moveBy.y < 0)
