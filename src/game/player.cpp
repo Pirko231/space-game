@@ -7,10 +7,10 @@ Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBind
 
     crosshairPlayerTxt.loadFromFile("resources/textures/crosshair108.png");
     crosshairPlayer.setTexture(crosshairPlayerTxt);
-    crosshairPlayer.setScale(0.06f,0.06f);
+    crosshairPlayer.setScale(0.04f,0.04f);
     crosshairShipTxt.loadFromFile("resources/textures/crosshair111.png");
     crosshairShip.setTexture(crosshairShipTxt);
-    crosshairShip.setScale(0.06f,0.06f);
+    crosshairShip.setScale(0.04f,0.04f);
 
     sprite.setScale(0.1f,0.1f);
     up = keyBinds.up;
@@ -117,7 +117,15 @@ std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
     if (moveBy.y < 0)
         moveBy.y += throttle / 5.f;
 
-    
+    //check kolizji
+    if (crosshairPlayer.getPosition().x > view.getSize().x / 2.f)
+        crosshairPlayer.setPosition(view.getSize().x / 2.f, crosshairPlayer.getPosition().y);
+    if (crosshairPlayer.getPosition().x < 0 - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width)
+        crosshairPlayer.setPosition(0.f - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width, crosshairPlayer.getPosition().y);
+    if (crosshairPlayer.getPosition().y > view.getSize().y / 2.f)
+        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, view.getSize().y / 2.f);
+    if (crosshairPlayer.getPosition().y < 0 - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f)
+        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, 0.f - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f);
     
     return {moveCross, {0.f,0.f}};
 }

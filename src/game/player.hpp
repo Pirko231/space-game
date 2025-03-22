@@ -24,6 +24,8 @@ public:
 
     void update();
 
+    sf::View& getView() {return view;}
+
     sf::Vector2f getCenter() const
     {
         const auto bounds = sprite.getGlobalBounds();
@@ -45,6 +47,8 @@ private:
         target.draw(crosshairPlayer);
         target.draw(crosshairShip);
     }
+
+    sf::View view;
 
     //first - pozycja playerCrosshair
     //second - pozycja shipCrosshair

@@ -15,13 +15,11 @@ Program::Program() :
     background.setScale(4.f,4.f);
     
 
-    p1View.setViewport(sf::FloatRect{{0.f, 0.f}, {0.5f, 1.f}});
-    p1View.zoom(0.15f);
-    p2View.setViewport(sf::FloatRect{{0.5f, 0.f}, {0.5f, 1.f}});
-    p2View.zoom(0.15f);
+    player1.getView().setViewport(sf::FloatRect{{0.f, 0.f}, {0.5f, 1.f}});
+    player1.getView().zoom(0.15f);
+    player2.getView().setViewport(sf::FloatRect{{0.5f, 0.f}, {0.5f, 1.f}});
+    player2.getView().zoom(0.15f);
 
-    UIView.setSize(static_cast<sf::Vector2f>(window->getSize()));
-    UIView.setViewport({{0.f, 0.f}, {1.f, 1.f}});
 
     player1.setPosition({0.f,0.f});
     player2.setPosition(static_cast<sf::Vector2f>(window->getSize()));
@@ -71,14 +69,14 @@ void Program::display()
 {
     window->clear();
     
-    p1View.setCenter(player1.getCenter());
-    window->setView(p1View);
+    player1.getView().setCenter(player1.getCenter());
+    window->setView(player1.getView());
     window->draw(background);
     window->draw(player2);
     window->draw(player1);
 
-    p2View.setCenter(player2.getCenter());
-    window->setView(p2View);
+    player2.getView().setCenter(player2.getCenter());
+    window->setView(player2.getView());
     window->draw(background);
     window->draw(player1);
     window->draw(player2);

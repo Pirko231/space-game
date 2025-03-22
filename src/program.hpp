@@ -35,11 +35,7 @@ private:
     PlayerKeyBinds p2Binds;
 
     Player player1;
-    sf::View p1View;
     Player player2;
-    sf::View p2View;
-
-    sf::View UIView;
 
 private:
     #if DEVINFO
