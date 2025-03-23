@@ -4,6 +4,13 @@ Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBind
 {
     mainTexture.loadFromFile(textureFilename);
     sprite.setTexture(mainTexture);
+    sprite.setScale(0.1f,0.1f);
+
+    turretTxt.loadFromFile("resources/textures/Turret.png");
+    turret.setTexture(turretTxt);
+    turret.setRotation(-90.f);
+    turret.setScale(0.12f,0.12f);
+    turret.setOrigin(turret.getGlobalBounds().width / 2.f, turret.getGlobalBounds().height / 2.f);
 
     crosshairPlayerTxt.loadFromFile("resources/textures/crosshair108.png");
     crosshairPlayer.setTexture(crosshairPlayerTxt);
@@ -12,7 +19,6 @@ Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBind
     crosshairShip.setTexture(crosshairShipTxt);
     crosshairShip.setScale(0.04f,0.04f);
 
-    sprite.setScale(0.1f,0.1f);
     up = keyBinds.up;
     down = keyBinds.down;
     left = keyBinds.left;
@@ -27,9 +33,11 @@ Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBind
     devInfo.font.loadFromFile("resources/fonts/defaultFont.ttf");
     devInfo.speed.setFont(devInfo.font);
     devInfo.pos.setFont(devInfo.font);
+    devInfo.turretRotation.setFont(devInfo.font);
+    //pozycja ustawiana w Player::setPosition()
     devInfo.pos.setPosition(getPosition());
-    //devInfo.pos.setCharacterSize(2);
     devInfo.speed.setPosition(50.f,20.f);
+    devInfo.turretRotation.setPosition(50.f, 40.f);
     #endif
 }
 
@@ -98,12 +106,15 @@ void Player::update()
 
     
     sprite.move(moveBy);
+    turret.move(moveBy);
     crosshairPlayer.move(moveBy);
     crosshairShip.move(moveBy);
 
     std::pair<sf::Vector2f, sf::Vector2f> moveCrossBy {moveCross()};
     crosshairPlayer.move(moveCrossBy.first);
     crosshairShip.move(moveCrossBy.second);
+
+    turret.setRotation(spinTurret());
 }
 
 std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
@@ -134,4 +145,12 @@ std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
     moveCrossShip.y = moveCrossShip.y * crosshairShipSpeed;
     
     return {moveCross, moveCrossShip};
+}
+
+float Player::spinTurret()
+{
+    sf::Vector2f vector{crosshairShip.getPosition().x - turret.getPosition().x,turret.getPosition().y - crosshairShip.getPosition().y};
+
+    float result {std::tan(vector.y / vector.x) * (float)M_PI / 180.f};
+    return result;
 }

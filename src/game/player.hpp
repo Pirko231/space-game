@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <cmath>
 #include "pressed.hpp"
 
 #ifdef MEMTRACKER
@@ -37,6 +38,9 @@ public:
     void setPosition(sf::Vector2f pos) 
     {
         sprite.setPosition(pos);
+        turret.setOrigin(turret.getGlobalBounds().width / 2.f, turret.getGlobalBounds().height / 2.f);
+        //turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.9f, pos.y + 15.f);
+        turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.3f, pos.y + turret.getGlobalBounds().height / 1.8f);
         crosshairPlayer.setPosition(pos.x + sprite.getGlobalBounds().width / 2.f, pos.y - sprite.getGlobalBounds().height);
         crosshairShip.setPosition(crosshairPlayer.getPosition());
     }
@@ -44,6 +48,7 @@ private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         target.draw(sprite, states);
+        target.draw(turret, states);
         target.draw(crosshairPlayer);
         target.draw(crosshairShip);
     }
@@ -53,6 +58,8 @@ private:
     //first - pozycja playerCrosshair
     //second - pozycja shipCrosshair
     std::pair<sf::Vector2f, sf::Vector2f> moveCross();
+
+    float spinTurret();
 
     sf::Keyboard::Key up, crossUp;
     sf::Keyboard::Key down, crossDown;
@@ -70,6 +77,9 @@ private:
     sf::Sprite sprite;
     sf::Texture mainTexture;
 
+    sf::Sprite turret;
+    sf::Texture turretTxt;
+
     sf::Sprite crosshairPlayer;
     sf::Texture crosshairPlayerTxt;
     sf::Sprite crosshairShip;
@@ -85,8 +95,10 @@ public:
         devInfo.defaultPos = _pos;
         devInfo.pos.setPosition(devInfo.defaultPos);
         devInfo.speed.setPosition(devInfo.defaultPos.x, devInfo.defaultPos.y + 20.f);
+        devInfo.turretRotation.setPosition(devInfo.defaultPos.x, devInfo.defaultPos.y + 40.f);
         devInfo.pos.setCharacterSize(20);
         devInfo.speed.setCharacterSize(20);
+        devInfo.turretRotation.setCharacterSize(20);
     }
 private:
     struct DevInfo : public sf::Drawable
@@ -95,6 +107,7 @@ private:
         sf::Font font;
         mutable sf::Text pos;
         mutable sf::Text speed;
+        mutable sf::Text turretRotation;
         sf::Vector2f defaultPos;
     private:
         const Player* player{nullptr};
@@ -106,6 +119,9 @@ private:
             sf::String speedString {std::to_string(player->moveBy.x) + ' ' + std::to_string(player->moveBy.y)};
             speed.setString(speedString);
             target.draw(speed, states);
+            sf::String turretRotationString {std::to_string(player->turret.getRotation())};
+            turretRotation.setString(turretRotationString);
+            target.draw(turretRotation, states);
         }
     }; DevInfo devInfo{this};
     #endif
