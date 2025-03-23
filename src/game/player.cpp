@@ -101,8 +101,9 @@ void Player::update()
     crosshairPlayer.move(moveBy);
     crosshairShip.move(moveBy);
 
-    crosshairPlayer.move(moveCross().first);
-    crosshairPlayer.move(moveCross().second);
+    std::pair<sf::Vector2f, sf::Vector2f> moveCrossBy {moveCross()};
+    crosshairPlayer.move(moveCrossBy.first);
+    crosshairShip.move(moveCrossBy.second);
 }
 
 std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
@@ -127,5 +128,10 @@ std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
     if (crosshairPlayer.getPosition().y < getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f)
         crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f);
     
-    return {moveCross, {0.f,0.f}};
+    sf::Vector2f moveCrossShip {crosshairPlayer.getPosition().x - crosshairShip.getPosition().x, crosshairPlayer.getPosition().y - crosshairShip.getPosition().y};
+    
+    moveCrossShip.x = moveCrossShip.x * crosshairShipSpeed;
+    moveCrossShip.y = moveCrossShip.y * crosshairShipSpeed;
+    
+    return {moveCross, moveCrossShip};
 }

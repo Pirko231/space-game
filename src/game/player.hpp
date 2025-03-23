@@ -75,6 +75,8 @@ private:
     sf::Sprite crosshairShip;
     sf::Texture crosshairShipTxt;
 
+    static constexpr float crosshairShipSpeed{0.02f};
+
     #if DEVINFO
 public:
     const sf::Drawable& getStats() const {return devInfo;}
