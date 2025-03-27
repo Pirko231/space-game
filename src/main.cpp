@@ -43,5 +43,8 @@ int main()
             perf::SpeedTracker::get().frameTime = perf::SpeedTracker::get().frameClock.getElapsedTime();
         perf::SpeedTracker::get().update();
         #endif
+        #if MEMTRACKER
+        perf::memTracker.snapshot();
+        #endif
     }
 }

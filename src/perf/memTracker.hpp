@@ -3,28 +3,31 @@
 #include <iostream>
 #include <fstream>
 
+void operator delete(void* data, std::size_t size);
+void* operator new(std::size_t size);
+
 namespace perf
 {
 
 class MemTracker
 {
 public:
-    //MemTracker();
+    MemTracker();
     MemTracker(const MemTracker&) = delete;
     MemTracker& operator=(const MemTracker&) = delete;
     ~MemTracker();
 
-    static MemTracker& get()
-    {
-        static MemTracker mTracker;
-        return mTracker;
-    }
+    void snapshot();
 
     void addAlloc(std::size_t size);
     void addFree(std::size_t size);
     void addMessage(const std::string&);
 private:
-    MemTracker();
+    const int maxSnapshotTimer;
+
+    int snapshotCounter{0};
+
+    int currentSnapshot{0};
 
     long long int allocatedMemory{0};
 
@@ -32,4 +35,6 @@ private:
 
     long long int maxAllocatedMemory{0};
 };
+
+    extern MemTracker memTracker;
 };

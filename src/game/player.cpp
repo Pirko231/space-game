@@ -151,6 +151,6 @@ float Player::spinTurret()
 {
     sf::Vector2f vector{crosshairShip.getPosition().x - turret.getPosition().x,turret.getPosition().y - crosshairShip.getPosition().y};
 
-    float result {std::tan(vector.y / vector.x) * (float)M_PI / 180.f};
+    float result {std::tan(vector.y / vector.x) *  180.f / (float)M_PI};
     return result;
 }

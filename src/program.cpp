@@ -28,23 +28,11 @@ Program::Program() :
     player1.setStatsPos({window->getSize().x / 2.f - 200.f, 0.f});
     player2.setStatsPos({window->getSize().x - 240.f, 0.f});
     #endif
-
-    //cala alokacja dodana tutaj
-    #if MEMTRACKER
-
-    perf::MemTracker::get().addAlloc(sizeof(*window));
-
-    #endif
 }
 
 Program::~Program()
 {
     delete window;
-
-    //dealokacja pamieci
-    #if MEMTRACKER
-    perf::MemTracker::get().addFree(sizeof(*window));
-    #endif
 }
 
 void Program::handleEvents()
