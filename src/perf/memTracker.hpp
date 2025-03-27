@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-void operator delete(void* data, std::size_t size);
+void operator delete(void* data, std::size_t size) noexcept;
 void* operator new(std::size_t size);
 
 namespace perf

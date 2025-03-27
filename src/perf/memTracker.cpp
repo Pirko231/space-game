@@ -67,10 +67,25 @@ void* operator new(size_t size)
 	return malloc(size);
 }
 
-void operator delete(void* data, size_t size) {
-	perf::memTracker.addFree(size);
+void* operator new[](std::size_t size)
+{
+    perf::memTracker.addAlloc(size);
 
+	return malloc(size);
+}
+
+void operator delete(void* data, size_t size) noexcept
+{
+	perf::memTracker.addFree(size);
+ 
 	free(data);
+}
+
+void operator delete[](void* data, std::size_t size) noexcept
+{
+    perf::memTracker.addFree(size);
+
+    free (data);
 }
 
 void perf::MemTracker::addAlloc(std::size_t size)
