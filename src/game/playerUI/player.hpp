@@ -25,7 +25,27 @@ public:
 
     void update();
 
-    sf::View& getView() {return view;}
+    void setView(const sf::View* _view) {view = _view;}
+
+    void setTexture(const std::string& textureFilename)
+    {
+        mainTexture.loadFromFile(textureFilename);
+        sprite.setTexture(mainTexture);
+        sprite.setScale(0.1f,0.1f);
+    }
+
+    void setKeyBinds(const PlayerKeyBinds& keyBinds)
+    {
+        up = keyBinds.up;
+        down = keyBinds.down;
+        left = keyBinds.left;
+        right = keyBinds.right;
+
+        crossUp = keyBinds.crossUp;
+        crossDown = keyBinds.crossDown;
+        crossLeft = keyBinds.crossLeft;
+        crossRight = keyBinds.crossRight;
+    }
 
     sf::Vector2f getCenter() const
     {
@@ -53,7 +73,7 @@ private:
         target.draw(crosshairShip);
     }
 
-    sf::View view;
+    const sf::View* view;
 
     //first - pozycja playerCrosshair
     //second - pozycja shipCrosshair

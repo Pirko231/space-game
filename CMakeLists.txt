@@ -40,6 +40,7 @@ add_executable(main
     src/program.cpp 
 
     src/game/playerUI/player.cpp
+    src/game/playerUI.cpp
 
     src/perf/memTracker.cpp
     src/perf/speedTracker.cpp

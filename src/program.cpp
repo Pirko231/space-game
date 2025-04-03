@@ -15,6 +15,7 @@ Program::Program() :
     background.setScale(4.f,4.f);
     
 
+    sf::View view;
     player1.getView().setViewport(sf::FloatRect{{0.f, 0.f}, {0.5f, 1.f}});
     player1.getView().zoom(0.15f);
     player2.getView().setViewport(sf::FloatRect{{0.5f, 0.f}, {0.5f, 1.f}});

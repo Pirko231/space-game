@@ -2,9 +2,7 @@
 
 Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBinds)
 {
-    mainTexture.loadFromFile(textureFilename);
-    sprite.setTexture(mainTexture);
-    sprite.setScale(0.1f,0.1f);
+    setTexture(textureFilename);
 
     turretTxt.loadFromFile("resources/textures/Turret.png");
     turret.setTexture(turretTxt);
@@ -19,15 +17,7 @@ Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBind
     crosshairShip.setTexture(crosshairShipTxt);
     crosshairShip.setScale(0.04f,0.04f);
 
-    up = keyBinds.up;
-    down = keyBinds.down;
-    left = keyBinds.left;
-    right = keyBinds.right;
-
-    crossUp = keyBinds.crossUp;
-    crossDown = keyBinds.crossDown;
-    crossLeft = keyBinds.crossLeft;
-    crossRight = keyBinds.crossRight;
+    setKeyBinds(keyBinds);
 
     #if DEVINFO
     devInfo.font.loadFromFile("resources/fonts/defaultFont.ttf");
@@ -130,14 +120,14 @@ std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
         moveCross.x += 0.5f;
 
     //check kolizji
-    if (crosshairPlayer.getPosition().x > getPosition().x + view.getSize().x / 2.f)
-        crosshairPlayer.setPosition(getPosition().x + view.getSize().x / 2.f, crosshairPlayer.getPosition().y);
-    if (crosshairPlayer.getPosition().x < getPosition().x - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width)
-        crosshairPlayer.setPosition(getPosition().x - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width, crosshairPlayer.getPosition().y);
-    if (crosshairPlayer.getPosition().y > getPosition().y + view.getSize().y / 2.f)
-        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y + view.getSize().y / 2.f);
-    if (crosshairPlayer.getPosition().y < getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f)
-        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f);
+    if (crosshairPlayer.getPosition().x > getPosition().x + view->getSize().x / 2.f)
+        crosshairPlayer.setPosition(getPosition().x + view->getSize().x / 2.f, crosshairPlayer.getPosition().y);
+    if (crosshairPlayer.getPosition().x < getPosition().x - view->getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width)
+        crosshairPlayer.setPosition(getPosition().x - view->getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width, crosshairPlayer.getPosition().y);
+    if (crosshairPlayer.getPosition().y > getPosition().y + view->getSize().y / 2.f)
+        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y + view->getSize().y / 2.f);
+    if (crosshairPlayer.getPosition().y < getPosition().y - view->getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f)
+        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y - view->getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f);
     
     sf::Vector2f moveCrossShip {crosshairPlayer.getPosition().x - crosshairShip.getPosition().x, crosshairPlayer.getPosition().y - crosshairShip.getPosition().y};
     
