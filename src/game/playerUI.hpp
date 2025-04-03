@@ -41,6 +41,8 @@ public:
     }
 
     PlayerUI& setSecondPlayer(PlayerUI& pUI) {player2 = &pUI.player; return *this;}
+
+    const Player& getPlayer() const {return player;}
 private:
     static sf::RenderWindow* window;
 

@@ -111,7 +111,7 @@ private:
     #if DEVINFO
 public:
     const sf::Drawable& getStats() const {return devInfo;}
-    void setStatsPos(sf::Vector2f _pos)
+    void setStatsPos(sf::Vector2f _pos) const
     {
         devInfo.defaultPos = _pos;
         devInfo.pos.setPosition(devInfo.defaultPos);
@@ -129,7 +129,7 @@ private:
         mutable sf::Text pos;
         mutable sf::Text speed;
         mutable sf::Text turretRotation;
-        sf::Vector2f defaultPos;
+        mutable sf::Vector2f defaultPos;
     private:
         const Player* player{nullptr};
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override

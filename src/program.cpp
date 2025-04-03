@@ -31,8 +31,8 @@ Program::Program()
     p2UI.setSecondPlayer(p1UI);
     
     #if DEVINFO
-    p1UI.setStatsPos({window->getSize().x / 2.f - 200.f, 0.f});
-    player2.setStatsPos({window->getSize().x - 240.f, 0.f});
+    p1UI.getPlayer().setStatsPos({window->getSize().x / 2.f - 200.f, 0.f});
+    p2UI.getPlayer().setStatsPos({window->getSize().x - 240.f, 0.f});
     #endif
 }
 
@@ -69,8 +69,8 @@ void Program::display()
 
     window->setView(window->getDefaultView());
     #if DEVINFO
-    window->draw(player1.getStats());
-    window->draw(player2.getStats());
+    window->draw(p1UI.getPlayer().getStats());
+    window->draw(p2UI.getPlayer().getStats());
     #endif
 
     window->display();
