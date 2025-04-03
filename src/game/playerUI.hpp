@@ -5,7 +5,15 @@
 class PlayerUI
 {
 public:
-    PlayerUI() = default;
+    PlayerUI();
+
+    void handleEvents(const sf::Event& ev);
+
+    void update();
+
+    void display(sf::RenderWindow* window);
+
+    static void init(sf::RenderWindow* _window);
 
     PlayerUI& setView(const sf::View& _view)
     {
@@ -13,9 +21,9 @@ public:
         return *this;
     }
 
-    PlayerUI& setPlayerPos(sf::Vector2f pos)
+    PlayerUI& setPlayerPos(sf::Vector2f playerPos)
     {
-        player.setPosition(pos);
+        player.setPosition(playerPos);
         return *this;
     }
 
@@ -25,17 +33,23 @@ public:
         return *this;
     }
 
-    PlayerUI& setTextureName(const sf::String& fileName)
+    PlayerUI& setTextureName(const sf::String& playerFilename)
     {
-        player.setTexture(fileName);
+        player.setTexture(playerFilename);
+        background.setTexture(backgroundTxt);
         return *this;
     }
 
-    sf::View& getView() {return view;}
+    PlayerUI& setSecondPlayer(PlayerUI& pUI) {player2 = &pUI.player; return *this;}
 private:
+    static sf::RenderWindow* window;
+
     sf::View view;
 
     Player player;
 
+    Player* player2{nullptr};
 
+    static sf::Texture backgroundTxt;
+    static sf::Sprite background;
 };

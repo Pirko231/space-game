@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "game/playerUI/player.hpp"
+#include "game/playerUI.hpp"
 
 #ifdef MEMTRACKER
 #include "perf/memTracker.hpp"
@@ -26,14 +26,12 @@ public:
 private:
     sf::RenderWindow* window;
 
-    sf::Texture backgroundTxt;
-    sf::Sprite background;
-
     PlayerKeyBinds p1Binds;
     PlayerKeyBinds p2Binds;
 
-    Player player1;
-    Player player2;
+    PlayerUI p1UI;
+
+    PlayerUI p2UI;
 
 private:
     #if DEVINFO

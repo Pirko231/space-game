@@ -1,9 +1,7 @@
 #include "player.hpp"
 
-Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBinds)
+Player::Player()
 {
-    setTexture(textureFilename);
-
     turretTxt.loadFromFile("resources/textures/Turret.png");
     turret.setTexture(turretTxt);
     turret.setRotation(-90.f);
@@ -17,9 +15,7 @@ Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBind
     crosshairShip.setTexture(crosshairShipTxt);
     crosshairShip.setScale(0.04f,0.04f);
 
-    setKeyBinds(keyBinds);
-
-    #if DEVINFO
+#if DEVINFO
     devInfo.font.loadFromFile("resources/fonts/defaultFont.ttf");
     devInfo.speed.setFont(devInfo.font);
     devInfo.pos.setFont(devInfo.font);
@@ -28,7 +24,14 @@ Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBind
     devInfo.pos.setPosition(getPosition());
     devInfo.speed.setPosition(50.f,20.f);
     devInfo.turretRotation.setPosition(50.f, 40.f);
-    #endif
+#endif
+}
+
+Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBinds) : Player{}
+{
+    setTexture(textureFilename);
+
+    setKeyBinds(keyBinds);
 }
 
 void Player::handleEvents(const sf::Event& ev)

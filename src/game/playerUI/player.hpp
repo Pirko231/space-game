@@ -19,6 +19,7 @@ class Player : public sf::Drawable
 public:
     //Player(const std::string& textureFilename, sf::Keyboard::Key up, sf::Keyboard::Key down, sf::Keyboard::Key left, sf::Keyboard::Key right);
 
+    Player();
     Player(const std::string& textureFilename, const PlayerKeyBinds& keyBinds);
     
     void handleEvents(const sf::Event&);
