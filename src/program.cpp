@@ -1,8 +1,6 @@
 #include "program.hpp"
 
-Program::Program() :
-    p1Binds{sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::T, sf::Keyboard::G, sf::Keyboard::F, sf::Keyboard::H},
-    p2Binds{sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::I, sf::Keyboard::K, sf::Keyboard::J, sf::Keyboard::L}
+Program::Program()
 {
     window = new sf::RenderWindow;
     window->create({1280, 720}, "Space", sf::Style::Titlebar | sf::Style::Close);
@@ -23,9 +21,11 @@ Program::Program() :
         p2UI.setView(view);
     }
 
+    PlayerKeyBinds p1Binds{sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::T, sf::Keyboard::G, sf::Keyboard::F, sf::Keyboard::H};
+    PlayerKeyBinds p2Binds{sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::I, sf::Keyboard::K, sf::Keyboard::J, sf::Keyboard::L};
 
     p1UI.setPlayerPos({0.f,0.f}).setTextureName("resources/textures/Spaceship_tut.png").setKeyBinds(p1Binds);
-    p1UI.setPlayerPos(static_cast<sf::Vector2f>(window->getSize())).setTextureName("resources/textures/Spaceship_tut_thin.png").setKeyBinds(p2Binds);
+    p2UI.setPlayerPos(static_cast<sf::Vector2f>(window->getSize())).setTextureName("resources/textures/Spaceship_tut_thin.png").setKeyBinds(p2Binds);
 
     p1UI.setSecondPlayer(p2UI);
     p2UI.setSecondPlayer(p1UI);

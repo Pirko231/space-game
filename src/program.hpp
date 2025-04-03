@@ -26,9 +26,6 @@ public:
 private:
     sf::RenderWindow* window;
 
-    PlayerKeyBinds p1Binds;
-    PlayerKeyBinds p2Binds;
-
     PlayerUI p1UI;
 
     PlayerUI p2UI;
