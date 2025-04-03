@@ -58,10 +58,11 @@ public:
 
     void setPosition(sf::Vector2f pos) 
     {
+        sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);
         sprite.setPosition(pos);
         turret.setOrigin(turret.getGlobalBounds().width / 4.f, turret.getGlobalBounds().height / 2.f);
         //turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.9f, pos.y + 15.f);
-        turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.3f, pos.y + turret.getGlobalBounds().height / 1.8f);
+        turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.5f, pos.y + turret.getGlobalBounds().height / 1.8f);
         crosshairPlayer.setPosition(pos.x + sprite.getGlobalBounds().width / 2.f, pos.y - sprite.getGlobalBounds().height);
         crosshairShip.setPosition(crosshairPlayer.getPosition());
     }
@@ -81,6 +82,10 @@ private:
     std::pair<sf::Vector2f, sf::Vector2f> moveCross();
 
     float spinTurret();
+
+    void rotate(float angle);
+
+    void move(sf::Vector2f offset);
 
     sf::Keyboard::Key up, crossUp;
     sf::Keyboard::Key down, crossDown;

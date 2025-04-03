@@ -1,7 +1,7 @@
 #include "player.hpp"
 
 Player::Player()
-{
+{   
     turretTxt.loadFromFile("resources/textures/Turret.png");
     turret.setTexture(turretTxt);
     turret.setRotation(-90.f);
@@ -91,17 +91,31 @@ void Player::update()
         if (moveBy.y < 0)
             moveBy.y += throttle;
     }
+    if (pressed.a)
+    {
+        if (moveBy.y >= maxSpeed / 10.f)
+            rotate(1.f);
+        else
+            moveBy.x -= throttle / 5.f;
+    }
+    if (pressed.d)
+    {
+        if (moveBy.y <= maxSpeed / 10.f)
+            rotate(-1.f);
+        else
+            moveBy.x += throttle / 5.f;
+    }
 
     if (moveBy.y > 0)
         moveBy.y -= throttle / 5.f;
     if (moveBy.y < 0)
         moveBy.y += throttle / 5.f;
+    if (moveBy.x > 0)
+        moveBy.x -= throttle / 7.f;
+    if (moveBy.x < 0)
+        moveBy.x += throttle / 7.f;
 
-    
-    sprite.move(moveBy);
-    turret.move(moveBy);
-    crosshairPlayer.move(moveBy);
-    crosshairShip.move(moveBy);
+    move(moveBy);
 
     std::pair<sf::Vector2f, sf::Vector2f> moveCrossBy {moveCross()};
     crosshairPlayer.move(moveCrossBy.first);
@@ -146,4 +160,18 @@ float Player::spinTurret()
 
     float result {std::tan(vector.y / vector.x) *  180.f / (float)M_PI};
     return result;
+}
+
+void Player::rotate(float angle)
+{
+    sprite.rotate(angle);
+    turret.rotate(angle);
+}
+
+void Player::move(sf::Vector2f offset)
+{
+    sprite.move(offset);
+    turret.move(offset);
+    crosshairPlayer.move(offset);
+    crosshairShip.move(offset);
 }
