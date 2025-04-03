@@ -19,25 +19,25 @@ private:
         //test 1
         ev.type = sf::Event::KeyPressed;
         ev.key.code = sf::Keyboard::W;
-        sf::Vector2f pos {program->player1.getPosition()};
-        program->player1.handleEvents(ev);
-        program->player1.update();
-        if (!(program->player1.getPosition().y < pos.y))
+        sf::Vector2f pos {const_cast<Player&>(program->p1UI.getPlayer()).getPosition()};
+        const_cast<Player&>(program->p1UI.getPlayer()).handleEvents(ev);
+        const_cast<Player&>(program->p1UI.getPlayer()).update();
+        if (!(const_cast<Player&>(program->p1UI.getPlayer()).getPosition().y < pos.y))
             return false;
 
         //test 2
         ev.key.code = sf::Keyboard::S;
-        program->player1.handleEvents(ev);
-        program->player1.update();
-        if (!(program->player1.getPosition().y <= pos.y))
+        const_cast<Player&>(program->p1UI.getPlayer()).handleEvents(ev);
+        const_cast<Player&>(program->p1UI.getPlayer()).update();
+        if (!(const_cast<Player&>(program->p1UI.getPlayer()).getPosition().y <= pos.y))
             return false;
 
         //przywrocenie do stanu poczatkowego
         ev.type = sf::Event::KeyReleased;
         ev.key.code = sf::Keyboard::S;   
-        program->player1.handleEvents(ev);
+        const_cast<Player&>(program->p1UI.getPlayer()).handleEvents(ev);
         ev.key.code = sf::Keyboard::W;   
-        program->player1.handleEvents(ev);
+        const_cast<Player&>(program->p1UI.getPlayer()).handleEvents(ev);
 
         return true;
     }

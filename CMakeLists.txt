@@ -48,7 +48,7 @@ add_executable(main
 
 add_compile_definitions(MEMTRACKER)
 add_compile_definitions(SPEEDTRACKER)
-#add_compile_definitions(UNITTESTS)
+add_compile_definitions(UNITTESTS)
 add_compile_definitions(DEVINFO)
 
 if(NOT MSVC)
