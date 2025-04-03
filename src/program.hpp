@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "game/player.hpp"
+#include "game/playerUI/player.hpp"
 
 #ifdef MEMTRACKER
 #include "perf/memTracker.hpp"

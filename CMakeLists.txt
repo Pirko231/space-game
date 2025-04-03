@@ -18,6 +18,8 @@ set(SFML_LIBRARY_DIR "${SFML_ROOT}/lib")
 include_directories(${SFML_INCLUDE_DIR})
 link_directories(${SFML_LIBRARY_DIR})
 
+include_directories(${CMAKE_SOURCE_DIR}/src/perf)
+
 # Znalezienie SFML
 find_package(SFML 2.6.1 COMPONENTS system window graphics audio network REQUIRED)
 
@@ -37,7 +39,7 @@ add_executable(main
     src/main.cpp 
     src/program.cpp 
 
-    src/game/player.cpp
+    src/game/playerUI/player.cpp
 
     src/perf/memTracker.cpp
     src/perf/speedTracker.cpp
