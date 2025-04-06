@@ -19,6 +19,7 @@ include_directories(${SFML_INCLUDE_DIR})
 link_directories(${SFML_LIBRARY_DIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/src/perf)
+include_directories(${CMAKE_SOURCE_DIR}/src/utils)
 
 # Znalezienie SFML
 find_package(SFML 2.6.1 COMPONENTS system window graphics audio network REQUIRED)

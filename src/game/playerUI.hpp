@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "playerUI/player.hpp"
+#include "assetLoader.hpp"
 
 class PlayerUI
 {
@@ -33,10 +34,10 @@ public:
         return *this;
     }
 
-    PlayerUI& setTextureName(const sf::String& playerFilename)
+    PlayerUI& setTexture(const sf::Texture& texture)
     {
-        player.setTexture(playerFilename);
-        background.setTexture(backgroundTxt);
+        player.setTexture(texture);
+        background.setTexture(util::AssetLoader::get().background);
         return *this;
     }
 
@@ -52,6 +53,5 @@ private:
 
     Player* player2{nullptr};
 
-    static sf::Texture backgroundTxt;
     static sf::Sprite background;
 };

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <cmath>
 #include "pressed.hpp"
+#include "assetLoader.hpp"
 
 #ifdef MEMTRACKER
 #include "../perf/memTracker.hpp"
@@ -20,7 +21,7 @@ public:
     //Player(const std::string& textureFilename, sf::Keyboard::Key up, sf::Keyboard::Key down, sf::Keyboard::Key left, sf::Keyboard::Key right);
 
     Player();
-    Player(const std::string& textureFilename, const PlayerKeyBinds& keyBinds);
+    Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds);
     
     void handleEvents(const sf::Event&);
 
@@ -28,10 +29,9 @@ public:
 
     void setView(const sf::View* _view) {view = _view;}
 
-    void setTexture(const std::string& textureFilename)
+    void setTexture(const sf::Texture& texture)
     {
-        mainTexture.loadFromFile(textureFilename);
-        sprite.setTexture(mainTexture);
+        sprite.setTexture(texture);
         sprite.setScale(0.1f,0.1f);
     }
 
@@ -101,15 +101,11 @@ private:
     float maxSpeed{6.5f};
 
     sf::Sprite sprite;
-    sf::Texture mainTexture;
 
     sf::Sprite turret;
-    sf::Texture turretTxt;
 
     sf::Sprite crosshairPlayer;
-    sf::Texture crosshairPlayerTxt;
     sf::Sprite crosshairShip;
-    sf::Texture crosshairShipTxt;
 
     static constexpr float crosshairShipSpeed{0.02f};
 
@@ -130,7 +126,6 @@ private:
     struct DevInfo : public sf::Drawable
     {
         DevInfo(const Player* _player) {player = _player;}
-        sf::Font font;
         mutable sf::Text pos;
         mutable sf::Text speed;
         mutable sf::Text turretRotation;

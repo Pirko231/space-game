@@ -1,0 +1,44 @@
+#pragma once
+
+#include <SFML/Graphics.hpp>
+
+namespace util
+{
+
+struct AssetLoader
+{
+    static AssetLoader& get()
+    {
+        static AssetLoader txt_loader;
+        return txt_loader;
+    }
+
+    sf::Font font;
+
+    sf::Texture background;
+
+    sf::Texture ship1;
+    sf::Texture ship2;
+
+    sf::Texture pCrosshair;
+    sf::Texture sCrosshair;
+
+    sf::Texture turret;
+private:
+    AssetLoader();
+};
+
+};
+
+inline util::AssetLoader::AssetLoader()
+{
+    background.loadFromFile("resources/textures/gameBackground.png");
+
+    font.loadFromFile("resources/fonts/defaultFont.ttf");
+
+    ship1.loadFromFile("resources/textures/Spaceship_tut.png");
+    ship2.loadFromFile("resources/textures/Spaceship_tut_thin.png");
+
+    pCrosshair.loadFromFile("resources/textures/crosshair108.png");
+    sCrosshair.loadFromFile("resources/textures/crosshair111.png");
+}

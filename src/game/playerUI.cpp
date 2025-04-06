@@ -1,7 +1,6 @@
 #include "playerUI.hpp"
 
 sf::RenderWindow* PlayerUI::window {nullptr};
-sf::Texture PlayerUI::backgroundTxt{};
 sf::Sprite PlayerUI::background{};
 
 PlayerUI::PlayerUI()
@@ -30,7 +29,6 @@ void PlayerUI::display(sf::RenderWindow *window)
 
 void PlayerUI::init(sf::RenderWindow* _window)
 {
-    backgroundTxt.loadFromFile("resources/textures/gameBackground.png");
     window = _window;
     background.setPosition(-(window->getSize().x * 2.f), -(window->getSize().y * 4.f));
     background.setScale(4.f,4.f);

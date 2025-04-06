@@ -2,24 +2,21 @@
 
 Player::Player()
 {   
-    turretTxt.loadFromFile("resources/textures/Turret.png");
-    turret.setTexture(turretTxt);
+    turret.setTexture(util::AssetLoader::get().turret);
     turret.setRotation(-90.f);
     turret.setScale(0.12f,0.12f);
     turret.setOrigin(turret.getGlobalBounds().width / 2.f, turret.getGlobalBounds().height / 2.f);
 
-    crosshairPlayerTxt.loadFromFile("resources/textures/crosshair108.png");
-    crosshairPlayer.setTexture(crosshairPlayerTxt);
+    crosshairPlayer.setTexture(util::AssetLoader::get().pCrosshair);
     crosshairPlayer.setScale(0.04f,0.04f);
-    crosshairShipTxt.loadFromFile("resources/textures/crosshair111.png");
-    crosshairShip.setTexture(crosshairShipTxt);
+    crosshairShip.setTexture(util::AssetLoader::get().sCrosshair);
     crosshairShip.setScale(0.04f,0.04f);
 
 #if DEVINFO
-    devInfo.font.loadFromFile("resources/fonts/defaultFont.ttf");
-    devInfo.speed.setFont(devInfo.font);
-    devInfo.pos.setFont(devInfo.font);
-    devInfo.turretRotation.setFont(devInfo.font);
+    //devInfo.font.loadFromFile("resources/fonts/defaultFont.ttf");
+    devInfo.speed.setFont(util::AssetLoader::get().font);
+    devInfo.pos.setFont(util::AssetLoader::get().font);
+    devInfo.turretRotation.setFont(util::AssetLoader::get().font);
     //pozycja ustawiana w Player::setPosition()
     devInfo.pos.setPosition(getPosition());
     devInfo.speed.setPosition(50.f,20.f);
@@ -27,9 +24,9 @@ Player::Player()
 #endif
 }
 
-Player::Player(const std::string &textureFilename, const PlayerKeyBinds &keyBinds) : Player{}
+Player::Player(const sf::Texture &texture, const PlayerKeyBinds &keyBinds) : Player{}
 {
-    setTexture(textureFilename);
+    setTexture(texture);
 
     setKeyBinds(keyBinds);
 }
@@ -93,17 +90,11 @@ void Player::update()
     }
     if (pressed.a)
     {
-        if (moveBy.y >= maxSpeed / 10.f)
-            rotate(1.f);
-        else
-            moveBy.x -= throttle / 5.f;
+        moveBy.x -= throttle / 2.f;
     }
     if (pressed.d)
     {
-        if (moveBy.y <= maxSpeed / 10.f)
-            rotate(-1.f);
-        else
-            moveBy.x += throttle / 5.f;
+        moveBy.x += throttle / 2.f;
     }
 
     if (moveBy.y > 0)
@@ -164,6 +155,7 @@ float Player::spinTurret()
 
 void Player::rotate(float angle)
 {
+    sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);
     sprite.rotate(angle);
     turret.rotate(angle);
 }

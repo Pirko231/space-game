@@ -24,8 +24,8 @@ Program::Program()
     PlayerKeyBinds p1Binds{sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::T, sf::Keyboard::G, sf::Keyboard::F, sf::Keyboard::H};
     PlayerKeyBinds p2Binds{sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::I, sf::Keyboard::K, sf::Keyboard::J, sf::Keyboard::L};
 
-    p1UI.setPlayerPos({0.f,0.f}).setTextureName("resources/textures/Spaceship_tut.png").setKeyBinds(p1Binds);
-    p2UI.setPlayerPos(static_cast<sf::Vector2f>(window->getSize())).setTextureName("resources/textures/Spaceship_tut_thin.png").setKeyBinds(p2Binds);
+    p1UI.setPlayerPos({0.f,0.f}).setTexture(util::AssetLoader::get().ship1).setKeyBinds(p1Binds);
+    p2UI.setPlayerPos(static_cast<sf::Vector2f>(window->getSize())).setTexture(util::AssetLoader::get().ship2).setKeyBinds(p2Binds);
 
     p1UI.setSecondPlayer(p2UI);
     p2UI.setSecondPlayer(p1UI);
