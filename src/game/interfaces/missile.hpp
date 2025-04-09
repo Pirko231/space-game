@@ -5,9 +5,13 @@ class Missile : public sf::Drawable
 {
 public:
     Missile(float _maxLifeSpan, float _speed) : speed{_speed}, maxLifeSpan{_maxLifeSpan} {}
+
     virtual void handleEvents(const sf::Event& ev) {};
     virtual void update() = 0;
     virtual void display() {};
+
+    sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
+
     virtual ~Missile() = default;
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
