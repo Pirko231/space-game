@@ -44,6 +44,10 @@ add_executable(main
     src/game/playerUI/player.cpp
     src/game/playerUI.cpp
 
+    src/game/gameObjects/asteroidManager.cpp
+    src/game/gameObjects/hitChecker.cpp
+    src/game/gameObjects/missileManager.cpp
+
     src/game/gameObjects/missiles/laser.cpp
     src/game/gameObjects/missiles/rocket.cpp
     src/game/gameObjects/missiles/scanner.cpp
