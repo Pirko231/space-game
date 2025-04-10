@@ -75,13 +75,18 @@ $(function() {
   <div class="headertitle"><div class="title">HitChecker Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>sprawdza kolizje pomiedzy pociskami, asteroidam i graczami  
+ <a href="classHitChecker.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="hitChecker_8hpp_source.html">hitChecker.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for HitChecker:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHitChecker__inherit__graph.png" border="0" usemap="#aHitChecker_inherit__map" alt="Inheritance graph"/></div>
 <map name="aHitChecker_inherit__map" id="aHitChecker_inherit__map">
-<area shape="rect" title=" " alt="" coords="26,79,119,104"/>
-<area shape="rect" href="classCollisionManager.html" title=" " alt="" coords="5,5,140,31"/>
+<area shape="rect" title="sprawdza kolizje pomiedzy pociskami, asteroidam i graczami" alt="" coords="26,79,119,104"/>
+<area shape="rect" href="classCollisionManager.html" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="5,5,140,31"/>
 <area shape="poly" title=" " alt="" coords="75,44,75,79,70,79,70,44"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -90,8 +95,8 @@ Collaboration diagram for HitChecker:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHitChecker__coll__graph.png" border="0" usemap="#aHitChecker_coll__map" alt="Collaboration graph"/></div>
 <map name="aHitChecker_coll__map" id="aHitChecker_coll__map">
-<area shape="rect" title=" " alt="" coords="97,183,191,208"/>
-<area shape="rect" href="classCollisionManager.html" title=" " alt="" coords="77,108,211,133"/>
+<area shape="rect" title="sprawdza kolizje pomiedzy pociskami, asteroidam i graczami" alt="" coords="97,183,191,208"/>
+<area shape="rect" href="classCollisionManager.html" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="77,108,211,133"/>
 <area shape="poly" title=" " alt="" coords="147,148,147,182,141,182,141,148"/>
 <area shape="rect" href="classMissileManager.html" title=" " alt="" coords="5,5,131,31"/>
 <area shape="poly" title=" " alt="" coords="87,40,138,106,133,110,83,43"/>
@@ -104,11 +109,12 @@ Collaboration diagram for HitChecker:</div>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a93a194b301cda287e3ad2e6c59e9eb5e" id="r_a93a194b301cda287e3ad2e6c59e9eb5e"><td class="memItemLeft" align="right" valign="top"><a id="a93a194b301cda287e3ad2e6c59e9eb5e" name="a93a194b301cda287e3ad2e6c59e9eb5e"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>check</b> ()</td></tr>
+<tr class="memdesc:a93a194b301cda287e3ad2e6c59e9eb5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">sprawdzenie kolizji <br /></td></tr>
 <tr class="separator:a93a194b301cda287e3ad2e6c59e9eb5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_classCollisionManager"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classCollisionManager')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classCollisionManager.html">CollisionManager</a></td></tr>
-<tr class="memitem:affbd0630086c392fca9c8174a48b0e52 inherit pub_static_methods_classCollisionManager" id="r_affbd0630086c392fca9c8174a48b0e52"><td class="memItemLeft" align="right" valign="top">
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>setData</b> (<a class="el" href="classMissileManager.html">MissileManager</a> *p1Manager, <a class="el" href="classMissileManager.html">MissileManager</a> *p2Manager, sf::Sprite *p1, sf::Sprite *p2, <a class="el" href="classAsteroidManager.html">AsteroidManager</a> *asteroidManager)</td></tr>
-<tr class="separator:affbd0630086c392fca9c8174a48b0e52 inherit pub_static_methods_classCollisionManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9f7a3434e765f80aac17fd632fa10a7 inherit pub_static_methods_classCollisionManager" id="r_ac9f7a3434e765f80aac17fd632fa10a7"><td class="memItemLeft" align="right" valign="top">
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>setData</b> (const <a class="el" href="classMissileManager.html">MissileManager</a> *p1Manager, const <a class="el" href="classMissileManager.html">MissileManager</a> *p2Manager, const sf::Sprite *p1, const sf::Sprite *p2, const <a class="el" href="classAsteroidManager.html">AsteroidManager</a> *asteroidManager)</td></tr>
+<tr class="separator:ac9f7a3434e765f80aac17fd632fa10a7 inherit pub_static_methods_classCollisionManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -129,9 +135,11 @@ static const sf::Sprite *&#160;</td><td class="memItemRight" valign="bottom"><b>
 static const <a class="el" href="classAsteroidManager.html">AsteroidManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>asteroids</b> {}</td></tr>
 <tr class="separator:a348603e5b04a3070d5e131b2ae259445 inherit pro_static_attribs_classCollisionManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/game/gameObjects/<a class="el" href="hitChecker_8hpp_source.html">hitChecker.hpp</a></li>
-<li>src/game/gameObjects/<b>hitChecker.cpp</b></li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>sprawdza kolizje pomiedzy pociskami, asteroidam i graczami </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>game/gameObjects/<a class="el" href="hitChecker_8hpp_source.html">hitChecker.hpp</a></li>
+<li>game/gameObjects/<b>hitChecker.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

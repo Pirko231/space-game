@@ -7,6 +7,8 @@ Program::Program()
     window->setFramerateLimit(60);
 
     PlayerUI::init(window);
+
+    CollisionManager::setData(p1UI.getPlayer().getMissileManager(), p2UI.getPlayer().getMissileManager(), p1UI.getPlayer().getHitbox(), p2UI.getPlayer().getHitbox(), &asteroidManager);
     
     {
         sf::View view;
@@ -30,10 +32,10 @@ Program::Program()
     p1UI.setSecondPlayer(p2UI);
     p2UI.setSecondPlayer(p1UI);
     
-    #if DEVINFO
+#if DEVINFO
     p1UI.getPlayer().setStatsPos({window->getSize().x / 2.f - 200.f, 0.f});
     p2UI.getPlayer().setStatsPos({window->getSize().x - 240.f, 0.f});
-    #endif
+#endif
 }
 
 Program::~Program()
@@ -57,6 +59,8 @@ void Program::update()
 {
     p1UI.update();
     p2UI.update();
+
+    HitChecker::check();
 }
 
 void Program::display()
@@ -68,10 +72,10 @@ void Program::display()
     p2UI.display(window);
 
     window->setView(window->getDefaultView());
-    #if DEVINFO
+#if DEVINFO
     window->draw(p1UI.getPlayer().getStats());
     window->draw(p2UI.getPlayer().getStats());
-    #endif
+#endif
 
     window->display();
 }

@@ -1,13 +1,18 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "assetLoader.hpp"
 
 class Missile : public sf::Drawable
 {
 public:
     Missile(float _maxLifeSpan, float _speed) : speed{_speed}, maxLifeSpan{_maxLifeSpan} {}
 
+    /// @brief odbiera eventy i reaguje na nie
+    /// @param ev 
     virtual void handleEvents(const sf::Event& ev) {};
+    /// @brief aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych
     virtual void update() = 0;
+    /// @brief wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)
     virtual void display() {};
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}

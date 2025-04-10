@@ -83,8 +83,9 @@ Szablony i interfejsy w Space Game</h1>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Tworzenie obiektów</h2>
 <p>Obiekty takie jak pociski tworzone są przez fabrykę:</p>
-<div class="fragment"><div class="line">std::unique_ptr&lt;Missile&gt; pocisk = IMissileFactory::create(...);</div>
+<div class="fragment"><div class="line">std::unique_ptr&lt;Missile&gt; pocisk = <a class="code hl_function" href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">IMissileFactory::create</a>(...);</div>
 <div class="line">missile-&gt;launch(...)</div>
+<div class="ttc" id="aclassIMissileFactory_html_a1d4aefb21961795ece99da0116681dec"><div class="ttname"><a href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">IMissileFactory::create</a></div><div class="ttdeci">virtual std::unique_ptr&lt; Missile &gt; create(sf::Vector2f pos, sf::Vector2f dir)=0</div><div class="ttdoc">tworzy obiekt i zwraca go</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
 Rejestracja nowych typów</h2>
 <p>Jeśli chcesz dodać nowy typ pocisku:</p>
@@ -101,7 +102,7 @@ Rejestracja nowych typów</h2>
 <div class="line">  <span class="comment">//implementacja funkcji wirtualnych</span></div>
 <div class="line">};</div>
 <div class="ttc" id="aclassIMissileFactory_html"><div class="ttname"><a href="classIMissileFactory.html">IMissileFactory</a></div><div class="ttdef"><b>Definition</b> missileFactory.hpp:7</div></div>
-<div class="ttc" id="aclassMissile_html"><div class="ttname"><a href="classMissile.html">Missile</a></div><div class="ttdef"><b>Definition</b> missile.hpp:5</div></div>
+<div class="ttc" id="aclassMissile_html"><div class="ttname"><a href="classMissile.html">Missile</a></div><div class="ttdef"><b>Definition</b> missile.hpp:6</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 Interfejsy</h2>
 <p>Każdy obiekt dziedziczy po <code><a class="el" href="classIMissileFactory.html">IMissileFactory</a></code>, który zawiera metody:</p><ul>

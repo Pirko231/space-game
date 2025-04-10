@@ -1,5 +1,7 @@
-<map id="src/game/gameObjects" name="src/game/gameObjects">
-<area shape="rect" id="node2" href="dir_5945eb988897eab8879579cfd02669a4.html" title="missiles" alt="" coords="38,63,114,88"/>
-<area shape="rect" id="clust2" href="dir_da4ea36150a003e6a65443630e84e98c.html" alt="" coords="27,52,257,99"/>
-<area shape="rect" id="clust1" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html" title="game" alt="" coords="16,16,268,109"/>
+<map id="game/gameObjects" name="game/gameObjects">
+<area shape="rect" id="node2" href="dir_b9b06fc71ef50a7911ca975c47224a15.html" title="factories" alt="" coords="249,63,327,88"/>
+<area shape="rect" id="node3" href="dir_d036fbd96eff5097a526d9538a2b2fe7.html" title="managers" alt="" coords="138,63,225,88"/>
+<area shape="rect" id="node4" href="dir_5945eb988897eab8879579cfd02669a4.html" title="missiles" alt="" coords="38,63,114,88"/>
+<area shape="rect" id="clust2" href="dir_da4ea36150a003e6a65443630e84e98c.html" alt="" coords="27,52,471,99"/>
+<area shape="rect" id="clust1" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html" title="game" alt="" coords="16,16,481,109"/>
 </map>

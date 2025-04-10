@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Space Game: src/game/interfaces/missileFactory.hpp Source File</title>
+<title>Space Game: game/interfaces/missileFactory.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ $(document).ready(function() { init_codefold(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li><li class="navelem"><a class="el" href="dir_f3386db089bdf5960d575657a5bc3005.html">interfaces</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li><li class="navelem"><a class="el" href="dir_f3386db089bdf5960d575657a5bc3005.html">interfaces</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -90,11 +90,13 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classIMissileFactory.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="classIMissileFactory.html">IMissileFactory</a></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keyword">virtual</span> std::unique_ptr&lt;Missile&gt; create(sf::Vector2f pos, sf::Vector2f dir) = 0;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classIMissileFactory.html">~IMissileFactory</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>};</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">   13</a></span>    <span class="keyword">virtual</span> std::unique_ptr&lt;Missile&gt; <a class="code hl_function" href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">create</a>(sf::Vector2f pos, sf::Vector2f dir) = 0;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classIMissileFactory.html">~IMissileFactory</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
 </div>
 <div class="ttc" id="aclassIMissileFactory_html"><div class="ttname"><a href="classIMissileFactory.html">IMissileFactory</a></div><div class="ttdef"><b>Definition</b> missileFactory.hpp:7</div></div>
+<div class="ttc" id="aclassIMissileFactory_html_a1d4aefb21961795ece99da0116681dec"><div class="ttname"><a href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">IMissileFactory::create</a></div><div class="ttdeci">virtual std::unique_ptr&lt; Missile &gt; create(sf::Vector2f pos, sf::Vector2f dir)=0</div><div class="ttdoc">tworzy obiekt i zwraca go</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
