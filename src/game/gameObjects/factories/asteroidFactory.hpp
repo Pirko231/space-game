@@ -1,5 +1,5 @@
 #pragma once
-#include "asteroid.hpp"
+#include "missiles/asteroid.hpp"
 #include <memory>
 
 class AsteroidFactory

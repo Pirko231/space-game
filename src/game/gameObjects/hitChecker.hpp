@@ -1,5 +1,5 @@
 #pragma once
-#include "collisionManager.hpp"
+#include "managers/collisionManager.hpp"
 
 /// @brief sprawdza kolizje pomiedzy pociskami, asteroidam i graczami
 class HitChecker : public CollisionManager

@@ -4,11 +4,7 @@
 #include <cmath>
 #include "pressed.hpp"
 #include "assetLoader.hpp"
-#include "../gameObjects/missileManager.hpp"
-
-#ifdef MEMTRACKER
-#include "../perf/memTracker.hpp"
-#endif
+#include "../gameObjects/managers/missileManager.hpp"
 
 struct PlayerKeyBinds
 {

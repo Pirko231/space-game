@@ -1,5 +1,5 @@
 #pragma once
-#include "asteroidFactory.hpp"
+#include "factories/asteroidFactory.hpp"
 
 class AsteroidManager
 {

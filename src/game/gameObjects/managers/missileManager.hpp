@@ -1,7 +1,7 @@
 #pragma once
-#include "laserFactory.hpp"
-#include "rocketFactory.hpp"
-#include "scannerFactory.hpp"
+#include "factories/laserFactory.hpp"
+#include "factories/rocketFactory.hpp"
+#include "factories/scannerFactory.hpp"
 
 class MissileManager
 {

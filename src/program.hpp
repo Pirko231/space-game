@@ -4,11 +4,7 @@
 
 #include "game/playerUI.hpp"
 #include "game/gameObjects/hitChecker.hpp"
-#include "game/gameObjects/asteroidManager.hpp"
-
-#ifdef MEMTRACKER
-#include "perf/memTracker.hpp"
-#endif
+#include "game/gameObjects/managers/asteroidManager.hpp"
 
 #ifdef SPEEDTRACKER
 #include "perf/speedTracker.hpp"

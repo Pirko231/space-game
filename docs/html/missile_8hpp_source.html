@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Space Game: src/game/interfaces/missile.hpp Source File</title>
+<title>Space Game: game/interfaces/missile.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ $(document).ready(function() { init_codefold(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li><li class="navelem"><a class="el" href="dir_f3386db089bdf5960d575657a5bc3005.html">interfaces</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li><li class="navelem"><a class="el" href="dir_f3386db089bdf5960d575657a5bc3005.html">interfaces</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -83,43 +83,44 @@ $(document).ready(function() { init_codefold(0); });
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="foldopen" id="foldopen00004" data-start="{" data-end="};">
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="classMissile.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="classMissile.html">Missile</a> : <span class="keyword">public</span> sf::Drawable</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <a class="code hl_class" href="classMissile.html">Missile</a>(<span class="keywordtype">float</span> _maxLifeSpan, <span class="keywordtype">float</span> _speed) : speed{_speed}, maxLifeSpan{_maxLifeSpan} {}</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">   11</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">handleEvents</a>(<span class="keyword">const</span> sf::Event&amp; ev) {};</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classMissile.html#a0f3bda5b9ece56f3a86ae29b3f93ca90">   13</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMissile.html#a0f3bda5b9ece56f3a86ae29b3f93ca90">update</a>() = 0;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classMissile.html#ae0d0af0ed906415cfff142ad6457bf95">   15</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMissile.html#ae0d0af0ed906415cfff142ad6457bf95">display</a>() {};</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    sf::FloatRect getGlobalBounds()<span class="keyword"> const </span>{<span class="keywordflow">return</span> sprite.getGlobalBounds();}</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classMissile.html">~Missile</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> draw(sf::RenderTarget&amp; target, sf::RenderStates states)<span class="keyword"> const override</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        target.draw(sprite, states);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> launch(sf::Vector2f _pos, sf::Vector2f _dir)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        sprite.setPosition(_pos); dir = _dir;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    sf::Sprite sprite;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    sf::Vector2f dir;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    sf::Vector2f moveBy;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">float</span> speed;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> maxLifeSpan;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">float</span> lifeSpan{0};</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;assetLoader.hpp&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classMissile.html">    5</a></span><span class="keyword">class </span><a class="code hl_class" href="classMissile.html">Missile</a> : <span class="keyword">public</span> sf::Drawable</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <a class="code hl_class" href="classMissile.html">Missile</a>(<span class="keywordtype">float</span> _maxLifeSpan, <span class="keywordtype">float</span> _speed) : speed{_speed}, maxLifeSpan{_maxLifeSpan} {}</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">   12</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">handleEvents</a>(<span class="keyword">const</span> sf::Event&amp; ev) {};</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classMissile.html#a0f3bda5b9ece56f3a86ae29b3f93ca90">   14</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMissile.html#a0f3bda5b9ece56f3a86ae29b3f93ca90">update</a>() = 0;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classMissile.html#ae0d0af0ed906415cfff142ad6457bf95">   16</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMissile.html#ae0d0af0ed906415cfff142ad6457bf95">display</a>() {};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    sf::FloatRect getGlobalBounds()<span class="keyword"> const </span>{<span class="keywordflow">return</span> sprite.getGlobalBounds();}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classMissile.html">~Missile</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> draw(sf::RenderTarget&amp; target, sf::RenderStates states)<span class="keyword"> const override</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        target.draw(sprite, states);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> launch(sf::Vector2f _pos, sf::Vector2f _dir)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        sprite.setPosition(_pos); dir = _dir;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    sf::Sprite sprite;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    sf::Vector2f dir;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    sf::Vector2f moveBy;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">float</span> speed;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> maxLifeSpan;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">float</span> lifeSpan{0};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
 </div>
-<div class="ttc" id="aclassMissile_html"><div class="ttname"><a href="classMissile.html">Missile</a></div><div class="ttdef"><b>Definition</b> missile.hpp:5</div></div>
+<div class="ttc" id="aclassMissile_html"><div class="ttname"><a href="classMissile.html">Missile</a></div><div class="ttdef"><b>Definition</b> missile.hpp:6</div></div>
 <div class="ttc" id="aclassMissile_html_a0f3bda5b9ece56f3a86ae29b3f93ca90"><div class="ttname"><a href="classMissile.html#a0f3bda5b9ece56f3a86ae29b3f93ca90">Missile::update</a></div><div class="ttdeci">virtual void update()=0</div><div class="ttdoc">aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych</div></div>
-<div class="ttc" id="aclassMissile_html_a4a07ef458c9b3b9632ad685be4da9276"><div class="ttname"><a href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">Missile::handleEvents</a></div><div class="ttdeci">virtual void handleEvents(const sf::Event &amp;ev)</div><div class="ttdoc">odbiera eventy i reaguje na nie</div><div class="ttdef"><b>Definition</b> missile.hpp:11</div></div>
-<div class="ttc" id="aclassMissile_html_ae0d0af0ed906415cfff142ad6457bf95"><div class="ttname"><a href="classMissile.html#ae0d0af0ed906415cfff142ad6457bf95">Missile::display</a></div><div class="ttdeci">virtual void display()</div><div class="ttdoc">wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)</div><div class="ttdef"><b>Definition</b> missile.hpp:15</div></div>
+<div class="ttc" id="aclassMissile_html_a4a07ef458c9b3b9632ad685be4da9276"><div class="ttname"><a href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">Missile::handleEvents</a></div><div class="ttdeci">virtual void handleEvents(const sf::Event &amp;ev)</div><div class="ttdoc">odbiera eventy i reaguje na nie</div><div class="ttdef"><b>Definition</b> missile.hpp:12</div></div>
+<div class="ttc" id="aclassMissile_html_ae0d0af0ed906415cfff142ad6457bf95"><div class="ttname"><a href="classMissile.html#ae0d0af0ed906415cfff142ad6457bf95">Missile::display</a></div><div class="ttdeci">virtual void display()</div><div class="ttdoc">wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)</div><div class="ttdef"><b>Definition</b> missile.hpp:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

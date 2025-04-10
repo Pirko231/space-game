@@ -21,6 +21,8 @@ link_directories(${SFML_LIBRARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/src/perf)
 include_directories(${CMAKE_SOURCE_DIR}/src/utils)
 include_directories(${CMAKE_SOURCE_DIR}/src/game/interfaces)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/game/gameObjects)
+
 
 # Znalezienie SFML
 find_package(SFML 2.6.1 COMPONENTS system window graphics audio network REQUIRED)
@@ -44,16 +46,15 @@ add_executable(main
     src/game/playerUI/player.cpp
     src/game/playerUI.cpp
 
-    src/game/gameObjects/asteroidManager.cpp
+    src/game/gameObjects/managers/asteroidManager.cpp
     src/game/gameObjects/hitChecker.cpp
-    src/game/gameObjects/missileManager.cpp
+    src/game/gameObjects/managers/missileManager.cpp
 
     src/game/gameObjects/missiles/laser.cpp
     src/game/gameObjects/missiles/rocket.cpp
     src/game/gameObjects/missiles/scanner.cpp
 
 
-    src/perf/memTracker.cpp
     src/perf/speedTracker.cpp
 )
 
@@ -64,6 +65,7 @@ add_compile_definitions(DEVINFO)
 
 if(NOT MSVC)
 	target_compile_options(main PRIVATE -Wall -Wextra -pedantic)
+    target_compile_options(main PRIVATE -Wno-unused-parameter)
 endif()
 
 # Ustawienie wersji standardu C++
