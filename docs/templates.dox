@@ -1,0 +1,54 @@
+/**
+ * @page templates Szablony i Interfejsy
+ *
+ * # Szablony i interfejsy w Space Game
+ *
+ * Ten rozdział opisuje, jak tworzyć obiekty gry na podstawie szablonów
+ * oraz jak korzystać z interfejsów w projekcie.
+ *
+ * ---
+ *
+ * ## Tworzenie obiektów
+ *
+ * Obiekty takie jak pociski tworzone są przez fabrykę:
+ *
+ * ```cpp
+ * std::unique_ptr<Missile> pocisk = IMissileFactory::create(...);
+ * missile->launch(...)
+ * ```
+ *
+ * ## Rejestracja nowych typów
+ *
+ * Jeśli chcesz dodać nowy typ pocisku:
+ *
+ * 1. Stwórz klasę dziedziczącą po `Missile`
+ * 2. Utwórz do niej fabrykę, która dziedziczy po IMissileFactory:
+ *
+ * ```cpp
+ * class MyMissile : public Missile
+ * {
+ *  //implementacja funkcji wirtualnych
+ * };
+ * class MyMissileFactory : public IMissileFactory
+ * {
+ *   //implementacja funkcji wirtualnych
+ * };
+ * ```
+ *
+ * ## Interfejsy
+ *
+ * Każdy obiekt dziedziczy po `IMissileFactory`, który zawiera metody:
+ * - `init()`
+ * - `std::unique_ptr<Missile> create(...)`
+ *
+ * Można więc traktować obiekty polimorficznie:
+ *
+ * ```cpp
+ * std::vector<std::unique_ptr<Missile>> obiekty;
+ *
+ * ```
+ *
+ * ---
+ *
+ * @see IMissileFactory, Missile
+ */

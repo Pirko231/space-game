@@ -1,0 +1,9 @@
+<map id="HitChecker" name="HitChecker">
+<area shape="rect" id="Node000001" title=" " alt="" coords="97,183,191,208"/>
+<area shape="rect" id="Node000002" href="$classCollisionManager.html" title=" " alt="" coords="77,108,211,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,148,147,182,141,182,141,148"/>
+<area shape="rect" id="Node000003" href="$classMissileManager.html" title=" " alt="" coords="5,5,131,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,40,138,106,133,110,83,43"/>
+<area shape="rect" id="Node000004" href="$classAsteroidManager.html" title=" " alt="" coords="155,5,288,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="216,45,207,65,194,86,166,110,162,106,190,82,202,63,211,42"/>
+</map>
