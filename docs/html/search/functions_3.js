@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['shoulddelete_0',['shouldDelete',['../classAsteroidManager.html#a7c1b48e1748a334ff4e97ba45d9384d1',1,'AsteroidManager']]]
+  ['handleevents_0',['handleEvents',['../classMissile.html#a4a07ef458c9b3b9632ad685be4da9276',1,'Missile']]]
 ];

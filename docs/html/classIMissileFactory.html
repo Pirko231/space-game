@@ -93,8 +93,11 @@ Inheritance diagram for IMissileFactory:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d4aefb21961795ece99da0116681dec" id="r_a1d4aefb21961795ece99da0116681dec"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classMissile.html">Missile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">create</a> (sf::Vector2f pos, sf::Vector2f dir)=0</td></tr>
-<tr class="memdesc:a1d4aefb21961795ece99da0116681dec"><td class="mdescLeft">&#160;</td><td class="mdescRight">tworzy obiekt i zwraca go  <br /></td></tr>
+<tr class="memdesc:a1d4aefb21961795ece99da0116681dec"><td class="mdescLeft">&#160;</td><td class="mdescRight">tworzy obiekt <a class="el" href="classMissile.html">Missile</a> i zwraca go  <br /></td></tr>
 <tr class="separator:a1d4aefb21961795ece99da0116681dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17b9d57b89629697f4efc38114fefc58" id="r_a17b9d57b89629697f4efc38114fefc58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIMissileFactory.html">IMissileFactory</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMissileFactory.html#a17b9d57b89629697f4efc38114fefc58">get</a> ()</td></tr>
+<tr class="memdesc:a17b9d57b89629697f4efc38114fefc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">zwraca referencje do samej siebie, aby mozna bylo wyslac obiekt tymczasowy jako argument  <br /></td></tr>
+<tr class="separator:a17b9d57b89629697f4efc38114fefc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1d4aefb21961795ece99da0116681dec" name="a1d4aefb21961795ece99da0116681dec"></a>
@@ -131,7 +134,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>tworzy obiekt i zwraca go </p>
+<p>tworzy obiekt <a class="el" href="classMissile.html">Missile</a> i zwraca go </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pos</td><td>pozycja startowa </td></tr>
@@ -143,6 +146,34 @@ Public Member Functions</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classMissile.html">Missile</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="classLaserFactory.html#ac26ef4be265675874f23cef64a13da59">LaserFactory</a>, <a class="el" href="classRocketFactory.html#a44eba156361f03004aaf0a33630f56f7">RocketFactory</a>, and <a class="el" href="classScannerFactory.html#a511686a854fc007ca465be65866763a0">ScannerFactory</a>.</p>
+
+</div>
+</div>
+<a id="a17b9d57b89629697f4efc38114fefc58" name="a17b9d57b89629697f4efc38114fefc58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17b9d57b89629697f4efc38114fefc58">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classIMissileFactory.html">IMissileFactory</a> &amp; IMissileFactory::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>zwraca referencje do samej siebie, aby mozna bylo wyslac obiekt tymczasowy jako argument </p>
+<dl class="section return"><dt>Returns</dt><dd>referencja do siebie </dd></dl>
 
 </div>
 </div>

@@ -85,7 +85,7 @@ Tworzenie obiektów</h2>
 <p>Obiekty takie jak pociski tworzone są przez fabrykę:</p>
 <div class="fragment"><div class="line">std::unique_ptr&lt;Missile&gt; pocisk = <a class="code hl_function" href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">IMissileFactory::create</a>(...);</div>
 <div class="line">missile-&gt;launch(...)</div>
-<div class="ttc" id="aclassIMissileFactory_html_a1d4aefb21961795ece99da0116681dec"><div class="ttname"><a href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">IMissileFactory::create</a></div><div class="ttdeci">virtual std::unique_ptr&lt; Missile &gt; create(sf::Vector2f pos, sf::Vector2f dir)=0</div><div class="ttdoc">tworzy obiekt i zwraca go</div></div>
+<div class="ttc" id="aclassIMissileFactory_html_a1d4aefb21961795ece99da0116681dec"><div class="ttname"><a href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">IMissileFactory::create</a></div><div class="ttdeci">virtual std::unique_ptr&lt; Missile &gt; create(sf::Vector2f pos, sf::Vector2f dir)=0</div><div class="ttdoc">tworzy obiekt Missile i zwraca go</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
 Rejestracja nowych typów</h2>
 <p>Jeśli chcesz dodać nowy typ pocisku:</p>
