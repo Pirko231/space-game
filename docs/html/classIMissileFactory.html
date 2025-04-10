@@ -92,10 +92,60 @@ Inheritance diagram for IMissileFactory:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1d4aefb21961795ece99da0116681dec" id="r_a1d4aefb21961795ece99da0116681dec"><td class="memItemLeft" align="right" valign="top"><a id="a1d4aefb21961795ece99da0116681dec" name="a1d4aefb21961795ece99da0116681dec"></a>
-virtual std::unique_ptr&lt; <a class="el" href="classMissile.html">Missile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> (sf::Vector2f pos, sf::Vector2f dir)=0</td></tr>
+<tr class="memitem:a1d4aefb21961795ece99da0116681dec" id="r_a1d4aefb21961795ece99da0116681dec"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classMissile.html">Missile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">create</a> (sf::Vector2f pos, sf::Vector2f dir)=0</td></tr>
+<tr class="memdesc:a1d4aefb21961795ece99da0116681dec"><td class="mdescLeft">&#160;</td><td class="mdescRight">tworzy obiekt i zwraca go  <br /></td></tr>
 <tr class="separator:a1d4aefb21961795ece99da0116681dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1d4aefb21961795ece99da0116681dec" name="a1d4aefb21961795ece99da0116681dec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4aefb21961795ece99da0116681dec">&#9670;&#160;</a></span>create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="classMissile.html">Missile</a> &gt; IMissileFactory::create </td>
+          <td>(</td>
+          <td class="paramtype">sf::Vector2f&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Vector2f&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>tworzy obiekt i zwraca go </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>pozycja startowa </td></tr>
+    <tr><td class="paramname">dir</td><td>pozycja celownika, sluzy do obliczenia poruszania sie obiektu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zwraca unique_ptr do klasy dziedziczacej od pocisku </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMissile.html">Missile</a> </dd></dl>
+
+<p>Implemented in <a class="el" href="classLaserFactory.html#ac26ef4be265675874f23cef64a13da59">LaserFactory</a>, <a class="el" href="classRocketFactory.html#a44eba156361f03004aaf0a33630f56f7">RocketFactory</a>, and <a class="el" href="classScannerFactory.html#a511686a854fc007ca465be65866763a0">ScannerFactory</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/game/interfaces/<a class="el" href="missileFactory_8hpp_source.html">missileFactory.hpp</a></li>
 </ul>

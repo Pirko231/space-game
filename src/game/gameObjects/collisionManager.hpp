@@ -2,6 +2,7 @@
 #include "missileManager.hpp"
 #include "asteroidManager.hpp"
 
+/// @brief przechowuje dane o pozycji pociskow, asteroid i graczy
 class CollisionManager
 {
 public:

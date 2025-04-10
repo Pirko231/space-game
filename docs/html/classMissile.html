@@ -109,14 +109,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aea3f4454cc39b739749d38682574ad76" id="r_aea3f4454cc39b739749d38682574ad76"><td class="memItemLeft" align="right" valign="top"><a id="aea3f4454cc39b739749d38682574ad76" name="aea3f4454cc39b739749d38682574ad76"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Missile</b> (float _maxLifeSpan, float _speed)</td></tr>
 <tr class="separator:aea3f4454cc39b739749d38682574ad76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a07ef458c9b3b9632ad685be4da9276" id="r_a4a07ef458c9b3b9632ad685be4da9276"><td class="memItemLeft" align="right" valign="top"><a id="a4a07ef458c9b3b9632ad685be4da9276" name="a4a07ef458c9b3b9632ad685be4da9276"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvents</b> (const sf::Event &amp;ev)</td></tr>
+<tr class="memitem:a4a07ef458c9b3b9632ad685be4da9276" id="r_a4a07ef458c9b3b9632ad685be4da9276"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">handleEvents</a> (const sf::Event &amp;ev)</td></tr>
+<tr class="memdesc:a4a07ef458c9b3b9632ad685be4da9276"><td class="mdescLeft">&#160;</td><td class="mdescRight">odbiera eventy i reaguje na nie  <br /></td></tr>
 <tr class="separator:a4a07ef458c9b3b9632ad685be4da9276"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f3bda5b9ece56f3a86ae29b3f93ca90" id="r_a0f3bda5b9ece56f3a86ae29b3f93ca90"><td class="memItemLeft" align="right" valign="top"><a id="a0f3bda5b9ece56f3a86ae29b3f93ca90" name="a0f3bda5b9ece56f3a86ae29b3f93ca90"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()=0</td></tr>
+<tr class="memitem:a0f3bda5b9ece56f3a86ae29b3f93ca90" id="r_a0f3bda5b9ece56f3a86ae29b3f93ca90"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a0f3bda5b9ece56f3a86ae29b3f93ca90">update</a> ()=0</td></tr>
+<tr class="memdesc:a0f3bda5b9ece56f3a86ae29b3f93ca90"><td class="mdescLeft">&#160;</td><td class="mdescRight">aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych  <br /></td></tr>
 <tr class="separator:a0f3bda5b9ece56f3a86ae29b3f93ca90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0d0af0ed906415cfff142ad6457bf95" id="r_ae0d0af0ed906415cfff142ad6457bf95"><td class="memItemLeft" align="right" valign="top"><a id="ae0d0af0ed906415cfff142ad6457bf95" name="ae0d0af0ed906415cfff142ad6457bf95"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>display</b> ()</td></tr>
+<tr class="memitem:ae0d0af0ed906415cfff142ad6457bf95" id="r_ae0d0af0ed906415cfff142ad6457bf95"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#ae0d0af0ed906415cfff142ad6457bf95">display</a> ()</td></tr>
+<tr class="memdesc:ae0d0af0ed906415cfff142ad6457bf95"><td class="mdescLeft">&#160;</td><td class="mdescRight">wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)  <br /></td></tr>
 <tr class="separator:ae0d0af0ed906415cfff142ad6457bf95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae20c7c14e0290e5995fea82c97b2873f" id="r_ae20c7c14e0290e5995fea82c97b2873f"><td class="memItemLeft" align="right" valign="top"><a id="ae20c7c14e0290e5995fea82c97b2873f" name="ae20c7c14e0290e5995fea82c97b2873f"></a>
 sf::FloatRect&#160;</td><td class="memItemRight" valign="bottom"><b>getGlobalBounds</b> () const</td></tr>
@@ -149,6 +149,100 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><b>maxLifeSpan</b
 float&#160;</td><td class="memItemRight" valign="bottom"><b>lifeSpan</b> {0}</td></tr>
 <tr class="separator:aff331826fb45e251b691cacca4b7d671"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae0d0af0ed906415cfff142ad6457bf95" name="ae0d0af0ed906415cfff142ad6457bf95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0d0af0ed906415cfff142ad6457bf95">&#9670;&#160;</a></span>display()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Missile::display </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej) </p>
+
+<p>Reimplemented in <a class="el" href="classLaser.html#a8f77da97743e4e5f6c29a66ec20dd7de">Laser</a>, <a class="el" href="classRocket.html#a7a238da76ae41e649bca866b858c966a">Rocket</a>, and <a class="el" href="classScanner.html#a7154154d81063b3cbec96784db014b28">Scanner</a>.</p>
+
+</div>
+</div>
+<a id="a4a07ef458c9b3b9632ad685be4da9276" name="a4a07ef458c9b3b9632ad685be4da9276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a07ef458c9b3b9632ad685be4da9276">&#9670;&#160;</a></span>handleEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Missile::handleEvents </td>
+          <td>(</td>
+          <td class="paramtype">const sf::Event &amp;&#160;</td>
+          <td class="paramname"><em>ev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>odbiera eventy i reaguje na nie </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ev</td><td><br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0f3bda5b9ece56f3a86ae29b3f93ca90" name="a0f3bda5b9ece56f3a86ae29b3f93ca90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f3bda5b9ece56f3a86ae29b3f93ca90">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Missile::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych </p>
+
+<p>Implemented in <a class="el" href="classLaser.html#ae7317375cf2b7a5bff4281c359797255">Laser</a>, <a class="el" href="classRocket.html#aa0f4dcf673358e841e4b4b2fa0b1462e">Rocket</a>, and <a class="el" href="classScanner.html#a6e96c1d58d897787ea1548e4c18d4127">Scanner</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/game/interfaces/<a class="el" href="missile_8hpp_source.html">missile.hpp</a></li>
 </ul>

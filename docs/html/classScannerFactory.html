@@ -99,6 +99,7 @@ Collaboration diagram for ScannerFactory:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a511686a854fc007ca465be65866763a0" id="r_a511686a854fc007ca465be65866763a0"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classMissile.html">Missile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScannerFactory.html#a511686a854fc007ca465be65866763a0">create</a> (sf::Vector2f pos, sf::Vector2f dir) override</td></tr>
+<tr class="memdesc:a511686a854fc007ca465be65866763a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">tworzy obiekt i zwraca go  <br /></td></tr>
 <tr class="separator:a511686a854fc007ca465be65866763a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -136,7 +137,18 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIMissileFactory.html">IMissileFactory</a>.</p>
+<p>tworzy obiekt i zwraca go </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>pozycja startowa </td></tr>
+    <tr><td class="paramname">dir</td><td>pozycja celownika, sluzy do obliczenia poruszania sie obiektu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zwraca unique_ptr do klasy dziedziczacej od pocisku </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMissile.html">Missile</a> </dd></dl>
+
+<p>Implements <a class="el" href="classIMissileFactory.html#a1d4aefb21961795ece99da0116681dec">IMissileFactory</a>.</p>
 
 </div>
 </div>
