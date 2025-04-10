@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 
 #include "game/playerUI.hpp"
+#include "game/gameObjects/hitChecker.hpp"
+#include "game/gameObjects/asteroidManager.hpp"
 
 #ifdef MEMTRACKER
 #include "perf/memTracker.hpp"
@@ -30,6 +32,9 @@ private:
 
     PlayerUI p2UI;
 
+    AsteroidManager asteroidManager{20};
+
+    CollisionManager collisionManager;
 private:
     #if DEVINFO
     

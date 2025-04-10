@@ -4,6 +4,7 @@
 #include <cmath>
 #include "pressed.hpp"
 #include "assetLoader.hpp"
+#include "../gameObjects/missileManager.hpp"
 
 #ifdef MEMTRACKER
 #include "../perf/memTracker.hpp"
@@ -56,6 +57,12 @@ public:
 
     sf::Vector2f getPosition() const {return sprite.getPosition();}
 
+    sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
+
+    const MissileManager* getMissileManager() const {return &missileManager;}
+
+    const sf::Sprite* getHitbox() const {return &sprite;}
+
     void setPosition(sf::Vector2f pos) 
     {
         sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);
@@ -93,6 +100,8 @@ private:
     sf::Keyboard::Key right, crossRight;
 
     Pressed pressed;
+
+    MissileManager missileManager;
 
     sf::Vector2f moveBy{0.f,0.f};
 

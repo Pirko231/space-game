@@ -24,6 +24,12 @@ struct AssetLoader
     sf::Texture sCrosshair;
 
     sf::Texture turret;
+
+    sf::Texture laser;
+    sf::Texture rocket;
+    sf::Texture scanner;
+
+    sf::Texture asteroids[3];
 private:
     AssetLoader();
 };
