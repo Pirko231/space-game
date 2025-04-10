@@ -25,6 +25,9 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(background);
     window->draw(player);
     window->draw(*player2);
+
+    for (auto& i : player.getMissileManager()->getMissiles())
+        window->draw(*i);
 }
 
 void PlayerUI::init(sf::RenderWindow* _window)

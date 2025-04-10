@@ -6,17 +6,9 @@
 #include "assetLoader.hpp"
 #include "../gameObjects/managers/missileManager.hpp"
 
-struct PlayerKeyBinds
-{
-    sf::Keyboard::Key up, down, left, right;
-    sf::Keyboard::Key crossUp, crossDown, crossLeft, crossRight;
-};
-
 class Player : public sf::Drawable
 {
 public:
-    //Player(const std::string& textureFilename, sf::Keyboard::Key up, sf::Keyboard::Key down, sf::Keyboard::Key left, sf::Keyboard::Key right);
-
     Player();
     Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds);
     
@@ -43,6 +35,7 @@ public:
         crossDown = keyBinds.crossDown;
         crossLeft = keyBinds.crossLeft;
         crossRight = keyBinds.crossRight;
+        shoot = keyBinds.shoot;
     }
 
     sf::Vector2f getCenter() const
@@ -94,6 +87,7 @@ private:
     sf::Keyboard::Key down, crossDown;
     sf::Keyboard::Key left, crossLeft;
     sf::Keyboard::Key right, crossRight;
+    sf::Keyboard::Key shoot;
 
     Pressed pressed;
 

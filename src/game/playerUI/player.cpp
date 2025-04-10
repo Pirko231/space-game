@@ -73,6 +73,12 @@ void Player::handleEvents(const sf::Event& ev)
             pressed.leftCross = false;
         if (ev.key.code == crossRight)
             pressed.rightCross = false;
+
+        if (ev.key.code == shoot)
+        {
+            LaserFactory factory{};
+            missileManager.create(factory, getPosition(), crosshairShip.getPosition());
+        }
     }
 }
 
@@ -113,6 +119,8 @@ void Player::update()
     crosshairShip.move(moveCrossBy.second);
 
     turret.setRotation(spinTurret());
+
+    missileManager.update();
 }
 
 std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
