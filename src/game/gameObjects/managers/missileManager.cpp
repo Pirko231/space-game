@@ -7,4 +7,6 @@ void MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
 
 void MissileManager::update()
 {
+    for (auto& i : missiles)
+        i->update();
 }

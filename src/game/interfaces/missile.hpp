@@ -27,6 +27,7 @@ protected:
     void launch(sf::Vector2f _pos, sf::Vector2f _dir)
     {
         sprite.setPosition(_pos); dir = _dir;
+        moveBy = _dir / 10.f;
     }
 
     sf::Sprite sprite;
