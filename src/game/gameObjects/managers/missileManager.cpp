@@ -9,6 +9,13 @@ void MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
 
 void MissileManager::update()
 {
-    for (auto& i : missiles)
-        i->update();
+    for (std::size_t i = 0; i < missiles.size(); i++)
+    {
+        missiles[i]->update();
+        if (missiles[i]->shouldDelete())
+        {
+            missiles.erase(missiles.begin() + i);
+            i--;
+        }
+    }
 }

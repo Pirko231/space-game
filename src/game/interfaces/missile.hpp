@@ -14,6 +14,8 @@ public:
     /// @brief wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)
     virtual void display() {};
 
+    bool shouldDelete() const {return lifeSpan >= maxLifeSpan;}
+
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
 
     virtual ~Missile() = default;
@@ -35,6 +37,7 @@ protected:
 
         //sprite.setRotation(sf::radians(std::sin(_moveBy.y / _moveBy.length())));
         sprite.setRotation(_moveBy.angle());
+        lifeSpan++;
     }
 
     sf::Sprite sprite;
