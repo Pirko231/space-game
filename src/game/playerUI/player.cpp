@@ -74,7 +74,7 @@ void Player::handleEvents(const std::optional<sf::Event>& ev)
             pressed.rightCross = false;
 
         if (keyReleased->code == shoot)
-            missileManager.create(LaserFactory{}.get(), getPosition(), crosshairShip.getPosition());
+            missileManager.create(LaserFactory{}.get(), getGlobalBounds().getCenter(), crosshairShip.getPosition());
         
     }
 }
