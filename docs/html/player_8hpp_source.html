@@ -84,48 +84,48 @@ $(document).ready(function() { init_codefold(0); });
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;pressed.hpp&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;assetLoader.hpp&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;../gameObjects/managers/missileManager.hpp&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classPlayer.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="classPlayer.html">Player</a> : <span class="keyword">public</span> sf::Drawable</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_class" href="classPlayer.html">Player</a>();</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_class" href="classPlayer.html">Player</a>(<span class="keyword">const</span> sf::Texture &amp;texture, <span class="keyword">const</span> <a class="code hl_struct" href="structPlayerKeyBinds.html">PlayerKeyBinds</a>&amp; keyBinds);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> handleEvents(<span class="keyword">const</span> sf::Event&amp;);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> update();</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">void</span> setView(<span class="keyword">const</span> sf::View* _view) {view = _view;}</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> setTexture(<span class="keyword">const</span> sf::Texture&amp; texture)</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        sprite.setTexture(texture);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        sprite.setScale(0.1f,0.1f);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> setKeyBinds(<span class="keyword">const</span> <a class="code hl_struct" href="structPlayerKeyBinds.html">PlayerKeyBinds</a>&amp; keyBinds)</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        up = keyBinds.up;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        down = keyBinds.down;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        left = keyBinds.left;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        right = keyBinds.right;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        crossUp = keyBinds.crossUp;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        crossDown = keyBinds.crossDown;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        crossLeft = keyBinds.crossLeft;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        crossRight = keyBinds.crossRight;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        shoot = keyBinds.shoot;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    sf::Vector2f getCenter()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">const</span> <span class="keyword">auto</span> bounds = sprite.getGlobalBounds();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> {bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f};</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SFML/System.hpp&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;pressed.hpp&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;assetLoader.hpp&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;../gameObjects/managers/missileManager.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classPlayer.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="classPlayer.html">Player</a> : <span class="keyword">public</span> sf::Drawable</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_class" href="classPlayer.html">Player</a>(<span class="keyword">const</span> sf::Texture&amp; texture);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_class" href="classPlayer.html">Player</a>(<span class="keyword">const</span> sf::Texture &amp;texture, <span class="keyword">const</span> <a class="code hl_struct" href="structPlayerKeyBinds.html">PlayerKeyBinds</a>&amp; keyBinds);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> handleEvents(<span class="keyword">const</span> std::optional&lt;sf::Event&gt;&amp; ev);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> update();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> setView(<span class="keyword">const</span> sf::View* _view) {view = _view;}</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> setTexture(<span class="keyword">const</span> sf::Texture&amp; texture)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        sprite.setTexture(texture);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        sprite.setScale({0.1f,0.1f});</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> setKeyBinds(<span class="keyword">const</span> <a class="code hl_struct" href="structPlayerKeyBinds.html">PlayerKeyBinds</a>&amp; keyBinds)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        up = keyBinds.up;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        down = keyBinds.down;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        left = keyBinds.left;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        right = keyBinds.right;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        crossUp = keyBinds.crossUp;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        crossDown = keyBinds.crossDown;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        crossLeft = keyBinds.crossLeft;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        crossRight = keyBinds.crossRight;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        shoot = keyBinds.shoot;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    sf::Vector2f getCenter()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> sprite.getGlobalBounds().getCenter();</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    sf::Vector2f getPosition()<span class="keyword"> const </span>{<span class="keywordflow">return</span> sprite.getPosition();}</div>
@@ -138,12 +138,12 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> setPosition(sf::Vector2f pos) </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        sprite.setOrigin(sprite.getGlobalBounds().getCenter());</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        sprite.setPosition(pos);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        turret.setOrigin(turret.getGlobalBounds().width / 4.f, turret.getGlobalBounds().height / 2.f);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="comment">//turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.9f, pos.y + 15.f);</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.5f, pos.y + turret.getGlobalBounds().height / 1.8f);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        crosshairPlayer.setPosition(pos.x + sprite.getGlobalBounds().width / 2.f, pos.y - sprite.getGlobalBounds().height);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        turret.setOrigin(turret.getGlobalBounds().getCenter());</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="comment">//turret.setPosition(pos.x + turret.getGlobalBounds().size.x / 1.9f, pos.y + 15.f);</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        turret.setPosition({pos.x + turret.getGlobalBounds().size.x / 1.5f, pos.y + turret.getGlobalBounds().size.y / 1.8f});</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        crosshairPlayer.setPosition({pos.x + sprite.getGlobalBounds().size.x / 2.f, pos.y - sprite.getGlobalBounds().size.y});</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        crosshairShip.setPosition(crosshairPlayer.getPosition());</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">private</span>:</div>
@@ -161,9 +161,9 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">//second - pozycja shipCrosshair</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    std::pair&lt;sf::Vector2f, sf::Vector2f&gt; moveCross();</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">float</span> spinTurret();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    sf::Angle spinTurret();</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> rotate(<span class="keywordtype">float</span> angle);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> rotate(sf::Angle angle);</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> move(sf::Vector2f offset);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
@@ -232,7 +232,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>};</div>
 </div>
 <div class="ttc" id="aclassMissileManager_html"><div class="ttname"><a href="classMissileManager.html">MissileManager</a></div><div class="ttdef"><b>Definition</b> missileManager.hpp:7</div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition</b> player.hpp:10</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition</b> player.hpp:11</div></div>
 <div class="ttc" id="astructPlayerKeyBinds_html"><div class="ttname"><a href="structPlayerKeyBinds.html">PlayerKeyBinds</a></div><div class="ttdef"><b>Definition</b> pressed.hpp:12</div></div>
 <div class="ttc" id="astructPressed_html"><div class="ttname"><a href="structPressed.html">Pressed</a></div><div class="ttdef"><b>Definition</b> pressed.hpp:4</div></div>
 </div><!-- fragment --></div><!-- contents -->
