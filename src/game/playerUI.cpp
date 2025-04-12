@@ -20,7 +20,7 @@ void PlayerUI::update()
 
 void PlayerUI::display(sf::RenderWindow *window)
 {
-    view.setCenter(player.getCenter());
+    view.setCenter(player.getGlobalBounds().getCenter());
     window->setView(view);
     window->draw(background);
     window->draw(player);

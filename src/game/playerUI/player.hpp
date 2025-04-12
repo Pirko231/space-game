@@ -54,7 +54,7 @@ public:
 
     void setPosition(sf::Vector2f pos) 
     {
-        sprite.setOrigin(sprite.getGlobalBounds().getCenter());
+        //sprite.setOrigin(sprite.getGlobalBounds().getCenter());
         sprite.setPosition(pos);
         turret.setOrigin(turret.getGlobalBounds().getCenter());
         //turret.setPosition(pos.x + turret.getGlobalBounds().size.x / 1.9f, pos.y + 15.f);

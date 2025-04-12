@@ -3,6 +3,7 @@
 Player::Player(const sf::Texture& texture)
 : sprite{texture}, turret{util::AssetLoader::get().turret}, crosshairPlayer{util::AssetLoader::get().pCrosshair}, crosshairShip{util::AssetLoader::get().sCrosshair}
 {   
+    sprite.setOrigin(sprite.getGlobalBounds().getCenter());
     turret.setTexture(util::AssetLoader::get().turret);
     turret.setRotation(sf::degrees(-90.f));
     turret.setScale({0.12f,0.12f});
