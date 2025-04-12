@@ -6,14 +6,14 @@
 class RocketFactory : public IMissileFactory
 {
 public:
-    std::unique_ptr<Missile> create(sf::Vector2f pos, sf::Vector2f dir) override
+    std::unique_ptr<Missile> create(sf::Vector2f pos, sf::Vector2f moveBy) override
     {
         //wczytanie tekstury
         if (Rocket::shouldInit())
             Rocket::init();
 
         
-        return std::make_unique<Rocket>(Rocket{pos, dir});
+        return std::make_unique<Rocket>(Rocket{pos, moveBy});
     }
     ~RocketFactory() = default;
 };

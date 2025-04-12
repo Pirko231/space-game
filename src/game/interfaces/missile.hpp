@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <cmath>
 #include "assetLoader.hpp"
 
 class Missile : public sf::Drawable
@@ -23,17 +24,21 @@ private:
     }
 protected:
     Missile(float _maxLifeSpan, float _speed, const sf::Texture& _texture)
-    : speed{_speed}, maxLifeSpan{_maxLifeSpan}, sprite{_texture}
+    : sprite{_texture}, speed{_speed}, maxLifeSpan{_maxLifeSpan}
     {}
 
-    void launch(sf::Vector2f _pos, sf::Vector2f _dir)
+    void launch(sf::Vector2f _pos, sf::Vector2f _moveBy)
     {
-        sprite.setPosition(_pos); dir = _dir;
-        moveBy = _dir / 10.f;
+        sprite.setPosition(_pos);
+        sprite.setOrigin(sprite.getGlobalBounds().getCenter());
+        moveBy = _moveBy * speed;
+
+        //sprite.setRotation(sf::radians(std::sin(_moveBy.y / _moveBy.length())));
+        sprite.setRotation(_moveBy.angle());
     }
 
     sf::Sprite sprite;
-    sf::Vector2f dir;
+    //sf::Vector2f dir;
     sf::Vector2f moveBy;
     float speed;
     const float maxLifeSpan;
