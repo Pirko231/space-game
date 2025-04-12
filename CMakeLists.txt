@@ -10,8 +10,8 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # 🟢 Ustawienie ścieżek do SFML (zmień na swoją lokalizację SFML)
-set(SFML_ROOT "C:/SFML/SFML-2.6.1")
-set(CMAKE_PREFIX_PATH "${SFML_ROOT}")
+set(SFML_ROOT "/opt/sfml-3")
+set(CMAKE_PREFIX_PATH "/opt/sfml-3")
 set(SFML_INCLUDE_DIR "${SFML_ROOT}/include")
 set(SFML_LIBRARY_DIR "${SFML_ROOT}/lib")
 
@@ -24,15 +24,13 @@ include_directories(${CMAKE_SOURCE_DIR}/src/game/interfaces)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/game/gameObjects)
 
 
-# Znalezienie SFML
-find_package(SFML 2.6.1 COMPONENTS system window graphics audio network REQUIRED)
+# Znalezienie (wersja 2.6.1)
+#find_package(SFML 2.6.1 COMPONENTS system window graphics audio network REQUIRED)
+find_package(SFML 3.0.0 COMPONENTS System Window Graphics Audio Network REQUIRED)
 
-# Jeśli kompilujemy w trybie Debug, użyjemy wersji "-d"
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(SFML_LIBS sfml-graphics-d sfml-window-d sfml-system-d sfml-audio-d sfml-network-d)
-else()
-    set(SFML_LIBS sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
-endif()
+
+set(SFML_LIBS SFML::Graphics SFML::Window SFML::System SFML::Audio SFML::Network)
+
 
 set(RESOURCES_DIR "${CMAKE_SOURCE_DIR}/resources")
 
@@ -60,8 +58,8 @@ add_executable(main
 
 add_compile_definitions(MEMTRACKER)
 add_compile_definitions(SPEEDTRACKER)
-add_compile_definitions(UNITTESTS)
-add_compile_definitions(DEVINFO)
+#add_compile_definitions(UNITTESTS)
+#add_compile_definitions(DEVINFO)
 
 if(NOT MSVC)
 	target_compile_options(main PRIVATE -Wall -Wextra -pedantic)

@@ -5,8 +5,6 @@
 class Missile : public sf::Drawable
 {
 public:
-    Missile(float _maxLifeSpan, float _speed) : speed{_speed}, maxLifeSpan{_maxLifeSpan} {}
-
     /// @brief odbiera eventy i reaguje na nie
     /// @param ev 
     virtual void handleEvents(const sf::Event& ev) {};
@@ -24,6 +22,10 @@ private:
         target.draw(sprite, states);
     }
 protected:
+    Missile(float _maxLifeSpan, float _speed, const sf::Texture& _texture)
+    : speed{_speed}, maxLifeSpan{_maxLifeSpan}, sprite{_texture}
+    {}
+
     void launch(sf::Vector2f _pos, sf::Vector2f _dir)
     {
         sprite.setPosition(_pos); dir = _dir;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 #include <cmath>
 #include "pressed.hpp"
 #include "assetLoader.hpp"
@@ -9,10 +10,10 @@
 class Player : public sf::Drawable
 {
 public:
-    Player();
+    Player(const sf::Texture& texture);
     Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds);
     
-    void handleEvents(const sf::Event&);
+    void handleEvents(const std::optional<sf::Event>& ev);
 
     void update();
 
@@ -21,7 +22,7 @@ public:
     void setTexture(const sf::Texture& texture)
     {
         sprite.setTexture(texture);
-        sprite.setScale(0.1f,0.1f);
+        sprite.setScale({0.1f,0.1f});
     }
 
     void setKeyBinds(const PlayerKeyBinds& keyBinds)
@@ -40,8 +41,7 @@ public:
 
     sf::Vector2f getCenter() const
     {
-        const auto bounds = sprite.getGlobalBounds();
-        return {bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f};
+        return sprite.getGlobalBounds().getCenter();
     }
 
     sf::Vector2f getPosition() const {return sprite.getPosition();}
@@ -54,12 +54,12 @@ public:
 
     void setPosition(sf::Vector2f pos) 
     {
-        sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);
+        sprite.setOrigin(sprite.getGlobalBounds().getCenter());
         sprite.setPosition(pos);
-        turret.setOrigin(turret.getGlobalBounds().width / 4.f, turret.getGlobalBounds().height / 2.f);
-        //turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.9f, pos.y + 15.f);
-        turret.setPosition(pos.x + turret.getGlobalBounds().width / 1.5f, pos.y + turret.getGlobalBounds().height / 1.8f);
-        crosshairPlayer.setPosition(pos.x + sprite.getGlobalBounds().width / 2.f, pos.y - sprite.getGlobalBounds().height);
+        turret.setOrigin(turret.getGlobalBounds().getCenter());
+        //turret.setPosition(pos.x + turret.getGlobalBounds().size.x / 1.9f, pos.y + 15.f);
+        turret.setPosition({pos.x + turret.getGlobalBounds().size.x / 1.5f, pos.y + turret.getGlobalBounds().size.y / 1.8f});
+        crosshairPlayer.setPosition({pos.x + sprite.getGlobalBounds().size.x / 2.f, pos.y - sprite.getGlobalBounds().size.y});
         crosshairShip.setPosition(crosshairPlayer.getPosition());
     }
 private:
@@ -77,9 +77,9 @@ private:
     //second - pozycja shipCrosshair
     std::pair<sf::Vector2f, sf::Vector2f> moveCross();
 
-    float spinTurret();
+    sf::Angle spinTurret();
 
-    void rotate(float angle);
+    void rotate(sf::Angle angle);
 
     void move(sf::Vector2f offset);
 

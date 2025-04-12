@@ -3,7 +3,8 @@
 Program::Program()
 {
     window = new sf::RenderWindow;
-    window->create({1280, 720}, "Space", sf::Style::Titlebar | sf::Style::Close);
+    //window->create();
+    window->create(sf::VideoMode{{1280, 720}, 32}, sf::String{"Space"}, sf::Style::Titlebar | sf::Style::Close);
     window->setFramerateLimit(60);
 
     PlayerUI::init(window);
@@ -23,8 +24,8 @@ Program::Program()
         p2UI.setView(view);
     }
 
-    PlayerKeyBinds p1Binds{sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::T, sf::Keyboard::G, sf::Keyboard::F, sf::Keyboard::H, sf::Keyboard::Space};
-    PlayerKeyBinds p2Binds{sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::I, sf::Keyboard::K, sf::Keyboard::J, sf::Keyboard::L, sf::Keyboard::Enter};
+    PlayerKeyBinds p1Binds{sf::Keyboard::Key::W, sf::Keyboard::Key::S, sf::Keyboard::Key::A, sf::Keyboard::Key::D, sf::Keyboard::Key::T, sf::Keyboard::Key::G, sf::Keyboard::Key::F, sf::Keyboard::Key::H, sf::Keyboard::Key::Space};
+    PlayerKeyBinds p2Binds{sf::Keyboard::Key::Up, sf::Keyboard::Key::Down, sf::Keyboard::Key::Left, sf::Keyboard::Key::Right, sf::Keyboard::Key::I, sf::Keyboard::Key::K, sf::Keyboard::Key::J, sf::Keyboard::Key::L, sf::Keyboard::Key::Enter};
 
     p1UI.setPlayerPos({0.f,0.f}).setTexture(util::AssetLoader::get().ship1).setKeyBinds(p1Binds);
     p2UI.setPlayerPos(static_cast<sf::Vector2f>(window->getSize())).setTexture(util::AssetLoader::get().ship2).setKeyBinds(p2Binds);
@@ -45,10 +46,9 @@ Program::~Program()
 
 void Program::handleEvents()
 {
-    sf::Event ev;
-    while (window->pollEvent(ev))
+    while (const std::optional ev = window->pollEvent())
     {
-        if (ev.type == sf::Event::Closed)
+        if (ev->is<sf::Event::Closed>())
             window->close();
         p1UI.handleEvents(ev);
         p2UI.handleEvents(ev);

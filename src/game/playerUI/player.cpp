@@ -1,16 +1,15 @@
 #include "player.hpp"
 
-Player::Player()
+Player::Player(const sf::Texture& texture)
+: sprite{texture}, turret{util::AssetLoader::get().turret}, crosshairPlayer{util::AssetLoader::get().pCrosshair}, crosshairShip{util::AssetLoader::get().sCrosshair}
 {   
     turret.setTexture(util::AssetLoader::get().turret);
-    turret.setRotation(-90.f);
-    turret.setScale(0.12f,0.12f);
-    turret.setOrigin(turret.getGlobalBounds().width / 2.f, turret.getGlobalBounds().height / 2.f);
+    turret.setRotation(sf::degrees(-90.f));
+    turret.setScale({0.12f,0.12f});
+    turret.setOrigin(turret.getGlobalBounds().getCenter());
 
-    crosshairPlayer.setTexture(util::AssetLoader::get().pCrosshair);
-    crosshairPlayer.setScale(0.04f,0.04f);
-    crosshairShip.setTexture(util::AssetLoader::get().sCrosshair);
-    crosshairShip.setScale(0.04f,0.04f);
+    crosshairPlayer.setScale({0.04f,0.04f});
+    crosshairShip.setScale({0.04f,0.04f});
 
 #if DEVINFO
     //devInfo.font.loadFromFile("resources/fonts/defaultFont.ttf");
@@ -19,62 +18,62 @@ Player::Player()
     devInfo.turretRotation.setFont(util::AssetLoader::get().font);
     //pozycja ustawiana w Player::setPosition()
     devInfo.pos.setPosition(getPosition());
-    devInfo.speed.setPosition(50.f,20.f);
-    devInfo.turretRotation.setPosition(50.f, 40.f);
+    devInfo.speed.setPosition({50.f,20.f});
+    devInfo.turretRotation.setPosition({50.f, 40.f});
 #endif
 }
 
-Player::Player(const sf::Texture &texture, const PlayerKeyBinds &keyBinds) : Player{}
+Player::Player(const sf::Texture &texture, const PlayerKeyBinds &keyBinds) : Player{texture}
 {
     setTexture(texture);
 
     setKeyBinds(keyBinds);
 }
 
-void Player::handleEvents(const sf::Event& ev)
+void Player::handleEvents(const std::optional<sf::Event>& ev)
 {
-    if (ev.type == sf::Event::KeyPressed)
+    if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
     {
-        if (ev.key.code == up)
+        if (keyPressed->code == up)
             pressed.w = true;
-        if (ev.key.code == down)
+        if (keyPressed->code == down)
             pressed.s = true;
-        if (ev.key.code == left)
+        if (keyPressed->code == left)
             pressed.a = true;
-        if (ev.key.code == right)
+        if (keyPressed->code == right)
             pressed.d = true;
 
-        if (ev.key.code == crossUp)
+        if (keyPressed->code == crossUp)
             pressed.upCross = true;
-        if (ev.key.code == crossDown)
+        if (keyPressed->code == crossDown)
             pressed.downCross = true;
-        if (ev.key.code == crossLeft)
+        if (keyPressed->code == crossLeft)
             pressed.leftCross = true;
-        if (ev.key.code == crossRight)
+        if (keyPressed->code == crossRight)
             pressed.rightCross = true;
     }
 
-    if (ev.type == sf::Event::KeyReleased)
+    if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
     {
-        if (ev.key.code == up)
+        if (keyReleased->code == up)
             pressed.w = false;
-        if (ev.key.code == down)
+        if (keyReleased->code == down)
             pressed.s = false;
-        if (ev.key.code == left)
+        if (keyReleased->code == left)
             pressed.a = false;
-        if (ev.key.code == right)
+        if (keyReleased->code == right)
             pressed.d = false;
 
-        if (ev.key.code == crossUp)
+        if (keyReleased->code == crossUp)
             pressed.upCross = false;
-        if (ev.key.code == crossDown)
+        if (keyReleased->code == crossDown)
             pressed.downCross = false;
-        if (ev.key.code == crossLeft)
+        if (keyReleased->code == crossLeft)
             pressed.leftCross = false;
-        if (ev.key.code == crossRight)
+        if (keyReleased->code == crossRight)
             pressed.rightCross = false;
 
-        if (ev.key.code == shoot)
+        if (keyReleased->code == shoot)
             missileManager.create(LaserFactory{}.get(), getPosition(), crosshairShip.getPosition());
         
     }
@@ -135,13 +134,13 @@ std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
 
     //check kolizji
     if (crosshairPlayer.getPosition().x > getPosition().x + view->getSize().x / 2.f)
-        crosshairPlayer.setPosition(getPosition().x + view->getSize().x / 2.f, crosshairPlayer.getPosition().y);
-    if (crosshairPlayer.getPosition().x < getPosition().x - view->getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width)
-        crosshairPlayer.setPosition(getPosition().x - view->getSize().x / 2.f + crosshairPlayer.getGlobalBounds().width, crosshairPlayer.getPosition().y);
+        crosshairPlayer.setPosition({getPosition().x + view->getSize().x / 2.f, crosshairPlayer.getPosition().y});
+    if (crosshairPlayer.getPosition().x < getPosition().x - view->getSize().x / 2.f + crosshairPlayer.getGlobalBounds().size.x)
+        crosshairPlayer.setPosition({getPosition().x - view->getSize().x / 2.f + crosshairPlayer.getGlobalBounds().size.x, crosshairPlayer.getPosition().y});
     if (crosshairPlayer.getPosition().y > getPosition().y + view->getSize().y / 2.f)
-        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y + view->getSize().y / 2.f);
-    if (crosshairPlayer.getPosition().y < getPosition().y - view->getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f)
-        crosshairPlayer.setPosition(crosshairPlayer.getPosition().x, getPosition().y - view->getSize().y / 2.f + crosshairPlayer.getGlobalBounds().height * 2.f);
+        crosshairPlayer.setPosition({crosshairPlayer.getPosition().x, getPosition().y + view->getSize().y / 2.f});
+    if (crosshairPlayer.getPosition().y < getPosition().y - view->getSize().y / 2.f + crosshairPlayer.getGlobalBounds().size.y * 2.f)
+        crosshairPlayer.setPosition({crosshairPlayer.getPosition().x, getPosition().y - view->getSize().y / 2.f + crosshairPlayer.getGlobalBounds().size.y * 2.f});
     
     sf::Vector2f moveCrossShip {crosshairPlayer.getPosition().x - crosshairShip.getPosition().x, crosshairPlayer.getPosition().y - crosshairShip.getPosition().y};
     
@@ -151,17 +150,15 @@ std::pair<sf::Vector2f, sf::Vector2f> Player::moveCross()
     return {moveCross, moveCrossShip};
 }
 
-float Player::spinTurret()
+sf::Angle Player::spinTurret()
 {
     sf::Vector2f vector{crosshairShip.getPosition().x - turret.getPosition().x,turret.getPosition().y - crosshairShip.getPosition().y};
-
-    float result {std::tan(vector.y / vector.x) *  180.f / (float)M_PI};
-    return result;
+    return sf::radians(std::tan(vector.y / vector.x));
 }
 
-void Player::rotate(float angle)
+void Player::rotate(sf::Angle angle)
 {
-    sprite.setOrigin(sprite.getGlobalBounds().width / 2.f, sprite.getGlobalBounds().height / 2.f);
+    sprite.setOrigin(sprite.getGlobalBounds().getCenter());
     sprite.rotate(angle);
     turret.rotate(angle);
 }

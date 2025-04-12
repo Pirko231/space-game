@@ -8,7 +8,7 @@ class PlayerUI
 public:
     PlayerUI();
 
-    void handleEvents(const sf::Event& ev);
+    void handleEvents(const std::optional<sf::Event>& ev);
 
     void update();
 

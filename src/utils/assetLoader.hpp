@@ -40,7 +40,7 @@ inline util::AssetLoader::AssetLoader()
 {
     background.loadFromFile("resources/textures/gameBackground.png");
 
-    font.loadFromFile("resources/fonts/defaultFont.ttf");
+    font.openFromFile("resources/fonts/defaultFont.ttf");
 
     ship1.loadFromFile("resources/textures/Spaceship_tut.png");
     ship2.loadFromFile("resources/textures/Spaceship_tut_thin.png");

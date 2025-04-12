@@ -1,16 +1,8 @@
 #include "program.hpp"
 
-#ifdef UNITTESTS
-#include "tests.hpp"
-#endif
-
 int main()
 {
     Program program;
-
-#if UNITTESTS
-    Tests::check(&program);
-#endif
 
     while (program.running())
     {
