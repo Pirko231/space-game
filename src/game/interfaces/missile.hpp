@@ -29,14 +29,17 @@ protected:
     : sprite{_texture}, speed{_speed}, maxLifeSpan{_maxLifeSpan}
     {}
 
-    void launch(sf::Vector2f _pos, sf::Vector2f _moveBy)
+    void launch(sf::Vector2f _pos, sf::Vector2f dir)
     {
-        sprite.setPosition(_pos);
+        sf::Vector2f _moveBy{dir.x - _pos.x, dir.y - _pos.y};
+        moveBy = _moveBy.normalized() * speed;
+
         sprite.setOrigin(sprite.getGlobalBounds().getCenter());
-        moveBy = _moveBy * speed;
+        sprite.setRotation(_moveBy.angle());
+        sprite.setPosition(_pos);
 
         //sprite.setRotation(sf::radians(std::sin(_moveBy.y / _moveBy.length())));
-        sprite.setRotation(_moveBy.angle());
+        
         lifeSpan++;
     }
 
