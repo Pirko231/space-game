@@ -42,6 +42,7 @@ add_executable(main
     src/program.cpp 
 
     src/game/playerUI/player.cpp
+    src/game/playerUI/bar.cpp
     src/game/playerUI.cpp
 
     src/game/gameObjects/managers/asteroidManager.cpp

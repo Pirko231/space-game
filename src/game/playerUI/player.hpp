@@ -48,9 +48,14 @@ public:
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
 
+    sf::Vector2f getMoveBy() const {return moveBy;}
+
     const MissileManager* getMissileManager() const {return &missileManager;}
 
     const sf::Sprite* getHitbox() const {return &sprite;}
+
+    int* getHealth() const {return &health;}
+    int* getEnergy() const {return &energy;}
 
     void setPosition(sf::Vector2f pos) 
     {
@@ -98,6 +103,9 @@ private:
     float throttle{0.02f};
 
     float maxSpeed{6.5f};
+
+    mutable int health{100};
+    mutable int energy{100};
 
     sf::Sprite sprite;
 
