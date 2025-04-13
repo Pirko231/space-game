@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "playerUI/player.hpp"
+#include "playerUI/bar.hpp"
 #include "assetLoader.hpp"
 
 class PlayerUI
@@ -25,6 +26,8 @@ public:
     PlayerUI& setPlayerPos(sf::Vector2f playerPos)
     {
         player.setPosition(playerPos);
+        healthBar.setPosition({playerPos.x + view.getSize().x / 4.f, playerPos.y + view.getSize().y / 2.f});
+
         return *this;
     }
 
@@ -52,6 +55,9 @@ private:
     Player player;
 
     Player* player2{nullptr};
+
+    Bar healthBar;
+    Bar energyBar;
 
     static sf::Sprite background;
 };
