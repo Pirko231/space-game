@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['collisionmanager_0',['CollisionManager',['../classCollisionManager.html',1,'']]]
+  ['bar_0',['Bar',['../classBar.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['missile_0',['Missile',['../classMissile.html',1,'']]],
-  ['missilemanager_1',['MissileManager',['../classMissileManager.html',1,'']]]
+  ['laser_0',['Laser',['../classLaser.html',1,'']]],
+  ['laserfactory_1',['LaserFactory',['../classLaserFactory.html',1,'']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['nowych_20typów_0',['Rejestracja nowych typów',['../templates.html#autotoc_md3',1,'']]]
+  ['missile_0',['Missile',['../classMissile.html',1,'']]],
+  ['missilemanager_1',['MissileManager',['../classMissileManager.html',1,'']]]
 ];
