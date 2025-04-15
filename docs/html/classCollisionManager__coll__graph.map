@@ -1,7 +1,11 @@
 <map id="CollisionManager" name="CollisionManager">
-<area shape="rect" id="Node000001" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="77,108,211,133"/>
-<area shape="rect" id="Node000002" href="$classMissileManager.html" title=" " alt="" coords="5,5,131,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,40,138,106,133,110,83,43"/>
-<area shape="rect" id="Node000003" href="$classAsteroidManager.html" title=" " alt="" coords="155,5,288,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,45,207,65,194,86,166,110,162,106,190,82,202,63,211,42"/>
+<area shape="rect" id="Node000001" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="119,183,254,208"/>
+<area shape="rect" id="Node000002" href="$classMissileManager.html" title=" " alt="" coords="5,80,131,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,116,93,137,110,157,129,170,151,180,148,185,127,175,106,161,89,141,76,119"/>
+<area shape="rect" id="Node000003" href="$classPlayer.html" title=" " alt="" coords="155,80,218,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,119,189,183,184,183,184,119"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="135,5,238,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="189,45,189,80,184,80,184,45"/>
+<area shape="rect" id="Node000005" href="$classAsteroidManager.html" title=" " alt="" coords="243,80,376,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="296,119,279,140,258,161,217,185,214,180,254,157,275,137,292,115"/>
 </map>

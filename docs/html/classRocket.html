@@ -116,9 +116,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4a07ef458c9b3b9632ad685be4da9276 inherit pub_methods_classMissile" id="r_a4a07ef458c9b3b9632ad685be4da9276"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">handleEvents</a> (const sf::Event &amp;ev)</td></tr>
 <tr class="memdesc:a4a07ef458c9b3b9632ad685be4da9276 inherit pub_methods_classMissile"><td class="mdescLeft">&#160;</td><td class="mdescRight">odbiera eventy i reaguje na nie  <br /></td></tr>
 <tr class="separator:a4a07ef458c9b3b9632ad685be4da9276 inherit pub_methods_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e1311063f1a60246e22b72d783143cc inherit pub_methods_classMissile" id="r_a3e1311063f1a60246e22b72d783143cc"><td class="memItemLeft" align="right" valign="top">
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getDamage</b> ()</td></tr>
+<tr class="separator:a3e1311063f1a60246e22b72d783143cc inherit pub_methods_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4eae3fc811a7e34117ee57d42c7b508 inherit pub_methods_classMissile" id="r_ab4eae3fc811a7e34117ee57d42c7b508"><td class="memItemLeft" align="right" valign="top">
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>shouldDelete</b> () const</td></tr>
 <tr class="separator:ab4eae3fc811a7e34117ee57d42c7b508 inherit pub_methods_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6303535c5d827a09e53168d607ea542 inherit pub_methods_classMissile" id="r_aa6303535c5d827a09e53168d607ea542"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>del</b> ()</td></tr>
+<tr class="separator:aa6303535c5d827a09e53168d607ea542 inherit pub_methods_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae20c7c14e0290e5995fea82c97b2873f inherit pub_methods_classMissile" id="r_ae20c7c14e0290e5995fea82c97b2873f"><td class="memItemLeft" align="right" valign="top">
 sf::FloatRect&#160;</td><td class="memItemRight" valign="bottom"><b>getGlobalBounds</b> () const</td></tr>
 <tr class="separator:ae20c7c14e0290e5995fea82c97b2873f inherit pub_methods_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,9 +141,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</t
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classMissile"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classMissile')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classMissile.html">Missile</a></td></tr>
-<tr class="memitem:a031c7b6bed4ac1d9783aa1863e83074f inherit pro_methods_classMissile" id="r_a031c7b6bed4ac1d9783aa1863e83074f"><td class="memItemLeft" align="right" valign="top">
-&#160;</td><td class="memItemRight" valign="bottom"><b>Missile</b> (float _maxLifeSpan, float _speed, const sf::Texture &amp;_texture)</td></tr>
-<tr class="separator:a031c7b6bed4ac1d9783aa1863e83074f inherit pro_methods_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c027d53452a12c6b0c6434f5610b26e inherit pro_methods_classMissile" id="r_a1c027d53452a12c6b0c6434f5610b26e"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>Missile</b> (float _maxLifeSpan, float _speed, int _damage, const sf::Texture &amp;_texture)</td></tr>
+<tr class="separator:a1c027d53452a12c6b0c6434f5610b26e inherit pro_methods_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade6128c3b3caa479ac954f906375f551 inherit pro_methods_classMissile" id="r_ade6128c3b3caa479ac954f906375f551"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>launch</b> (sf::Vector2f _pos, sf::Vector2f dir)</td></tr>
 <tr class="separator:ade6128c3b3caa479ac954f906375f551 inherit pro_methods_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,6 +163,9 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><b>maxLifeSpan</b
 <tr class="memitem:aff331826fb45e251b691cacca4b7d671 inherit pro_attribs_classMissile" id="r_aff331826fb45e251b691cacca4b7d671"><td class="memItemLeft" align="right" valign="top">
 float&#160;</td><td class="memItemRight" valign="bottom"><b>lifeSpan</b> {0}</td></tr>
 <tr class="separator:aff331826fb45e251b691cacca4b7d671 inherit pro_attribs_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c966911310e168c593b1ecfa2ea077d inherit pro_attribs_classMissile" id="r_a1c966911310e168c593b1ecfa2ea077d"><td class="memItemLeft" align="right" valign="top">
+int&#160;</td><td class="memItemRight" valign="bottom"><b>damage</b> {}</td></tr>
+<tr class="separator:a1c966911310e168c593b1ecfa2ea077d inherit pro_attribs_classMissile"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7a238da76ae41e649bca866b858c966a" name="a7a238da76ae41e649bca866b858c966a"></a>

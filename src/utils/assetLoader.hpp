@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#pragma GCC diagnostic ignored "-Wunused-result"
+
 namespace util
 {
 

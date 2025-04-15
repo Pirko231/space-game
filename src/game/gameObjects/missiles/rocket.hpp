@@ -5,7 +5,7 @@ class Rocket : public Missile
 {
 public:
     Rocket(sf::Vector2f pos, sf::Vector2f moveBy)
-    : Missile{50.f, 1.f, util::AssetLoader::get().rocket} 
+    : Missile{50.f, 1.f, 50, util::AssetLoader::get().rocket} 
     {
         launch(pos,moveBy);
     }

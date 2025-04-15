@@ -14,7 +14,10 @@ public:
     /// @brief wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)
     virtual void display() {};
 
+    int getDamage() {return damage;}
+
     bool shouldDelete() const {return lifeSpan >= maxLifeSpan;}
+    void del() {lifeSpan = maxLifeSpan;}
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
 
@@ -25,8 +28,8 @@ private:
         target.draw(sprite, states);
     }
 protected:
-    Missile(float _maxLifeSpan, float _speed, const sf::Texture& _texture)
-    : sprite{_texture}, speed{_speed}, maxLifeSpan{_maxLifeSpan}
+    Missile(float _maxLifeSpan, float _speed, int _damage, const sf::Texture& _texture)
+    : sprite{_texture}, speed{_speed}, maxLifeSpan{_maxLifeSpan}, damage{_damage}
     {}
 
     void launch(sf::Vector2f _pos, sf::Vector2f dir)
@@ -49,4 +52,5 @@ protected:
     float speed;
     const float maxLifeSpan;
     float lifeSpan{0};
+    int damage{};
 };

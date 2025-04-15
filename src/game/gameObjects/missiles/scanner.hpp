@@ -5,7 +5,7 @@ class Scanner : public Missile
 {
 public:
     Scanner(sf::Vector2f pos, sf::Vector2f moveBy)
-    : Missile{50.f, 1.f, util::AssetLoader::get().scanner}
+    : Missile{50.f, 1.f, 0, util::AssetLoader::get().scanner}
     {
         launch(pos,moveBy);
     }

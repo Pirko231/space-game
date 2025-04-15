@@ -23,6 +23,7 @@ void PlayerUI::update()
 
     healthBar.manageHover(sf::Mouse::getPosition());
     energyBar.manageHover(sf::Mouse::getPosition());
+
     healthBar.move(player.getMoveBy());
     energyBar.move(player.getMoveBy());
 }

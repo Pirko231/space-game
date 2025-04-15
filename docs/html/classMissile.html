@@ -115,18 +115,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0d0af0ed906415cfff142ad6457bf95" id="r_ae0d0af0ed906415cfff142ad6457bf95"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#ae0d0af0ed906415cfff142ad6457bf95">display</a> ()</td></tr>
 <tr class="memdesc:ae0d0af0ed906415cfff142ad6457bf95"><td class="mdescLeft">&#160;</td><td class="mdescRight">wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)  <br /></td></tr>
 <tr class="separator:ae0d0af0ed906415cfff142ad6457bf95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e1311063f1a60246e22b72d783143cc" id="r_a3e1311063f1a60246e22b72d783143cc"><td class="memItemLeft" align="right" valign="top"><a id="a3e1311063f1a60246e22b72d783143cc" name="a3e1311063f1a60246e22b72d783143cc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getDamage</b> ()</td></tr>
+<tr class="separator:a3e1311063f1a60246e22b72d783143cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4eae3fc811a7e34117ee57d42c7b508" id="r_ab4eae3fc811a7e34117ee57d42c7b508"><td class="memItemLeft" align="right" valign="top"><a id="ab4eae3fc811a7e34117ee57d42c7b508" name="ab4eae3fc811a7e34117ee57d42c7b508"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>shouldDelete</b> () const</td></tr>
 <tr class="separator:ab4eae3fc811a7e34117ee57d42c7b508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6303535c5d827a09e53168d607ea542" id="r_aa6303535c5d827a09e53168d607ea542"><td class="memItemLeft" align="right" valign="top"><a id="aa6303535c5d827a09e53168d607ea542" name="aa6303535c5d827a09e53168d607ea542"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>del</b> ()</td></tr>
+<tr class="separator:aa6303535c5d827a09e53168d607ea542"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae20c7c14e0290e5995fea82c97b2873f" id="r_ae20c7c14e0290e5995fea82c97b2873f"><td class="memItemLeft" align="right" valign="top"><a id="ae20c7c14e0290e5995fea82c97b2873f" name="ae20c7c14e0290e5995fea82c97b2873f"></a>
 sf::FloatRect&#160;</td><td class="memItemRight" valign="bottom"><b>getGlobalBounds</b> () const</td></tr>
 <tr class="separator:ae20c7c14e0290e5995fea82c97b2873f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a031c7b6bed4ac1d9783aa1863e83074f" id="r_a031c7b6bed4ac1d9783aa1863e83074f"><td class="memItemLeft" align="right" valign="top"><a id="a031c7b6bed4ac1d9783aa1863e83074f" name="a031c7b6bed4ac1d9783aa1863e83074f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Missile</b> (float _maxLifeSpan, float _speed, const sf::Texture &amp;_texture)</td></tr>
-<tr class="separator:a031c7b6bed4ac1d9783aa1863e83074f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c027d53452a12c6b0c6434f5610b26e" id="r_a1c027d53452a12c6b0c6434f5610b26e"><td class="memItemLeft" align="right" valign="top"><a id="a1c027d53452a12c6b0c6434f5610b26e" name="a1c027d53452a12c6b0c6434f5610b26e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Missile</b> (float _maxLifeSpan, float _speed, int _damage, const sf::Texture &amp;_texture)</td></tr>
+<tr class="separator:a1c027d53452a12c6b0c6434f5610b26e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade6128c3b3caa479ac954f906375f551" id="r_ade6128c3b3caa479ac954f906375f551"><td class="memItemLeft" align="right" valign="top"><a id="ade6128c3b3caa479ac954f906375f551" name="ade6128c3b3caa479ac954f906375f551"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>launch</b> (sf::Vector2f _pos, sf::Vector2f dir)</td></tr>
 <tr class="separator:ade6128c3b3caa479ac954f906375f551"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,6 +154,9 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><b>maxLifeSpan</b
 <tr class="memitem:aff331826fb45e251b691cacca4b7d671" id="r_aff331826fb45e251b691cacca4b7d671"><td class="memItemLeft" align="right" valign="top"><a id="aff331826fb45e251b691cacca4b7d671" name="aff331826fb45e251b691cacca4b7d671"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>lifeSpan</b> {0}</td></tr>
 <tr class="separator:aff331826fb45e251b691cacca4b7d671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c966911310e168c593b1ecfa2ea077d" id="r_a1c966911310e168c593b1ecfa2ea077d"><td class="memItemLeft" align="right" valign="top"><a id="a1c966911310e168c593b1ecfa2ea077d" name="a1c966911310e168c593b1ecfa2ea077d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>damage</b> {}</td></tr>
+<tr class="separator:a1c966911310e168c593b1ecfa2ea077d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae0d0af0ed906415cfff142ad6457bf95" name="ae0d0af0ed906415cfff142ad6457bf95"></a>

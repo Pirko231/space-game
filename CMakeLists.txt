@@ -22,6 +22,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src/perf)
 include_directories(${CMAKE_SOURCE_DIR}/src/utils)
 include_directories(${CMAKE_SOURCE_DIR}/src/game/interfaces)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/game/gameObjects)
+include_directories(${CMAKE_SOURCE_DIR}/src/game/playerUI)
 
 
 # Znalezienie (wersja 2.6.1)

@@ -44,6 +44,8 @@ public:
         return sprite.getGlobalBounds().getCenter();
     }
 
+    void damaged(int damage) const {health -= damage;}
+
     sf::Vector2f getPosition() const {return sprite.getPosition();}
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
