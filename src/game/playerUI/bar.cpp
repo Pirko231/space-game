@@ -4,13 +4,13 @@
 Bar::Bar(int* linkedValue) : minValue{0}, maxValue{100}, linkedValue{linkedValue}
 {
     backgroundBar.setPosition({0.f,0.f});
-    backgroundBar.setSize({80.f,10.f});
+    backgroundBar.setSize({60.f,10.f});
     backgroundBar.setFillColor(sf::Color::Transparent);
     backgroundBar.setOutlineColor(sf::Color::Black);
     backgroundBar.setOutlineThickness(1.f);
 
     fillBar.setPosition({0.f,0.f});
-    fillBar.setSize({0.f, 15.f}); // startowo 0 szerokości
+    fillBar.setSize({0.f, 15.f});
     fillBar.setFillColor(sf::Color::Red);
 
     updateBar();
@@ -27,7 +27,7 @@ Bar::Bar(sf::Vector2f pos, sf::Vector2f size, int *linkedValue, sf::Color outlin
 
     fillBar.setPosition(pos);
     fillBar.setSize({0.f, size.y}); // startowo 0 szerokości
-    fillBar.setFillColor(sf::Color::Red);
+    //fillBar.setFillColor(sf::Color::Red);
 
     
 }
@@ -104,7 +104,7 @@ void Bar::updateBar()
 
 void Bar::updateBarColor()
 {
-    if (!linkedValue) return;
+    /*if (!linkedValue) return;
     float pct = 100.f * (*linkedValue - minValue) / (maxValue - minValue);
 
     if (pct < 30.f)
@@ -114,5 +114,5 @@ void Bar::updateBarColor()
     else if (pct < 90.f)
         fillBar.setFillColor(sf::Color::Green);
     else
-        fillBar.setFillColor(sf::Color::Blue);
+        fillBar.setFillColor(sf::Color::Blue);*/
 }

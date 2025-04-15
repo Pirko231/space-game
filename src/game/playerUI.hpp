@@ -26,7 +26,9 @@ public:
     PlayerUI& setPlayerPos(sf::Vector2f playerPos)
     {
         player.setPosition(playerPos);
-        healthBar.setPosition({playerPos.x + view.getSize().x / 4.f, playerPos.y + view.getSize().y / 2.f});
+        
+        healthBar.setPosition({playerPos.x - view.getSize().x / 4.f, playerPos.y + view.getSize().y / 2.5f});
+        energyBar.setPosition({playerPos.x - view.getSize().x / 4.f, playerPos.y + view.getSize().y / 3.2f});
 
         return *this;
     }

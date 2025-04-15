@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hitchecker_0',['HitChecker',['../classHitChecker.html',1,'']]]
+  ['collisionmanager_0',['CollisionManager',['../classCollisionManager.html',1,'']]]
 ];

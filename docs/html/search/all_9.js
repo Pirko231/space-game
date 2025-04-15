@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['obiektów_0',['Tworzenie obiektów',['../templates.html#autotoc_md2',1,'']]]
+  ['nowych_20typów_0',['Rejestracja nowych typów',['../templates.html#autotoc_md3',1,'']]]
 ];

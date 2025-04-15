@@ -7,6 +7,9 @@ PlayerUI::PlayerUI()
 : player{util::AssetLoader::get().ship1}, healthBar{player.getHealth()}, energyBar{player.getEnergy()}
 {
     player.setView(&view);
+
+    healthBar.setColor(sf::Color::Red);
+    energyBar.setColor(sf::Color::Blue);
 }
 
 void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)

@@ -18,6 +18,10 @@ public:
     void setValue(int value);
     int getValue() const;
     void setOutlineColor(sf::Color color);
+    void setColor(sf::Color color)
+    {
+        fillBar.setFillColor(color);
+    }
 
 private:
     void updateBar();      // Aktualizuje szerokość i kolor paska

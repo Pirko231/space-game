@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['display_0',['display',['../classLaser.html#a8f77da97743e4e5f6c29a66ec20dd7de',1,'Laser::display()'],['../classRocket.html#a7a238da76ae41e649bca866b858c966a',1,'Rocket::display()'],['../classScanner.html#a7154154d81063b3cbec96784db014b28',1,'Scanner::display()'],['../classMissile.html#ae0d0af0ed906415cfff142ad6457bf95',1,'Missile::display()']]],
-  ['dokumentacja_20space_20game_1',['Dokumentacja Space Game',['../index.html',1,'']]]
+  ['check_0',['check',['../classHitChecker.html#a93a194b301cda287e3ad2e6c59e9eb5e',1,'HitChecker']]],
+  ['collisionmanager_1',['CollisionManager',['../classCollisionManager.html',1,'']]],
+  ['create_2',['create',['../classLaserFactory.html#ac26ef4be265675874f23cef64a13da59',1,'LaserFactory::create()'],['../classRocketFactory.html#ac58d97f5bceab1c3687e0231f4f41ba8',1,'RocketFactory::create()'],['../classScannerFactory.html#a588138e60fac574370400dd31d5cce12',1,'ScannerFactory::create()'],['../classMissileManager.html#ac22e27e6a9a7635a6bccbcb8879da3c9',1,'MissileManager::create()'],['../classIMissileFactory.html#a17ac9915e147931d8462d63561dc06aa',1,'IMissileFactory::create()']]]
 ];

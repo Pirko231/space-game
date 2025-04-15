@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['imissilefactory_0',['IMissileFactory',['../classIMissileFactory.html',1,'']]]
+  ['hitchecker_0',['HitChecker',['../classHitChecker.html',1,'']]]
 ];
