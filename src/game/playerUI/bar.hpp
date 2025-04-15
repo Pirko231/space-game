@@ -30,7 +30,7 @@ private:
     sf::RectangleShape backgroundBar;
     sf::RectangleShape fillBar;
 
-    int *linkedValue; // Wartość (0-100) przechowywana w zewnętrznej zmiennej
     int minValue;     // Domyślnie 0
     int maxValue;     // Domyślnie 100
+    int *linkedValue; // Wartość (0-100) przechowywana w zewnętrznej zmiennej
 };

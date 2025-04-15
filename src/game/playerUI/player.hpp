@@ -125,8 +125,8 @@ public:
     {
         devInfo.defaultPos = _pos;
         devInfo.pos.setPosition(devInfo.defaultPos);
-        devInfo.speed.setPosition(devInfo.defaultPos.x, devInfo.defaultPos.y + 20.f);
-        devInfo.turretRotation.setPosition(devInfo.defaultPos.x, devInfo.defaultPos.y + 40.f);
+        devInfo.speed.setPosition(sf::Vector2f{devInfo.defaultPos.x, devInfo.defaultPos.y + 20.f});
+        devInfo.turretRotation.setPosition({devInfo.defaultPos.x, devInfo.defaultPos.y + 40.f});
         devInfo.pos.setCharacterSize(20);
         devInfo.speed.setCharacterSize(20);
         devInfo.turretRotation.setCharacterSize(20);
@@ -135,9 +135,9 @@ private:
     struct DevInfo : public sf::Drawable
     {
         DevInfo(const Player* _player) {player = _player;}
-        mutable sf::Text pos;
-        mutable sf::Text speed;
-        mutable sf::Text turretRotation;
+        mutable sf::Text pos{util::AssetLoader::get().font};
+        mutable sf::Text speed{util::AssetLoader::get().font};
+        mutable sf::Text turretRotation{util::AssetLoader::get().font};
         mutable sf::Vector2f defaultPos;
     private:
         const Player* player{nullptr};
@@ -149,7 +149,7 @@ private:
             sf::String speedString {std::to_string(player->moveBy.x) + ' ' + std::to_string(player->moveBy.y)};
             speed.setString(speedString);
             target.draw(speed, states);
-            sf::String turretRotationString {std::to_string(player->turret.getRotation())};
+            sf::String turretRotationString {std::to_string(player->turret.getRotation().asDegrees())};
             turretRotation.setString(turretRotationString);
             target.draw(turretRotation, states);
         }
