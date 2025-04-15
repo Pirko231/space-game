@@ -96,19 +96,23 @@ Collaboration diagram for CollisionManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCollisionManager__coll__graph.png" border="0" usemap="#aCollisionManager_coll__map" alt="Collaboration graph"/></div>
 <map name="aCollisionManager_coll__map" id="aCollisionManager_coll__map">
-<area shape="rect" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="77,108,211,133"/>
-<area shape="rect" href="classMissileManager.html" title=" " alt="" coords="5,5,131,31"/>
-<area shape="poly" title=" " alt="" coords="87,40,138,106,133,110,83,43"/>
-<area shape="rect" href="classAsteroidManager.html" title=" " alt="" coords="155,5,288,31"/>
-<area shape="poly" title=" " alt="" coords="216,45,207,65,194,86,166,110,162,106,190,82,202,63,211,42"/>
+<area shape="rect" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="119,183,254,208"/>
+<area shape="rect" href="classMissileManager.html" title=" " alt="" coords="5,80,131,105"/>
+<area shape="poly" title=" " alt="" coords="81,116,93,137,110,157,129,170,151,180,148,185,127,175,106,161,89,141,76,119"/>
+<area shape="rect" href="classPlayer.html" title=" " alt="" coords="155,80,218,105"/>
+<area shape="poly" title=" " alt="" coords="189,119,189,183,184,183,184,119"/>
+<area shape="rect" title=" " alt="" coords="135,5,238,31"/>
+<area shape="poly" title=" " alt="" coords="189,45,189,80,184,80,184,45"/>
+<area shape="rect" href="classAsteroidManager.html" title=" " alt="" coords="243,80,376,105"/>
+<area shape="poly" title=" " alt="" coords="296,119,279,140,258,161,217,185,214,180,254,157,275,137,292,115"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac9f7a3434e765f80aac17fd632fa10a7" id="r_ac9f7a3434e765f80aac17fd632fa10a7"><td class="memItemLeft" align="right" valign="top"><a id="ac9f7a3434e765f80aac17fd632fa10a7" name="ac9f7a3434e765f80aac17fd632fa10a7"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>setData</b> (const <a class="el" href="classMissileManager.html">MissileManager</a> *p1Manager, const <a class="el" href="classMissileManager.html">MissileManager</a> *p2Manager, const sf::Sprite *p1, const sf::Sprite *p2, const <a class="el" href="classAsteroidManager.html">AsteroidManager</a> *asteroidManager)</td></tr>
-<tr class="separator:ac9f7a3434e765f80aac17fd632fa10a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9db1fa418231a51ac131f04e4219a39" id="r_af9db1fa418231a51ac131f04e4219a39"><td class="memItemLeft" align="right" valign="top"><a id="af9db1fa418231a51ac131f04e4219a39" name="af9db1fa418231a51ac131f04e4219a39"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>setData</b> (const <a class="el" href="classMissileManager.html">MissileManager</a> *p1Manager, const <a class="el" href="classMissileManager.html">MissileManager</a> *p2Manager, const <a class="el" href="classPlayer.html">Player</a> *p1, const <a class="el" href="classPlayer.html">Player</a> *p2, const <a class="el" href="classAsteroidManager.html">AsteroidManager</a> *asteroidManager)</td></tr>
+<tr class="separator:af9db1fa418231a51ac131f04e4219a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -118,12 +122,12 @@ static const <a class="el" href="classMissileManager.html">MissileManager</a> *&
 <tr class="memitem:aa671429b6609175ef8cff3699b94ede7" id="r_aa671429b6609175ef8cff3699b94ede7"><td class="memItemLeft" align="right" valign="top"><a id="aa671429b6609175ef8cff3699b94ede7" name="aa671429b6609175ef8cff3699b94ede7"></a>
 static const <a class="el" href="classMissileManager.html">MissileManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>p2Missiles</b> {}</td></tr>
 <tr class="separator:aa671429b6609175ef8cff3699b94ede7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaedfbff481185c42cee36451aec876f0" id="r_aaedfbff481185c42cee36451aec876f0"><td class="memItemLeft" align="right" valign="top"><a id="aaedfbff481185c42cee36451aec876f0" name="aaedfbff481185c42cee36451aec876f0"></a>
-static const sf::Sprite *&#160;</td><td class="memItemRight" valign="bottom"><b>p1Hitbox</b> {}</td></tr>
-<tr class="separator:aaedfbff481185c42cee36451aec876f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ebbb1957c15a466ed859bed1634052b" id="r_a3ebbb1957c15a466ed859bed1634052b"><td class="memItemLeft" align="right" valign="top"><a id="a3ebbb1957c15a466ed859bed1634052b" name="a3ebbb1957c15a466ed859bed1634052b"></a>
-static const sf::Sprite *&#160;</td><td class="memItemRight" valign="bottom"><b>p2Hitbox</b> {}</td></tr>
-<tr class="separator:a3ebbb1957c15a466ed859bed1634052b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52dedcebe96a9c2bd8f5bcfbfeeadd9" id="r_ae52dedcebe96a9c2bd8f5bcfbfeeadd9"><td class="memItemLeft" align="right" valign="top"><a id="ae52dedcebe96a9c2bd8f5bcfbfeeadd9" name="ae52dedcebe96a9c2bd8f5bcfbfeeadd9"></a>
+static const <a class="el" href="classPlayer.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>p1Hitbox</b> {}</td></tr>
+<tr class="separator:ae52dedcebe96a9c2bd8f5bcfbfeeadd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabde5d44aca40e7daa2960c0b961c480" id="r_aabde5d44aca40e7daa2960c0b961c480"><td class="memItemLeft" align="right" valign="top"><a id="aabde5d44aca40e7daa2960c0b961c480" name="aabde5d44aca40e7daa2960c0b961c480"></a>
+static const <a class="el" href="classPlayer.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>p2Hitbox</b> {}</td></tr>
+<tr class="separator:aabde5d44aca40e7daa2960c0b961c480"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a348603e5b04a3070d5e131b2ae259445" id="r_a348603e5b04a3070d5e131b2ae259445"><td class="memItemLeft" align="right" valign="top"><a id="a348603e5b04a3070d5e131b2ae259445" name="a348603e5b04a3070d5e131b2ae259445"></a>
 static const <a class="el" href="classAsteroidManager.html">AsteroidManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>asteroids</b> {}</td></tr>
 <tr class="separator:a348603e5b04a3070d5e131b2ae259445"><td class="memSeparator" colspan="2">&#160;</td></tr>

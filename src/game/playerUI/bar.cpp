@@ -58,7 +58,7 @@ void Bar::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 bool Bar::manageHover(sf::Vector2i /*mousePos*/, bool /*clicked*/)
 {
-    // Bar nie reaguje na interakcje, zwracamy false
+    updateBar();
     return false;
 }
 

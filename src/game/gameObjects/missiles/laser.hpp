@@ -5,7 +5,7 @@ class Laser : public Missile
 {
 public:
     Laser(sf::Vector2f pos, sf::Vector2f dir)
-    : Missile{600.f, 3.f, util::AssetLoader::get().laser}
+    : Missile{600.f, 3.f, 10, util::AssetLoader::get().laser}
     {
         sprite.setScale({0.2f,0.2f});
 

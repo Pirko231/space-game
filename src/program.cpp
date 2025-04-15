@@ -9,7 +9,7 @@ Program::Program()
 
     PlayerUI::init(window);
 
-    CollisionManager::setData(p1UI.getPlayer().getMissileManager(), p2UI.getPlayer().getMissileManager(), p1UI.getPlayer().getHitbox(), p2UI.getPlayer().getHitbox(), &asteroidManager);
+    CollisionManager::setData(p1UI.getPlayer().getMissileManager(), p2UI.getPlayer().getMissileManager(), &p1UI.getPlayer(), &p2UI.getPlayer(), &asteroidManager);
     
     {
         sf::View view;
