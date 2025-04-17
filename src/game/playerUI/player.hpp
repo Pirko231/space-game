@@ -25,18 +25,9 @@ public:
         sprite.setScale({0.1f,0.1f});
     }
 
-    void setKeyBinds(const PlayerKeyBinds& keyBinds)
+    void setKeyBinds(const PlayerKeyBinds& _keyBinds)
     {
-        up = keyBinds.up;
-        down = keyBinds.down;
-        left = keyBinds.left;
-        right = keyBinds.right;
-
-        crossUp = keyBinds.crossUp;
-        crossDown = keyBinds.crossDown;
-        crossLeft = keyBinds.crossLeft;
-        crossRight = keyBinds.crossRight;
-        shoot = keyBinds.shoot;
+        keyBinds = _keyBinds;
     }
 
     sf::Vector2f getCenter() const
@@ -90,11 +81,7 @@ private:
 
     void move(sf::Vector2f offset);
 
-    sf::Keyboard::Key up, crossUp;
-    sf::Keyboard::Key down, crossDown;
-    sf::Keyboard::Key left, crossLeft;
-    sf::Keyboard::Key right, crossRight;
-    sf::Keyboard::Key shoot;
+    PlayerKeyBinds keyBinds;
 
     Pressed pressed;
 
