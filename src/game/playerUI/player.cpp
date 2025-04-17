@@ -35,46 +35,46 @@ void Player::handleEvents(const std::optional<sf::Event>& ev)
 {
     if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
     {
-        if (keyPressed->code == up)
+        if (keyPressed->code == keyBinds.up)
             pressed.w = true;
-        if (keyPressed->code == down)
+        if (keyPressed->code == keyBinds.down)
             pressed.s = true;
-        if (keyPressed->code == left)
+        if (keyPressed->code == keyBinds.left)
             pressed.a = true;
-        if (keyPressed->code == right)
+        if (keyPressed->code == keyBinds.right)
             pressed.d = true;
 
-        if (keyPressed->code == crossUp)
+        if (keyPressed->code == keyBinds.crossUp)
             pressed.upCross = true;
-        if (keyPressed->code == crossDown)
+        if (keyPressed->code == keyBinds.crossDown)
             pressed.downCross = true;
-        if (keyPressed->code == crossLeft)
+        if (keyPressed->code == keyBinds.crossLeft)
             pressed.leftCross = true;
-        if (keyPressed->code == crossRight)
+        if (keyPressed->code == keyBinds.crossRight)
             pressed.rightCross = true;
     }
 
     if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
     {
-        if (keyReleased->code == up)
+        if (keyReleased->code == keyBinds.up)
             pressed.w = false;
-        if (keyReleased->code == down)
+        if (keyReleased->code == keyBinds.down)
             pressed.s = false;
-        if (keyReleased->code == left)
+        if (keyReleased->code == keyBinds.left)
             pressed.a = false;
-        if (keyReleased->code == right)
+        if (keyReleased->code == keyBinds.right)
             pressed.d = false;
 
-        if (keyReleased->code == crossUp)
+        if (keyReleased->code == keyBinds.crossUp)
             pressed.upCross = false;
-        if (keyReleased->code == crossDown)
+        if (keyReleased->code == keyBinds.crossDown)
             pressed.downCross = false;
-        if (keyReleased->code == crossLeft)
+        if (keyReleased->code == keyBinds.crossLeft)
             pressed.leftCross = false;
-        if (keyReleased->code == crossRight)
+        if (keyReleased->code == keyBinds.crossRight)
             pressed.rightCross = false;
 
-        if (keyReleased->code == shoot)
+        if (keyReleased->code == keyBinds.shoot)
             missileManager.create(LaserFactory{}.get(), getGlobalBounds().getCenter(), crosshairShip.getPosition());
         
     }
