@@ -20,6 +20,12 @@ public:
         sprite.move(moveBy);
         sprite.rotate(rotationPerFrame);
     }
+
+    sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
+
+    void del() {health = 0;}
+
+    bool shouldDelete() const {return health <= 0;}
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
@@ -28,4 +34,6 @@ private:
     sf::Sprite sprite;
     sf::Vector2f moveBy;
     sf::Angle rotationPerFrame;
+
+    float health{100};
 };
