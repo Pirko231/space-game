@@ -10,8 +10,8 @@
 class Player : public sf::Drawable
 {
 public:
-    Player(const sf::Texture& texture);
-    Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds);
+    Player(const sf::Texture& texture, Pressed&);
+    Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds, Pressed& _pressed);
     
     void handleEvents(const std::optional<sf::Event>& ev);
 
@@ -37,6 +37,11 @@ public:
 
     void damaged(int damage) const {health -= damage;}
 
+    void shoot(IMissileFactory& factoryType, sf::Vector2f crosshairPos)
+    {
+        missileManager.create(factoryType, getGlobalBounds().getCenter(), crosshairPos);
+    }
+
     sf::Vector2f getPosition() const {return sprite.getPosition();}
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
@@ -52,28 +57,18 @@ public:
 
     void setPosition(sf::Vector2f pos) 
     {
-        //sprite.setOrigin(sprite.getGlobalBounds().getCenter());
         sprite.setPosition(pos);
         turret.setOrigin(turret.getGlobalBounds().getCenter());
-        //turret.setPosition(pos.x + turret.getGlobalBounds().size.x / 1.9f, pos.y + 15.f);
         turret.setPosition({pos.x + turret.getGlobalBounds().size.x / 1.5f, pos.y + turret.getGlobalBounds().size.y / 1.8f});
-        crosshairPlayer.setPosition({pos.x + sprite.getGlobalBounds().size.x / 2.f, pos.y - sprite.getGlobalBounds().size.y});
-        crosshairShip.setPosition(crosshairPlayer.getPosition());
     }
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         target.draw(sprite, states);
         target.draw(turret, states);
-        target.draw(crosshairPlayer);
-        target.draw(crosshairShip);
     }
 
     const sf::View* view;
-
-    //first - pozycja playerCrosshair
-    //second - pozycja shipCrosshair
-    std::pair<sf::Vector2f, sf::Vector2f> moveCross();
 
     sf::Angle spinTurret();
 
@@ -83,7 +78,7 @@ private:
 
     PlayerKeyBinds keyBinds;
 
-    Pressed pressed;
+    Pressed& pressed;
 
     MissileManager missileManager;
 
@@ -99,11 +94,6 @@ private:
     sf::Sprite sprite;
 
     sf::Sprite turret;
-
-    sf::Sprite crosshairPlayer;
-    sf::Sprite crosshairShip;
-
-    static constexpr float crosshairShipSpeed{0.02f};
 
     #if DEVINFO
 public:
