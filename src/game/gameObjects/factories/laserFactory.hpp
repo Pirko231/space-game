@@ -14,5 +14,8 @@ public:
         
         return std::make_unique<Laser>(Laser{pos, dir});
     }
+    
+    int cost() const override {return 5;}
+
     ~LaserFactory() = default;
 };

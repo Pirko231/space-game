@@ -14,5 +14,8 @@ public:
         
         return std::make_unique<Scanner>(Scanner{pos, moveBy});
     }
+
+    int cost() const override {return 5;}
+    
     ~ScannerFactory() = default;
 };

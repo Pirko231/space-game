@@ -3,8 +3,8 @@
 class Bar : public sf::Drawable
 {
 public:
-    Bar(int*);
-    Bar(sf::Vector2f pos, sf::Vector2f size, int *linkedValue, sf::Color outlineColor = sf::Color::Black);
+    Bar(float*);
+    Bar(sf::Vector2f pos, sf::Vector2f size, float *linkedValue, sf::Color outlineColor = sf::Color::Black);
 
     void setPosition(sf::Vector2f pos);
     sf::Vector2f getPosition() const;
@@ -32,5 +32,5 @@ private:
 
     int minValue;     // Domyślnie 0
     int maxValue;     // Domyślnie 100
-    int *linkedValue; // Wartość (0-100) przechowywana w zewnętrznej zmiennej
+    float *linkedValue; // Wartość (0-100) przechowywana w zewnętrznej zmiennej
 };

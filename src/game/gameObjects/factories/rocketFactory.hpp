@@ -15,5 +15,8 @@ public:
         
         return std::make_unique<Rocket>(Rocket{pos, moveBy});
     }
+
+    int cost() const override {return 5;}
+    
     ~RocketFactory() = default;
 };

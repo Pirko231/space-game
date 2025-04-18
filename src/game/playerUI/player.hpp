@@ -39,7 +39,11 @@ public:
 
     void shoot(IMissileFactory& factoryType, sf::Vector2f crosshairPos)
     {
-        missileManager.create(factoryType, getGlobalBounds().getCenter(), crosshairPos);
+        if (energy >= factoryType.cost())
+        {
+            if (missileManager.create(factoryType, getGlobalBounds().getCenter(), crosshairPos))
+                energy -= factoryType.cost();
+        }
     }
 
     sf::Vector2f getPosition() const {return sprite.getPosition();}
@@ -52,8 +56,8 @@ public:
 
     const sf::Sprite* getHitbox() const {return &sprite;}
 
-    int* getHealth() const {return &health;}
-    int* getEnergy() const {return &energy;}
+    float* getHealth() const {return &health;}
+    float* getEnergy() const {return &energy;}
 
     void setPosition(sf::Vector2f pos) 
     {
@@ -88,8 +92,8 @@ private:
 
     float maxSpeed{6.5f};
 
-    mutable int health{100};
-    mutable int energy{100};
+    mutable float health{100.f};
+    mutable float energy{100.f};
 
     sf::Sprite sprite;
 

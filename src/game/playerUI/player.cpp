@@ -87,9 +87,9 @@ void Player::update()
         moveBy.x += throttle / 7.f;
 
     move(moveBy);
-
-    //std::pair<sf::Vector2f, sf::Vector2f> moveCrossBy {moveCross()};
     
+    if (energy <= 100.f)
+        energy += 0.05f;
 
     turret.setRotation(spinTurret());
 

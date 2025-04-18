@@ -10,7 +10,8 @@ public:
     /// @param factoryType rodzaj fabryki, rozne fabryki wytwarzaja rozne pociski @see missileFactory
     /// @param pos pozycja startowa
     /// @param dir pozycja celownika
-    void create(IMissileFactory& factoryType, sf::Vector2f pos, sf::Vector2f dir);
+    /// @return czy udalo sie utworzyc pocisk
+    bool create(IMissileFactory& factoryType, sf::Vector2f pos, sf::Vector2f dir);
 
     /// @brief porusza wszystkie pociski ktore przechowuje
     void update();
