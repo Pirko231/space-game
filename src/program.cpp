@@ -71,9 +71,11 @@ void Program::display()
     
     p1UI.display(window);
 
+    asteroidManager.display(window);
+
     p2UI.display(window);
 
-    asteroidManager.display(window);
+    asteroidManager.display(window); //podwojnie aby bylo na obu widokach
 
     window->setView(window->getDefaultView());
 #if DEVINFO

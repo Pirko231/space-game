@@ -12,8 +12,15 @@ AsteroidManager::AsteroidManager(int amount)
 
 void AsteroidManager::update()
 {
-    for (auto& i : asteroids)
-        i->update();
+    for (std::size_t i = 0; i < asteroids.size(); i++)
+    {
+        asteroids[i]->update();
+        if (asteroids[i]->shouldDelete())
+        {
+            asteroids.erase(asteroids.begin() + i);
+            i--;
+        }
+    }
 }
 
 void AsteroidManager::display(sf::RenderWindow *window)
