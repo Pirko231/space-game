@@ -91,6 +91,15 @@ void Player::update()
     if (moveBy.x < 0)
         moveBy.x += throttle / 7.f;
 
+    if (moveBy.y >= maxSpeed)
+        moveBy.y = maxSpeed;
+    if (moveBy.y <= -maxSpeed)
+        moveBy.y = -maxSpeed;
+    if (moveBy.x >= maxSpeed)
+        moveBy.x = maxSpeed;
+    if (moveBy.x <= -maxSpeed)
+        moveBy.x = -maxSpeed;
+
     move(moveBy);
     
     if (energy <= 100.f)
