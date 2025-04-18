@@ -13,7 +13,9 @@ public:
         rotationPerFrame /= 50.f;
         sprite.setOrigin(sprite.getGlobalBounds().getCenter());
         sprite.setPosition(_pos);
-        sprite.setScale({0.2f,0.2f});
+        sf::Vector2f scale{static_cast<float>(std::rand() % 5 + 1), static_cast<float>(std::rand() % 5 + 1)};
+        scale /= 10.f;
+        sprite.setScale(scale);
     }
     void update()
     {
