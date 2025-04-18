@@ -1,7 +1,7 @@
 #include "bar.hpp"
 #include <algorithm>
 
-Bar::Bar(int* linkedValue) : minValue{0}, maxValue{100}, linkedValue{linkedValue}
+Bar::Bar(float* linkedValue) : minValue{0}, maxValue{100}, linkedValue{linkedValue}
 {
     backgroundBar.setPosition({0.f,0.f});
     backgroundBar.setSize({60.f,10.f});
@@ -16,7 +16,7 @@ Bar::Bar(int* linkedValue) : minValue{0}, maxValue{100}, linkedValue{linkedValue
     updateBar();
 }
 
-Bar::Bar(sf::Vector2f pos, sf::Vector2f size, int *linkedValue, sf::Color outlineColor)
+Bar::Bar(sf::Vector2f pos, sf::Vector2f size, float *linkedValue, sf::Color outlineColor)
     : Bar{linkedValue}
 {
     backgroundBar.setPosition(pos);
@@ -27,9 +27,6 @@ Bar::Bar(sf::Vector2f pos, sf::Vector2f size, int *linkedValue, sf::Color outlin
 
     fillBar.setPosition(pos);
     fillBar.setSize({0.f, size.y}); // startowo 0 szerokości
-    //fillBar.setFillColor(sf::Color::Red);
-
-    
 }
 
 void Bar::setPosition(sf::Vector2f pos)
