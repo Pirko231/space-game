@@ -9,6 +9,9 @@ public:
     /// @brief porusza wszystkie asteroidy ktore przechowuje
     void update();
 
+    /// @brief rysuje asteroidy na ekran
+    void display(sf::RenderWindow* window);
+
     const std::vector<std::unique_ptr<Asteroid>>& getAsteroids() const {return asteroids;}
 
     

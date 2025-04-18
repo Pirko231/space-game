@@ -60,6 +60,8 @@ void Program::update()
     p1UI.update();
     p2UI.update();
 
+    asteroidManager.update();
+
     HitChecker::check();
 }
 
@@ -70,6 +72,8 @@ void Program::display()
     p1UI.display(window);
 
     p2UI.display(window);
+
+    asteroidManager.display(window);
 
     window->setView(window->getDefaultView());
 #if DEVINFO
