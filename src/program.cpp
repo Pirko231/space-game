@@ -4,7 +4,7 @@ Program::Program()
 {
     window = new sf::RenderWindow;
     //window->create();
-    window->create(sf::VideoMode{{1280, 720}, 32}, sf::String{"Space"}, sf::Style::Titlebar | sf::Style::Close);
+    window->create(sf::VideoMode{{1280, 720}, 32}, sf::String{"Space"}, sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
     window->setFramerateLimit(60);
 
     PlayerUI::init(window);
