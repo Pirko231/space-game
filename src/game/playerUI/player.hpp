@@ -88,9 +88,9 @@ private:
 
     sf::Vector2f moveBy{0.f,0.f};
 
-    float throttle{0.02f};
+    float throttle{0.005f};
 
-    float maxSpeed{6.5f};
+    float maxSpeed{3.5f};
 
     mutable float health{100.f};
     mutable float energy{100.f};

@@ -60,21 +60,26 @@ void Player::update()
 {
     if (pressed.w && moveBy.y > -maxSpeed)
     {
-        moveBy.y -= throttle;
+        sf::Vector2f add{0.f, -throttle};
+        add = add.rotatedBy(sprite.getRotation());
+        moveBy += add;
     }
     if (pressed.s && moveBy.y < (maxSpeed / 2.f))
     {
-        moveBy.y += throttle / 2.5f;
-        if (moveBy.y < 0)
-            moveBy.y += throttle;
+        sf::Vector2f add{throttle, 0.f};
+        add = add.rotatedBy(sprite.getRotation());
+        moveBy += add;
+        //moveBy.y += throttle / 2.5f;
+        /*if (moveBy.y < 0)
+            moveBy.y += throttle;*/
     }
     if (pressed.a)
     {
-        moveBy.x -= throttle / 2.f;
+        rotate(sf::degrees(-1.f));
     }
     if (pressed.d)
     {
-        moveBy.x += throttle / 2.f;
+        rotate(sf::degrees(1.f));
     }
 
     if (moveBy.y > 0)
@@ -104,9 +109,9 @@ sf::Angle Player::spinTurret()
 
 void Player::rotate(sf::Angle angle)
 {
-    sprite.setOrigin(sprite.getGlobalBounds().getCenter());
     sprite.rotate(angle);
-    turret.rotate(angle);
+    
+    moveBy = moveBy.rotatedBy(angle);
 }
 
 void Player::move(sf::Vector2f offset)
