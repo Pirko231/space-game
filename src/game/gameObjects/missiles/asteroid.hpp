@@ -8,7 +8,7 @@ public:
     Asteroid(sf::Vector2f _pos, sf::Vector2f _moveBy, sf::Texture& _texture)
     : sprite{_texture}
     {
-        moveBy = _moveBy / 20.f;
+        moveBy = _moveBy / static_cast<float>(std::rand() % 10 + 10);
         rotationPerFrame = moveBy.angle() + sf::degrees(static_cast<float>(std::rand() % 45));
         rotationPerFrame /= 50.f;
         sprite.setOrigin(sprite.getGlobalBounds().getCenter());
