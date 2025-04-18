@@ -64,9 +64,9 @@ void Player::update()
         add = add.rotatedBy(sprite.getRotation());
         moveBy += add;
     }
-    if (pressed.s && moveBy.y < (maxSpeed / 2.f))
+    if (pressed.s)
     {
-        sf::Vector2f add{throttle, 0.f};
+        sf::Vector2f add{0.f, throttle};
         add = add.rotatedBy(sprite.getRotation());
         moveBy += add;
         //moveBy.y += throttle / 2.5f;
