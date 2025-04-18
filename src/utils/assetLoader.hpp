@@ -53,4 +53,8 @@ inline util::AssetLoader::AssetLoader()
     laser.loadFromFile("resources/textures/laser.png");
     rocket.loadFromFile("resources/textures/rocket.png");
     scanner.loadFromFile("resources/textures/scanner.png");
+
+    asteroids[0].loadFromFile("resources/textures/asteroid.png");
+    asteroids[1].loadFromFile("resources/textures/asteroid.png");
+    asteroids[2].loadFromFile("resources/textures/asteroid.png");
 }

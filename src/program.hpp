@@ -28,7 +28,7 @@ private:
 
     PlayerUI p2UI;
 
-    AsteroidManager asteroidManager{20};
+    AsteroidManager asteroidManager{80};
 
     CollisionManager collisionManager;
 private:
