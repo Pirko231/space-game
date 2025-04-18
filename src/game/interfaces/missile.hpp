@@ -35,19 +35,20 @@ protected:
     void launch(sf::Vector2f _pos, sf::Vector2f dir)
     {
         sf::Vector2f _moveBy{dir.x - _pos.x, dir.y - _pos.y};
-        moveBy = _moveBy.normalized() * speed;
-
-        sprite.setOrigin(sprite.getGlobalBounds().getCenter());
-        sprite.setRotation(_moveBy.angle());
-        sprite.setPosition(_pos);
-
-        //sprite.setRotation(sf::radians(std::sin(_moveBy.y / _moveBy.length())));
         
-        lifeSpan++;
+        if (_moveBy.x != 0.f || _moveBy.y != 0.f)
+        {
+            moveBy = _moveBy.normalized() * speed;
+            sprite.setOrigin(sprite.getGlobalBounds().getCenter());
+            sprite.setRotation(_moveBy.angle());
+            sprite.setPosition(_pos);
+            lifeSpan++;
+        }
+        else
+            lifeSpan = maxLifeSpan;
     }
 
     sf::Sprite sprite;
-    //sf::Vector2f dir;
     sf::Vector2f moveBy;
     float speed;
     const float maxLifeSpan;

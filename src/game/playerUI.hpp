@@ -4,6 +4,7 @@
 #include "playerUI/bar.hpp"
 #include "assetLoader.hpp"
 
+/// @brief przechowuje interfejs gracza, czyli paski zycia, celownik i radar
 class PlayerUI
 {
 public:
@@ -35,6 +36,7 @@ public:
 
     PlayerUI& setKeyBinds(const PlayerKeyBinds& pKeybinds)
     {
+        keyBinds = pKeybinds;
         player.setKeyBinds(pKeybinds);
         return *this;
     }
@@ -60,6 +62,19 @@ private:
 
     Bar healthBar;
     Bar energyBar;
+
+    Pressed pressed;
+
+    PlayerKeyBinds keyBinds;
+
+    sf::Sprite crosshairPlayer;
+    sf::Sprite crosshairShip;
+
+    static constexpr float crosshairShipSpeed{0.02f};
+
+    void crosshairHandleEvents(const std::optional<sf::Event>& ev);
+
+    std::pair<sf::Vector2f, sf::Vector2f> moveCross();
 
     static sf::Sprite background;
 };

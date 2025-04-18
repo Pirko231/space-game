@@ -4,17 +4,27 @@ sf::RenderWindow* PlayerUI::window {nullptr};
 sf::Sprite PlayerUI::background{util::AssetLoader::get().background};
 
 PlayerUI::PlayerUI()
-: player{util::AssetLoader::get().ship1}, healthBar{player.getHealth()}, energyBar{player.getEnergy()}
+: player{util::AssetLoader::get().ship1, pressed}, healthBar{player.getHealth()}, energyBar{player.getEnergy()},
+  crosshairPlayer{util::AssetLoader::get().pCrosshair}, crosshairShip{util::AssetLoader::get().sCrosshair}
 {
     player.setView(&view);
 
     healthBar.setColor(sf::Color::Red);
     energyBar.setColor(sf::Color::Blue);
+
+    crosshairPlayer.setScale({0.04f,0.04f});
+    crosshairShip.setScale({0.04f,0.04f});
 }
 
 void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
 {
     player.handleEvents(ev);
+
+    crosshairHandleEvents(ev);
+
+    if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
+        if (keyReleased->code == keyBinds.shoot)
+            player.shoot(LaserFactory{}.get(), crosshairShip.getPosition());
 }
 
 void PlayerUI::update()
@@ -26,6 +36,12 @@ void PlayerUI::update()
 
     healthBar.move(player.getMoveBy());
     energyBar.move(player.getMoveBy());
+
+    crosshairPlayer.move(player.getMoveBy());
+    crosshairShip.move(player.getMoveBy());
+
+    crosshairPlayer.move(moveCross().first);
+    crosshairShip.move(moveCross().second);
 }
 
 void PlayerUI::display(sf::RenderWindow *window)
@@ -35,13 +51,17 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(background);
     window->draw(player);
     window->draw(*player2);
-    window->draw(healthBar);
-    window->draw(energyBar);
 
     for (auto& i : player.getMissileManager()->getMissiles())
         window->draw(*i);
     for (auto& i : player2->getMissileManager()->getMissiles())
         window->draw(*i);
+
+    
+    window->draw(crosshairPlayer);
+    window->draw(crosshairShip);
+    window->draw(healthBar);
+    window->draw(energyBar);
 }
 
 void PlayerUI::init(sf::RenderWindow* _window)
@@ -49,4 +69,61 @@ void PlayerUI::init(sf::RenderWindow* _window)
     window = _window;
     background.setPosition({-(window->getSize().x * 2.f), -(window->getSize().y * 4.f)});
     background.setScale({4.f,4.f});
+}
+
+void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event>& ev)
+{
+    if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
+    {
+        if (keyPressed->code == keyBinds.crossUp)
+            pressed.upCross = true;
+        if (keyPressed->code == keyBinds.crossDown)
+            pressed.downCross = true;
+        if (keyPressed->code == keyBinds.crossLeft)
+            pressed.leftCross = true;
+        if (keyPressed->code == keyBinds.crossRight)
+            pressed.rightCross = true;
+    }
+
+    if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
+    {
+        if (keyReleased->code == keyBinds.crossUp)
+            pressed.upCross = false;
+        if (keyReleased->code == keyBinds.crossDown)
+            pressed.downCross = false;
+        if (keyReleased->code == keyBinds.crossLeft)
+            pressed.leftCross = false;
+        if (keyReleased->code == keyBinds.crossRight)
+            pressed.rightCross = false;
+    }
+}
+
+std::pair<sf::Vector2f, sf::Vector2f> PlayerUI::moveCross()
+{
+    sf::Vector2f moveCross;
+    if (pressed.upCross)
+        moveCross.y -= 0.5f;
+    if (pressed.downCross)
+        moveCross.y += 0.5f;
+    if (pressed.leftCross)
+        moveCross.x -= 0.5f;
+    if (pressed.rightCross)
+        moveCross.x += 0.5f;
+
+    //check kolizji
+    if (crosshairPlayer.getPosition().x > player.getPosition().x + view.getSize().x / 2.f)
+        crosshairPlayer.setPosition({player.getPosition().x + view.getSize().x / 2.f, crosshairPlayer.getPosition().y});
+    if (crosshairPlayer.getPosition().x < player.getPosition().x - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().size.x)
+        crosshairPlayer.setPosition({player.getPosition().x - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().size.x, crosshairPlayer.getPosition().y});
+    if (crosshairPlayer.getPosition().y > player.getPosition().y + view.getSize().y / 2.f)
+        crosshairPlayer.setPosition({crosshairPlayer.getPosition().x, player.getPosition().y + view.getSize().y / 2.f});
+    if (crosshairPlayer.getPosition().y < player.getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().size.y * 2.f)
+        crosshairPlayer.setPosition({crosshairPlayer.getPosition().x, player.getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().size.y * 2.f});
+    
+    sf::Vector2f moveCrossShip {crosshairPlayer.getPosition().x - crosshairShip.getPosition().x, crosshairPlayer.getPosition().y - crosshairShip.getPosition().y};
+    
+    moveCrossShip.x = moveCrossShip.x * crosshairShipSpeed;
+    moveCrossShip.y = moveCrossShip.y * crosshairShipSpeed;
+    
+    return {moveCross, moveCrossShip};
 }
