@@ -89,8 +89,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classAsteroidFactory.html">    5</a></span><span class="keyword">class </span><a class="code hl_class" href="classAsteroidFactory.html">AsteroidFactory</a></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    std::unique_ptr&lt;Asteroid&gt; create(sf::Vector2f _pos) {<span class="keywordflow">return</span> std::make_unique&lt;Asteroid&gt;(<a class="code hl_class" href="classAsteroid.html">Asteroid</a>{_pos});}</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>};</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    std::unique_ptr&lt;Asteroid&gt; create(sf::Vector2f _pos, sf::Vector2f moveBy)</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="keywordflow">return</span> std::make_unique&lt;Asteroid&gt;(<a class="code hl_class" href="classAsteroid.html">Asteroid</a>{_pos, moveBy, util::AssetLoader::get().asteroids[0]});</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    }</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
 </div>
 <div class="ttc" id="aclassAsteroidFactory_html"><div class="ttname"><a href="classAsteroidFactory.html">AsteroidFactory</a></div><div class="ttdef"><b>Definition</b> asteroidFactory.hpp:6</div></div>
 <div class="ttc" id="aclassAsteroid_html"><div class="ttname"><a href="classAsteroid.html">Asteroid</a></div><div class="ttdef"><b>Definition</b> asteroid.hpp:6</div></div>
