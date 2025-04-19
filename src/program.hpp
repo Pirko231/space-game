@@ -31,6 +31,8 @@ private:
     AsteroidManager asteroidManager{400};
 
     CollisionManager collisionManager;
+
+    Map map{1};
 private:
     #if DEVINFO
     

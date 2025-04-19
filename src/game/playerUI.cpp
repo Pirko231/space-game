@@ -1,7 +1,6 @@
 #include "playerUI.hpp"
 
 sf::RenderWindow* PlayerUI::window {nullptr};
-sf::Sprite PlayerUI::background{util::AssetLoader::get().background};
 
 PlayerUI::PlayerUI()
 : player{util::AssetLoader::get().ship1, pressed}, healthBar{player.getHealth()}, energyBar{player.getEnergy()},
@@ -48,7 +47,7 @@ void PlayerUI::display(sf::RenderWindow *window)
 {
     view.setCenter(player.getGlobalBounds().getCenter());
     window->setView(view);
-    window->draw(background);
+    window->draw(*background);
     window->draw(player);
     window->draw(*player2);
 
@@ -62,13 +61,6 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(crosshairShip);
     window->draw(healthBar);
     window->draw(energyBar);
-}
-
-void PlayerUI::init(sf::RenderWindow* _window)
-{
-    window = _window;
-    background.setPosition({-(window->getSize().x * 2.f), -(window->getSize().y * 4.f)});
-    background.setScale({4.f,4.f});
 }
 
 void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event>& ev)
