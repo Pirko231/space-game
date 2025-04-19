@@ -4,6 +4,7 @@
 #include "playerUI/bar.hpp"
 #include "assetLoader.hpp"
 #include "map.hpp"
+#include "radar.hpp"
 
 /// @brief przechowuje interfejs gracza, czyli paski zycia, celownik i radar
 class PlayerUI
@@ -29,6 +30,8 @@ public:
         
         healthBar.setPosition({playerPos.x - view.getSize().x / 4.f, playerPos.y + view.getSize().y / 2.5f});
         energyBar.setPosition({playerPos.x - view.getSize().x / 4.f, playerPos.y + view.getSize().y / 3.2f});
+
+        radar.setPosition({playerPos.x + view.getSize().x / 5.f, playerPos.y + view.getSize().x / 5.f});
 
         return *this;
     }
@@ -73,6 +76,8 @@ private:
 
     sf::Sprite crosshairPlayer;
     sf::Sprite crosshairShip;
+
+    Radar radar;
 
     static constexpr float crosshairShipSpeed{0.02f};
 

@@ -29,12 +29,15 @@ void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
 void PlayerUI::update()
 {
     player.update();
+    radar.update();
 
     healthBar.manageHover(sf::Mouse::getPosition());
     energyBar.manageHover(sf::Mouse::getPosition());
 
     healthBar.move(player.getMoveBy());
     energyBar.move(player.getMoveBy());
+
+    radar.move(player.getMoveBy());
 
     crosshairPlayer.move(player.getMoveBy());
     crosshairShip.move(player.getMoveBy());
@@ -50,6 +53,7 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(*background);
     window->draw(player);
     window->draw(*player2);
+    window->draw(radar);
 
     for (auto& i : player.getMissileManager()->getMissiles())
         window->draw(*i);

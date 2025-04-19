@@ -2,7 +2,7 @@
 #include "managers/collisionManager.hpp"
 
 /// @brief sprawdza kolizje pomiedzy pociskami, asteroidam i graczami
-class HitChecker : public CollisionManager
+class HitChecker : private CollisionManager
 {
 public:
     /// @brief sprawdzenie kolizji
