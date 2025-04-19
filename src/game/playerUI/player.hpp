@@ -19,6 +19,13 @@ public:
 
     void setView(const sf::View* _view) {view = _view;}
 
+    void setPosition(sf::Vector2f pos) 
+    {
+        sprite.setPosition(pos);
+        turret.setOrigin(turret.getGlobalBounds().getCenter());
+        turret.setPosition({pos.x + turret.getGlobalBounds().size.x / 1.5f, pos.y + turret.getGlobalBounds().size.y / 1.8f});
+    }
+
     void setTexture(const sf::Texture& texture)
     {
         sprite.setTexture(texture);
@@ -58,13 +65,6 @@ public:
 
     float* getHealth() const {return &health;}
     float* getEnergy() const {return &energy;}
-
-    void setPosition(sf::Vector2f pos) 
-    {
-        sprite.setPosition(pos);
-        turret.setOrigin(turret.getGlobalBounds().getCenter());
-        turret.setPosition({pos.x + turret.getGlobalBounds().size.x / 1.5f, pos.y + turret.getGlobalBounds().size.y / 1.8f});
-    }
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
