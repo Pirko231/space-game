@@ -1,10 +1,11 @@
 #pragma once
 #include "factories/asteroidFactory.hpp"
+#include "map.hpp"
 
 class AsteroidManager
 {
 public:
-    AsteroidManager(int amount);
+    AsteroidManager(int amount, const Map*);
 
     /// @brief porusza wszystkie asteroidy ktore przechowuje
     void update();
