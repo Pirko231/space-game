@@ -26,6 +26,11 @@ public:
     }
 
     sf::FloatRect getBounds() const {return bounds;}
+
+    sf::Vector2f getRandomPoint() const
+    {
+        return {static_cast<float>(std::rand() % static_cast<int>(bounds.size.x)), static_cast<float>(std::rand() % static_cast<int>(bounds.size.y))};
+    }
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

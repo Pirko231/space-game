@@ -23,8 +23,8 @@ Program::Program()
     PlayerKeyBinds p1Binds{sf::Keyboard::Key::W, sf::Keyboard::Key::S, sf::Keyboard::Key::A, sf::Keyboard::Key::D, sf::Keyboard::Key::T, sf::Keyboard::Key::G, sf::Keyboard::Key::F, sf::Keyboard::Key::H, sf::Keyboard::Key::Space};
     PlayerKeyBinds p2Binds{sf::Keyboard::Key::Up, sf::Keyboard::Key::Down, sf::Keyboard::Key::Left, sf::Keyboard::Key::Right, sf::Keyboard::Key::I, sf::Keyboard::Key::K, sf::Keyboard::Key::J, sf::Keyboard::Key::L, sf::Keyboard::Key::Enter};
 
-    p1UI.setPlayerPos({0.f,0.f}).setKeyBinds(p1Binds).setMap(&map).setTexture(util::AssetLoader::get().ship1);
-    p2UI.setPlayerPos(static_cast<sf::Vector2f>(window->getSize())).setKeyBinds(p2Binds).setMap(&map).setTexture(util::AssetLoader::get().ship2);
+    p1UI.setPlayerPos(map.getRandomPoint()).setKeyBinds(p1Binds).setMap(&map).setTexture(util::AssetLoader::get().ship1);
+    p2UI.setPlayerPos(map.getRandomPoint()).setKeyBinds(p2Binds).setMap(&map).setTexture(util::AssetLoader::get().ship2);
 
     p1UI.setSecondPlayer(p2UI);
     p2UI.setSecondPlayer(p1UI);
