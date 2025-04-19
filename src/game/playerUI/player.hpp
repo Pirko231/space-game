@@ -80,10 +80,6 @@ private:
 
     void move(sf::Vector2f offset);
 
-    PlayerKeyBinds keyBinds;
-
-    Pressed& pressed;
-
     MissileManager missileManager;
 
     sf::Vector2f moveBy{0.f,0.f};
@@ -98,6 +94,10 @@ private:
     sf::Sprite sprite;
 
     sf::Sprite turret;
+
+    PlayerKeyBinds keyBinds;
+
+    Pressed& pressed;
 
     #if DEVINFO
 public:

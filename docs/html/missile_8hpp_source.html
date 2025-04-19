@@ -115,25 +115,26 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> launch(sf::Vector2f _pos, sf::Vector2f dir)</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        sf::Vector2f _moveBy{dir.x - _pos.x, dir.y - _pos.y};</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        moveBy = _moveBy.normalized() * speed;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        sprite.setOrigin(sprite.getGlobalBounds().getCenter());</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        sprite.setRotation(_moveBy.angle());</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        sprite.setPosition(_pos);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">//sprite.setRotation(sf::radians(std::sin(_moveBy.y / _moveBy.length())));</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        lifeSpan++;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    sf::Sprite sprite;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">//sf::Vector2f dir;</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    sf::Vector2f moveBy;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">float</span> speed;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> maxLifeSpan;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">float</span> lifeSpan{0};</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">int</span> damage{};</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">if</span> (_moveBy.x != 0.f || _moveBy.y != 0.f)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            moveBy = _moveBy.normalized() * speed;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            sprite.setOrigin(sprite.getGlobalBounds().getCenter());</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            sprite.setRotation(_moveBy.angle());</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            sprite.setPosition(_pos);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            lifeSpan++;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            lifeSpan = maxLifeSpan;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    sf::Sprite sprite;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    sf::Vector2f moveBy;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">float</span> speed;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> maxLifeSpan;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">float</span> lifeSpan{0};</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">int</span> damage{};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
 </div>
 <div class="ttc" id="aclassMissile_html"><div class="ttname"><a href="classMissile.html">Missile</a></div><div class="ttdef"><b>Definition</b> missile.hpp:7</div></div>
 <div class="ttc" id="aclassMissile_html_a0f3bda5b9ece56f3a86ae29b3f93ca90"><div class="ttname"><a href="classMissile.html#a0f3bda5b9ece56f3a86ae29b3f93ca90">Missile::update</a></div><div class="ttdeci">virtual void update()=0</div><div class="ttdoc">aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych</div></div>
