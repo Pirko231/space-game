@@ -25,6 +25,8 @@ struct AssetLoader
     sf::Texture pCrosshair;
     sf::Texture sCrosshair;
 
+    sf::Texture radar;
+
     sf::Texture turret;
 
     sf::Texture laser;
@@ -49,6 +51,8 @@ inline util::AssetLoader::AssetLoader()
 
     pCrosshair.loadFromFile("resources/textures/crosshair108.png");
     sCrosshair.loadFromFile("resources/textures/crosshair111.png");
+
+    radar.loadFromFile("resources/textures/radar.png");
 
     laser.loadFromFile("resources/textures/laser.png");
     rocket.loadFromFile("resources/textures/rocket.png");
