@@ -1,19 +1,20 @@
 #include "asteroidManager.hpp"
 
-AsteroidManager::AsteroidManager(int amount)
+AsteroidManager::AsteroidManager(int amount, const Map* map)
 {
     AsteroidFactory factory;
     for (int i = 0; i < amount; i++)
     {
+        //jedynka na koncu aby uniknac normalizacji wektora 0,0
+        sf::Vector2f startPos{static_cast<float>(std::rand() % static_cast<int>(map->getBounds().size.x)), static_cast<float>(std::rand() % static_cast<int>(map->getBounds().size.y) + 1)};
         
-        sf::Vector2f startPos{static_cast<float>(std::rand() % 4000),static_cast<float>(std::rand() % 4000)};
-        if (std::rand() % 2)
-            startPos.x *= -1;
-        if (std::rand() % 2)
-            startPos.y *= -1.f;
-            
-        
+
         sf::Vector2f moveBy{startPos.normalized()};
+        if (std::rand() % 2)
+            moveBy.x *= -1;
+        if (std::rand() % 2)
+            moveBy.y *= -1.f;
+
         if (moveBy.x == 0 && moveBy.y == 0)
             moveBy += {0.1,0.1};
         asteroids.push_back(factory.create(startPos, moveBy.normalized()));

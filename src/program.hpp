@@ -28,11 +28,11 @@ private:
 
     PlayerUI p2UI;
 
-    AsteroidManager asteroidManager{400};
+    Map map{1};
+
+    AsteroidManager asteroidManager{400, &map};
 
     CollisionManager collisionManager;
-
-    Map map{1};
 private:
     #if DEVINFO
     
