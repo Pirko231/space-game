@@ -3,6 +3,7 @@
 #include "playerUI/player.hpp"
 #include "playerUI/bar.hpp"
 #include "assetLoader.hpp"
+#include "map.hpp"
 
 /// @brief przechowuje interfejs gracza, czyli paski zycia, celownik i radar
 class PlayerUI
@@ -15,8 +16,6 @@ public:
     void update();
 
     void display(sf::RenderWindow* window);
-
-    static void init(sf::RenderWindow* _window);
 
     PlayerUI& setView(const sf::View& _view)
     {
@@ -44,7 +43,12 @@ public:
     PlayerUI& setTexture(const sf::Texture& texture)
     {
         player.setTexture(texture);
-        background.setTexture(util::AssetLoader::get().background);
+        return *this;
+    }
+
+    PlayerUI& setMap(Map* map)
+    {
+        background = map;
         return *this;
     }
 
@@ -76,5 +80,5 @@ private:
 
     std::pair<sf::Vector2f, sf::Vector2f> moveCross();
 
-    static sf::Sprite background;
+    Map* background;
 };
