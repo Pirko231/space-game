@@ -20,6 +20,7 @@ public:
                 sprites.push_back(std::move(sprite));
             }
             startPos.y += forCopy.getGlobalBounds().size.y;
+            startPos.x = 0;
         }
         bounds.size.x = forCopy.getGlobalBounds().size.x * rectSize;
         bounds.size.y = forCopy.getGlobalBounds().size.y * rectSize;
