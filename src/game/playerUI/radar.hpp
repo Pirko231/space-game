@@ -18,6 +18,9 @@ private:
     void findTargets(sf::Vector2f playerPos);
     void removeTargets(sf::Vector2f playerPos);
 
+    bool isRepeated(const std::unique_ptr<Asteroid>*);
+    void moveTargets();
+
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         target.draw(sprite, states);
@@ -28,6 +31,6 @@ private:
     float range{100.f};
     /// @brief para obiektow
     /// @param sf::RectangleShape - obiekt na radarze
-    /// @param sf::Vector2f pozycja obiektu bez przeskalowania na koordynaty radaru
-    std::vector<std::pair<sf::RectangleShape, sf::Vector2f>> currentlyDisplayed;
+    /// @param std::unique_ptr<Asteroid>* wksaznik do orginalnego obiektu
+    std::vector<std::pair<sf::RectangleShape, const std::unique_ptr<Asteroid>*>> currentlyDisplayed;
 };
