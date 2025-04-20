@@ -1,5 +1,25 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classCollisionManager.html" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="5,5,140,31"/>
+<area shape="rect" id="Node000000" href="$classCollisionManager.html" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="5,31,140,56"/>
 <area shape="rect" id="Node000001" href="$classHitChecker.html" title="sprawdza kolizje pomiedzy pociskami, asteroidam i graczami" alt="" coords="188,5,281,31"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="154,15,188,15,188,21,154,21"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="153,28,188,23,188,28,154,33"/>
+<area shape="rect" id="Node000002" href="$classRadar.html" title=" " alt="" coords="205,55,265,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="154,53,205,60,204,66,153,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="21,177,124,203"/>
+<area shape="poly" id="edge11_Node000003_Node000002" title=" " alt="" coords="95,166,136,128,186,89,205,78,208,82,190,94,140,132,98,170"/>
+<area shape="rect" id="Node000004" href="$classAsteroid.html" title=" " alt="" coords="197,104,273,129"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="113,169,204,127,206,132,115,174"/>
+<area shape="rect" id="Node000005" href="$classBar.html" title=" " alt="" coords="213,153,257,179"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="137,178,212,167,213,172,138,183"/>
+<area shape="rect" id="Node000006" href="$classMap.html" title=" " alt="" coords="209,203,260,228"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="138,197,209,209,209,214,137,203"/>
+<area shape="rect" id="Node000007" href="$classMissile.html" title=" " alt="" coords="201,252,269,277"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="115,206,207,250,205,254,112,211"/>
+<area shape="rect" id="Node000011" href="$classPlayer.html" title=" " alt="" coords="203,301,266,327"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="99,210,140,247,190,286,210,299,207,303,186,291,136,251,95,214"/>
+<area shape="rect" id="Node000008" href="$classLaser.html" title=" " alt="" coords="338,203,395,228"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="281,245,337,223,339,228,282,250"/>
+<area shape="rect" id="Node000009" href="$classRocket.html" title=" " alt="" coords="333,252,400,277"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="283,262,333,262,333,267,283,267"/>
+<area shape="rect" id="Node000010" href="$classScanner.html" title=" " alt="" coords="329,301,404,327"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="283,280,333,299,331,304,281,285"/>
 </map>

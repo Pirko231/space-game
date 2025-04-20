@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['rejestracja_20nowych_20typów_0',['Rejestracja nowych typów',['../templates.html#autotoc_md3',1,'']]],
-  ['rocket_1',['Rocket',['../classRocket.html',1,'']]],
-  ['rocketfactory_2',['RocketFactory',['../classRocketFactory.html',1,'']]]
+  ['radar_0',['Radar',['../classRadar.html',1,'']]],
+  ['rejestracja_20nowych_20typów_1',['Rejestracja nowych typów',['../templates.html#autotoc_md3',1,'']]],
+  ['rocket_2',['Rocket',['../classRocket.html',1,'']]],
+  ['rocketfactory_3',['RocketFactory',['../classRocketFactory.html',1,'']]]
 ];

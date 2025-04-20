@@ -1,0 +1,7 @@
+<map id="Radar" name="Radar">
+<area shape="rect" id="Node000001" title=" " alt="" coords="113,79,173,104"/>
+<area shape="rect" id="Node000002" href="$classCollisionManager.html" title="przechowuje dane o pozycji pociskow, asteroid i graczy" alt="" coords="5,5,140,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,39,134,77,130,80,92,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="164,5,267,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,43,157,80,153,77,192,39"/>
+</map>
