@@ -28,7 +28,7 @@ public:
     {
         //std::fstream file;
         //file.open(filename, std::ios::in);
-        std::ofstream stream(filename, std::ios::out | std::ios::app);
+        std::ofstream stream(filename, std::ios::trunc | std::ios::out);
     if (stream.good())
     {
         stream << "DANGER - modification of special characters might result in program malfunction. In that case delete this file.\n!--------------Settings--------------!\n";
