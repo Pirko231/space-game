@@ -8,19 +8,27 @@ Radar::Radar() : sprite{util::AssetLoader::get().radar}
 void Radar::update()
 {
     findTargets(p1Hitbox->getCenter());
-    removeTargets(p1Hitbox->getCenter());
+    //removeTargets(p1Hitbox->getCenter());
+    moveTargets();
 }
 
 void Radar::findTargets(sf::Vector2f playerPos)
 {
     sf::FloatRect hitbox{{playerPos.x - range / 2.f, playerPos.y - range / 2.f}, {range, range}};
     for (auto& i : asteroids->getAsteroids())
-        if (hitbox.findIntersection(i->getGlobalBounds()))
+    {
+        //zeby uniknac powtorzen
+        if (!isRepeated(&i) || currentlyDisplayed.empty())
         {
-            sf::RectangleShape shape{{5.f,5.f}};
-            shape.setPosition(i->getGlobalBounds().position);
-            currentlyDisplayed.push_back({std::move(shape), i->getGlobalBounds().position});
+            //pierwsze wrzucenie do radaru (razem z adresem)
+            if (hitbox.findIntersection(i->getGlobalBounds()))
+            {
+                sf::RectangleShape shape{{5.f,5.f}};
+                shape.setPosition(i->getGlobalBounds().position);
+                currentlyDisplayed.push_back({std::move(shape), &i});
+            }
         }
+    }
 }
 
 void Radar::removeTargets(sf::Vector2f playerPos)
@@ -29,10 +37,25 @@ void Radar::removeTargets(sf::Vector2f playerPos)
     /*for (auto& [shape, pos] : currentlyDisplayed)
         if (!hitbox.contains(pos))*/
     for (std::size_t i = 0; i < currentlyDisplayed.size(); i++)
-        if (!hitbox.contains(currentlyDisplayed[i].second))
+        if (!hitbox.contains(currentlyDisplayed[i].second->operator->()->getGlobalBounds().position))
         {
             currentlyDisplayed.erase(currentlyDisplayed.begin() + i);
             i--;
         }
             
+}
+
+bool Radar::isRepeated(const std::unique_ptr<Asteroid>* obj)
+{
+    if (!currentlyDisplayed.empty())
+        for (auto& [shape, adress] : currentlyDisplayed)
+            if (obj == adress)
+                return true;
+    return false;
+}
+
+void Radar::moveTargets()
+{
+    for (auto& [shape, adress] : currentlyDisplayed)
+        shape.setPosition(adress->operator->()->getGlobalBounds().position);
 }
