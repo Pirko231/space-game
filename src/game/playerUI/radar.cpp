@@ -3,14 +3,21 @@
 Radar::Radar() : sprite{util::AssetLoader::get().radar}
 {
     sprite.setScale({0.16f,0.16f});
+
+    p1.setFillColor(sf::Color::Green);
+    p1.setSize({2.f,2.f});
+    p1.setOrigin(p1.getGlobalBounds().getCenter());
+    
+    scale = range / sprite.getGlobalBounds().size.x;
 }
 
 void Radar::update(const Player* player)
 {
     findTargets(player->getCenter());
     removeTargets(player->getCenter());
-    moveTargets();
-    convertCoordinates();
+    //moveTargets();
+    convertCoordinates(player->getCenter());
+    p1.setPosition(sprite.getGlobalBounds().getCenter());
 }
 
 void Radar::findTargets(sf::Vector2f playerPos)
@@ -24,8 +31,7 @@ void Radar::findTargets(sf::Vector2f playerPos)
             //pierwsze wrzucenie do radaru (razem z adresem)
             if (hitbox.findIntersection(i->getGlobalBounds()))
             {
-                sf::RectangleShape shape{{5.f,5.f}};
-                shape.setPosition(i->getGlobalBounds().position);
+                sf::RectangleShape shape{{2.f,2.f}};
                 currentlyDisplayed.push_back({std::move(shape), &i});
             }
         }
@@ -44,10 +50,18 @@ void Radar::removeTargets(sf::Vector2f playerPos)
             
 }
 
-void Radar::convertCoordinates()
+void Radar::convertCoordinates(sf::Vector2f playerPos)
 {
-    sf::Vector2f basePos{sprite.getPosition()};
+    sf::Vector2f basePos{sprite.getGlobalBounds().getCenter()};
+    for (auto& [shape, adress] : currentlyDisplayed)
+    {
+        sf::Vector2f pos{adress->operator->()->getGlobalBounds().position};
+        pos -= playerPos;
+        pos /= scale;
+        pos += basePos;
 
+        shape.setPosition(pos);
+    }
 }
 
 bool Radar::isRepeated(const std::unique_ptr<Asteroid>* obj)
@@ -57,10 +71,4 @@ bool Radar::isRepeated(const std::unique_ptr<Asteroid>* obj)
             if (obj == adress)
                 return true;
     return false;
-}
-
-void Radar::moveTargets()
-{
-    for (auto& [shape, adress] : currentlyDisplayed)
-        shape.setPosition(adress->operator->()->getGlobalBounds().position);
 }
