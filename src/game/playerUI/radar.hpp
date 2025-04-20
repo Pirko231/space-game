@@ -2,7 +2,18 @@
 #include "managers/collisionManager.hpp"
 #include "assetLoader.hpp"
 
-
+class Timer
+{
+public:
+    Timer(int limit) {setLimit(limit);}
+    void setLimit(int limit) {max = limit;}
+    void update() {counter++;}
+    void restart() {counter = 0;}
+    bool hasTimePassed() {return counter >= max;}
+private:
+    int max{};
+    int counter{};
+};
 
 class Radar : private CollisionManager, public sf::Drawable
 {
@@ -20,6 +31,7 @@ private:
     void findTargets(sf::Vector2f playerPos);
     void removeTargets(sf::Vector2f playerPos);
     void convertCoordinates(sf::Vector2f playerPos);
+    void manageP2(sf::Vector2f playerPos);
 
     bool isRepeated(const std::unique_ptr<Asteroid>*);
 
@@ -29,6 +41,7 @@ private:
         for (auto& i : currentlyDisplayed)
             target.draw(i.first, states);
         target.draw(p1, states);
+        target.draw(p2,states);
     }
     sf::Sprite sprite;
     float range{500.f};
@@ -38,6 +51,9 @@ private:
     /// @param std::unique_ptr<Asteroid>* wksaznik do orginalnego obiektu
     std::vector<std::pair<sf::RectangleShape, const std::unique_ptr<Asteroid>*>> currentlyDisplayed;
 
+    Timer timer{240};
+
     sf::RectangleShape p1;
     sf::RectangleShape p2;
+    const Player* p2Pointer{};
 };

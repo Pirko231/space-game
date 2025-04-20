@@ -7,16 +7,28 @@ Radar::Radar() : sprite{util::AssetLoader::get().radar}
     p1.setFillColor(sf::Color::Green);
     p1.setSize({2.f,2.f});
     p1.setOrigin(p1.getGlobalBounds().getCenter());
+
+    p2.setSize({2.f,2.f});
+    p2.setOrigin(p2.getGlobalBounds().getCenter());
+    p2.setFillColor(sf::Color::White);
     
     scale = range / sprite.getGlobalBounds().size.x;
 }
 
 void Radar::update(const Player* player)
 {
+    if (!p2Pointer)
+    {
+        if (player == p1Hitbox)
+            p2Pointer = p2Hitbox;
+        if (player == p2Hitbox)
+            p2Pointer = p1Hitbox;
+    }
+
     findTargets(player->getCenter());
     removeTargets(player->getCenter());
-    //moveTargets();
     convertCoordinates(player->getCenter());
+    manageP2(player->getCenter());
     p1.setPosition(sprite.getGlobalBounds().getCenter());
 }
 
@@ -61,6 +73,23 @@ void Radar::convertCoordinates(sf::Vector2f playerPos)
         pos += basePos;
 
         shape.setPosition(pos);
+    }
+}
+
+void Radar::manageP2(sf::Vector2f playerPos)
+{
+    sf::FloatRect hitbox{{playerPos.x - range / 2.f, playerPos.y - range / 2.f}, {range, range}};
+    sf::Vector2f basePos{sprite.getGlobalBounds().getCenter()};
+
+    if (hitbox.findIntersection(p2Pointer->getGlobalBounds()))
+    {
+        //wyswietlanie drugiego gracza
+        sf::Vector2f p2Pos{p2Pointer->getGlobalBounds().position};
+        p2Pos -= playerPos;
+        p2Pos /= scale;
+        p2Pos += basePos;
+
+        p2.setPosition(p2Pos);
     }
 }
 
