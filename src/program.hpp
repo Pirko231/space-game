@@ -28,9 +28,9 @@ private:
 
     PlayerUI p2UI;
 
-    Map map{1};
+    Map map{util::ConfigLoader::get().mapSize};
 
-    AsteroidManager asteroidManager{400, &map};
+    AsteroidManager asteroidManager{util::ConfigLoader::get().asteroidAmount, &map};
 
     CollisionManager collisionManager;
 private:

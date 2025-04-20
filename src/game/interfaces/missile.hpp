@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <cmath>
 #include "assetLoader.hpp"
+#include "configLoader.hpp"
 
 class Missile : public sf::Drawable
 {

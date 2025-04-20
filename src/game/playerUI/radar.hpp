@@ -44,7 +44,7 @@ private:
         target.draw(p2,states);
     }
     sf::Sprite sprite;
-    float range{500.f};
+    float range{util::ConfigLoader::get().range};
     float scale{};
     /// @brief para obiektow
     /// @param sf::RectangleShape - obiekt na radarze
