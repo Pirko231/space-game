@@ -130,7 +130,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        target.draw(p2,states);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    sf::Sprite sprite;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">float</span> range{500.f};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">float</span> range{util::ConfigLoader::get().range};</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">float</span> scale{};</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    std::vector&lt;std::pair&lt;sf::RectangleShape, const std::unique_ptr&lt;Asteroid&gt;*&gt;&gt; currentlyDisplayed;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
@@ -142,7 +142,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
 </div>
 <div class="ttc" id="aclassCollisionManager_html"><div class="ttname"><a href="classCollisionManager.html">CollisionManager</a></div><div class="ttdoc">przechowuje dane o pozycji pociskow, asteroid i graczy</div><div class="ttdef"><b>Definition</b> collisionManager.hpp:8</div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition</b> player.hpp:11</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition</b> player.hpp:12</div></div>
 <div class="ttc" id="aclassRadar_html"><div class="ttname"><a href="classRadar.html">Radar</a></div><div class="ttdef"><b>Definition</b> radar.hpp:19</div></div>
 <div class="ttc" id="aclassTimer_html"><div class="ttname"><a href="classTimer.html">Timer</a></div><div class="ttdef"><b>Definition</b> radar.hpp:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
