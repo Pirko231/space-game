@@ -9,7 +9,7 @@ public:
 
     void setPosition(sf::Vector2f pos) {sprite.setPosition(pos);}
 
-    void update();
+    void update(const Player* player);
 
     void move(sf::Vector2f offset) {sprite.move(offset);}
 
@@ -17,6 +17,7 @@ public:
 private:
     void findTargets(sf::Vector2f playerPos);
     void removeTargets(sf::Vector2f playerPos);
+    void convertCoordinates();
 
     bool isRepeated(const std::unique_ptr<Asteroid>*);
     void moveTargets();
@@ -28,7 +29,7 @@ private:
             target.draw(i.first, states);
     }
     sf::Sprite sprite;
-    float range{100.f};
+    float range{500.f};
     /// @brief para obiektow
     /// @param sf::RectangleShape - obiekt na radarze
     /// @param std::unique_ptr<Asteroid>* wksaznik do orginalnego obiektu

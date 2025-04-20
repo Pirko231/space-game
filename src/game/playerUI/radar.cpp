@@ -5,11 +5,12 @@ Radar::Radar() : sprite{util::AssetLoader::get().radar}
     sprite.setScale({0.16f,0.16f});
 }
 
-void Radar::update()
+void Radar::update(const Player* player)
 {
-    findTargets(p1Hitbox->getCenter());
-    removeTargets(p1Hitbox->getCenter());
+    findTargets(player->getCenter());
+    removeTargets(player->getCenter());
     moveTargets();
+    convertCoordinates();
 }
 
 void Radar::findTargets(sf::Vector2f playerPos)
@@ -41,6 +42,12 @@ void Radar::removeTargets(sf::Vector2f playerPos)
             i--;
         }
             
+}
+
+void Radar::convertCoordinates()
+{
+    sf::Vector2f basePos{sprite.getPosition()};
+
 }
 
 bool Radar::isRepeated(const std::unique_ptr<Asteroid>* obj)

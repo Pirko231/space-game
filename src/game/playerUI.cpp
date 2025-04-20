@@ -29,7 +29,7 @@ void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
 void PlayerUI::update()
 {
     player.update();
-    radar.update();
+    radar.update(&player);
 
     healthBar.manageHover(sf::Mouse::getPosition());
     energyBar.manageHover(sf::Mouse::getPosition());
