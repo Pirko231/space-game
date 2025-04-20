@@ -26,23 +26,28 @@ public:
 
     ~ConfigLoader()
     {
-        std::fstream file;
-        file.open(filename, std::ios::in | std::ios::out);
-        if (file.is_open())
-        {
-            file << "DANGER - modification of special characters might result in program malfunction. In that case delete this file.\n!--------------Settings--------------!\n";
-            file << 
+        //std::fstream file;
+        //file.open(filename, std::ios::in);
+        std::ofstream stream(filename, std::ios::out | std::ios::app);
+    if (stream.good())
+    {
+        stream << "DANGER - modification of special characters might result in program malfunction. In that case delete this file.\n!--------------Settings--------------!\n";
+            stream << 
                 "Map size:" << mapSize << ";\n" <<
                 "Asteroid amount:" << asteroidAmount << ";\n" <<
                 "Asteroid damage:" << asteroidDamage << ";\n" <<
                 "Ship throttle:" << throttle << ";\n" <<
                 "Radar range:" << range << ";\n" <<
                 "Player health:" << health << ";\n" <<
-                "Player energy" << energy << ";\n" <<
+                "Player energy:" << energy << ";\n" <<
                 "Laser speed:" << laserSpeed << ";\n" <<
                 "Laser damage:" << laserDamage << ";\n";
-        }
-        file.close();
+    }
+    else 
+    {
+        std::cerr << "Couldn't open file\n";
+    }
+    stream.close();
     }
 private:
     ConfigLoader()
