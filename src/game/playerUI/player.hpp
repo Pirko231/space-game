@@ -5,6 +5,7 @@
 #include <cmath>
 #include "pressed.hpp"
 #include "assetLoader.hpp"
+#include "configLoader.hpp"
 #include "../gameObjects/managers/missileManager.hpp"
 
 class Player : public sf::Drawable
@@ -84,12 +85,12 @@ private:
 
     sf::Vector2f moveBy{0.f,0.f};
 
-    float throttle{0.005f};
+    float throttle{util::ConfigLoader::get().throttle};
 
     float maxSpeed{3.5f};
 
-    mutable float health{100.f};
-    mutable float energy{100.f};
+    mutable float health{util::ConfigLoader::get().health};
+    mutable float energy{util::ConfigLoader::get().energy};
 
     sf::Sprite sprite;
 

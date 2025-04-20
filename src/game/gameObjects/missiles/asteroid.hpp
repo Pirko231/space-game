@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "assetLoader.hpp"
+#include "configLoader.hpp"
 
 class Asteroid : public sf::Drawable
 {
@@ -25,6 +26,8 @@ public:
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
 
+    int getDamage() const {return damage;}
+
     void del() {health = 0;}
 
     bool shouldDelete() const {return health <= 0;}
@@ -38,4 +41,5 @@ private:
     sf::Angle rotationPerFrame;
 
     float health{100};
+    int damage{util::ConfigLoader::get().asteroidDamage};
 };

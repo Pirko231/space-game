@@ -23,12 +23,12 @@ void HitChecker::check()
     {
         if (p1Hitbox->getGlobalBounds().findIntersection(aster->getGlobalBounds()))
         {
-            p1Hitbox->damaged(60);
+            p1Hitbox->damaged(aster->getDamage());
             aster->del();
         }
         if (p2Hitbox->getGlobalBounds().findIntersection(aster->getGlobalBounds()))
         {
-            p2Hitbox->damaged(60);
+            p2Hitbox->damaged(aster->getDamage());
             aster->del();
         }
     }
