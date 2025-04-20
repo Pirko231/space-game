@@ -8,7 +8,7 @@ Radar::Radar() : sprite{util::AssetLoader::get().radar}
 void Radar::update()
 {
     findTargets(p1Hitbox->getCenter());
-    //removeTargets(p1Hitbox->getCenter());
+    removeTargets(p1Hitbox->getCenter());
     moveTargets();
 }
 
@@ -34,10 +34,8 @@ void Radar::findTargets(sf::Vector2f playerPos)
 void Radar::removeTargets(sf::Vector2f playerPos)
 {
     sf::FloatRect hitbox{{playerPos.x - range / 2.f, playerPos.y - range / 2.f}, {range, range}};
-    /*for (auto& [shape, pos] : currentlyDisplayed)
-        if (!hitbox.contains(pos))*/
     for (std::size_t i = 0; i < currentlyDisplayed.size(); i++)
-        if (!hitbox.contains(currentlyDisplayed[i].second->operator->()->getGlobalBounds().position))
+        if (!hitbox.findIntersection(currentlyDisplayed[i].second->operator->()->getGlobalBounds()))
         {
             currentlyDisplayed.erase(currentlyDisplayed.begin() + i);
             i--;
