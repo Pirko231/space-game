@@ -1,7 +1,9 @@
 #pragma once
 #include "factories/asteroidFactory.hpp"
 #include "map.hpp"
+#include "timer.hpp"
 
+/// @brief przechowuje asteroidy i sprawdza ich kolizje z mapa
 class AsteroidManager
 {
 public:
@@ -22,4 +24,8 @@ public:
 
 private:
     std::vector<std::unique_ptr<Asteroid>> asteroids;
+
+    const Map* map;
+
+    util::Timer timer{3600};
 };

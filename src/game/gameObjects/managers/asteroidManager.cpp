@@ -1,8 +1,9 @@
 #include "asteroidManager.hpp"
 
-AsteroidManager::AsteroidManager(int amount, const Map* map)
+AsteroidManager::AsteroidManager(int amount, const Map* _map)
 {
     AsteroidFactory factory;
+    map = _map;
     for (int i = 0; i < amount; i++)
     {
         //jedynka na koncu aby uniknac normalizacji wektora 0,0
@@ -23,6 +24,19 @@ AsteroidManager::AsteroidManager(int amount, const Map* map)
 
 void AsteroidManager::update()
 {
+    timer.update();
+    //check kolizji z mapa
+    if (timer.hasTimePassed())
+    {
+        for (auto& i : asteroids)
+        {
+            if (!i->getGlobalBounds().findIntersection(map->getBounds()))
+                i->del();
+        }
+        timer.restart();
+    }
+
+    //ruch i kasowanie
     for (std::size_t i = 0; i < asteroids.size(); i++)
     {
         asteroids[i]->update();

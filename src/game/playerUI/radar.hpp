@@ -2,19 +2,6 @@
 #include "managers/collisionManager.hpp"
 #include "assetLoader.hpp"
 
-class Timer
-{
-public:
-    Timer(int limit) {setLimit(limit);}
-    void setLimit(int limit) {max = limit;}
-    void update() {counter++;}
-    void restart() {counter = 0;}
-    bool hasTimePassed() {return counter >= max;}
-private:
-    int max{};
-    int counter{};
-};
-
 class Radar : private CollisionManager, public sf::Drawable
 {
 public:
@@ -50,8 +37,6 @@ private:
     /// @param sf::RectangleShape - obiekt na radarze
     /// @param std::unique_ptr<Asteroid>* wksaznik do orginalnego obiektu
     std::vector<std::pair<sf::RectangleShape, const std::unique_ptr<Asteroid>*>> currentlyDisplayed;
-
-    Timer timer{240};
 
     sf::RectangleShape p1;
     sf::RectangleShape p2;
