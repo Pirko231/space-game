@@ -20,8 +20,8 @@ Program::Program()
         p2UI.setView(view);
     }
 
-    PlayerKeyBinds p1Binds{sf::Keyboard::Key::W, sf::Keyboard::Key::S, sf::Keyboard::Key::A, sf::Keyboard::Key::D, sf::Keyboard::Key::T, sf::Keyboard::Key::G, sf::Keyboard::Key::F, sf::Keyboard::Key::H, sf::Keyboard::Key::Space};
-    PlayerKeyBinds p2Binds{sf::Keyboard::Key::Up, sf::Keyboard::Key::Down, sf::Keyboard::Key::Left, sf::Keyboard::Key::Right, sf::Keyboard::Key::I, sf::Keyboard::Key::K, sf::Keyboard::Key::J, sf::Keyboard::Key::L, sf::Keyboard::Key::Enter};
+    PlayerKeyBinds p1Binds{sf::Keyboard::Key::W, sf::Keyboard::Key::S, sf::Keyboard::Key::A, sf::Keyboard::Key::D, sf::Keyboard::Key::T, sf::Keyboard::Key::G, sf::Keyboard::Key::F, sf::Keyboard::Key::H, sf::Keyboard::Key::Space, sf::Keyboard::Key::C};
+    PlayerKeyBinds p2Binds{sf::Keyboard::Key::Up, sf::Keyboard::Key::Down, sf::Keyboard::Key::Left, sf::Keyboard::Key::Right, sf::Keyboard::Key::I, sf::Keyboard::Key::K, sf::Keyboard::Key::J, sf::Keyboard::Key::L, sf::Keyboard::Key::Enter, sf::Keyboard::Key::Comma};
 
     p1UI.setPlayerPos(map.getRandomPoint()).setKeyBinds(p1Binds).setMap(&map).setTexture(util::AssetLoader::get().ship1);
     p2UI.setPlayerPos(map.getRandomPoint()).setKeyBinds(p2Binds).setMap(&map).setTexture(util::AssetLoader::get().ship2);

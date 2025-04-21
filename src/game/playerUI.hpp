@@ -5,6 +5,7 @@
 #include "assetLoader.hpp"
 #include "map.hpp"
 #include "radar.hpp"
+#include "shield.hpp"
 
 /// @brief przechowuje interfejs gracza, czyli paski zycia, celownik i radar
 class PlayerUI
@@ -78,6 +79,8 @@ private:
     sf::Sprite crosshairShip;
 
     Radar radar;
+
+    Shield shield;
 
     static constexpr float crosshairShipSpeed{0.02f};
 

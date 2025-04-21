@@ -21,15 +21,34 @@ void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
 
     crosshairHandleEvents(ev);
 
+    if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
+    {
+        if (keyPressed->code == keyBinds.shield)
+            pressed.shield = true;
+        
+    }
+    
     if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
+    {
         if (keyReleased->code == keyBinds.shoot)
             player.shoot(LaserFactory{}.get(), crosshairShip.getPosition());
+
+        if (keyReleased->code == keyBinds.shield)
+            pressed.shield = false;
+    }
+
 }
 
 void PlayerUI::update()
 {
     player.update();
     radar.update(&player);
+    shield.setPosition(player.getCenter());
+
+    if (pressed.shield)
+        shield.activate(true);
+    else
+        shield.activate(false);
 
     healthBar.manageHover(sf::Mouse::getPosition());
     energyBar.manageHover(sf::Mouse::getPosition());
@@ -54,6 +73,8 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(player);
     window->draw(*player2);
     window->draw(radar);
+    if (shield.isActive())
+        window->draw(shield);
 
     for (auto& i : player.getMissileManager()->getMissiles())
         window->draw(*i);
