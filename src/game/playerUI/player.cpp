@@ -1,7 +1,7 @@
 #include "player.hpp"
 
-Player::Player(const sf::Texture& texture, Pressed& _pressed)
-: sprite{texture}, turret{util::AssetLoader::get().turret}, pressed{_pressed}
+Player::Player(const sf::Texture& texture, Pressed& _pressed, Shield& _shield)
+: sprite{texture}, turret{util::AssetLoader::get().turret}, pressed{_pressed}, shield{_shield}
 {   
     sprite.setOrigin(sprite.getGlobalBounds().getCenter());
     turret.setTexture(util::AssetLoader::get().turret);
@@ -21,8 +21,8 @@ Player::Player(const sf::Texture& texture, Pressed& _pressed)
 #endif
 }
 
-Player::Player(const sf::Texture &texture, const PlayerKeyBinds &keyBinds, Pressed& _pressed)
-: Player{texture, _pressed}
+Player::Player(const sf::Texture &texture, const PlayerKeyBinds &keyBinds, Pressed& _pressed, Shield& _shield)
+: Player{texture, _pressed, _shield}
 {
     setTexture(texture);
 
@@ -101,6 +101,9 @@ void Player::update()
         moveBy.x = -maxSpeed;
 
     move(moveBy);
+
+    if (shield.isActive())
+        energy -= shield.getEnergyUse();
     
     if (energy <= 100.f)
         energy += 0.05f;
