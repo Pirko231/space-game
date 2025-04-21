@@ -118,35 +118,39 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    sf::Texture scanner;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    sf::Texture asteroids[3];</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_struct" href="structutil_1_1AssetLoader.html">AssetLoader</a>();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
-</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    sf::Texture shield;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_struct" href="structutil_1_1AssetLoader.html">AssetLoader</a>();</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
+</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">inline</span> util::AssetLoader::AssetLoader()</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    background.loadFromFile(<span class="stringliteral">&quot;resources/textures/gameBackground.png&quot;</span>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    font.openFromFile(<span class="stringliteral">&quot;resources/fonts/defaultFont.ttf&quot;</span>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">inline</span> util::AssetLoader::AssetLoader()</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    background.loadFromFile(<span class="stringliteral">&quot;resources/textures/gameBackground.png&quot;</span>);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    ship1.loadFromFile(<span class="stringliteral">&quot;resources/textures/Spaceship_tut.png&quot;</span>);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    ship2.loadFromFile(<span class="stringliteral">&quot;resources/textures/Spaceship_tut_thin.png&quot;</span>);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    pCrosshair.loadFromFile(<span class="stringliteral">&quot;resources/textures/crosshair108.png&quot;</span>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    sCrosshair.loadFromFile(<span class="stringliteral">&quot;resources/textures/crosshair111.png&quot;</span>);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    radar.loadFromFile(<span class="stringliteral">&quot;resources/textures/radar.png&quot;</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    font.openFromFile(<span class="stringliteral">&quot;resources/fonts/defaultFont.ttf&quot;</span>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    ship1.loadFromFile(<span class="stringliteral">&quot;resources/textures/Spaceship_tut.png&quot;</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    ship2.loadFromFile(<span class="stringliteral">&quot;resources/textures/Spaceship_tut_thin.png&quot;</span>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    pCrosshair.loadFromFile(<span class="stringliteral">&quot;resources/textures/crosshair108.png&quot;</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    sCrosshair.loadFromFile(<span class="stringliteral">&quot;resources/textures/crosshair111.png&quot;</span>);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    laser.loadFromFile(<span class="stringliteral">&quot;resources/textures/laser.png&quot;</span>);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    rocket.loadFromFile(<span class="stringliteral">&quot;resources/textures/rocket.png&quot;</span>);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    scanner.loadFromFile(<span class="stringliteral">&quot;resources/textures/scanner.png&quot;</span>);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    asteroids[0].loadFromFile(<span class="stringliteral">&quot;resources/textures/asteroid.png&quot;</span>);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    asteroids[1].loadFromFile(<span class="stringliteral">&quot;resources/textures/asteroid.png&quot;</span>);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    asteroids[2].loadFromFile(<span class="stringliteral">&quot;resources/textures/asteroid.png&quot;</span>);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    radar.loadFromFile(<span class="stringliteral">&quot;resources/textures/radar.png&quot;</span>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    laser.loadFromFile(<span class="stringliteral">&quot;resources/textures/laser.png&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    rocket.loadFromFile(<span class="stringliteral">&quot;resources/textures/rocket.png&quot;</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    scanner.loadFromFile(<span class="stringliteral">&quot;resources/textures/scanner.png&quot;</span>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    asteroids[0].loadFromFile(<span class="stringliteral">&quot;resources/textures/asteroid.png&quot;</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    asteroids[1].loadFromFile(<span class="stringliteral">&quot;resources/textures/asteroid.png&quot;</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    asteroids[2].loadFromFile(<span class="stringliteral">&quot;resources/textures/asteroid.png&quot;</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    shield.loadFromFile(<span class="stringliteral">&quot;resources/textures/shield.png&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
 <div class="ttc" id="astructutil_1_1AssetLoader_html"><div class="ttname"><a href="structutil_1_1AssetLoader.html">util::AssetLoader</a></div><div class="ttdef"><b>Definition</b> assetLoader.hpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
