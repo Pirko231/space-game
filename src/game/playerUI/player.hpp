@@ -8,6 +8,7 @@
 #include "configLoader.hpp"
 #include "shield.hpp"
 #include "../gameObjects/managers/missileManager.hpp"
+#include "map.hpp"
 
 class Player : public sf::Drawable
 {
@@ -72,6 +73,8 @@ public:
 
     float* getHealth() const {return &health;}
     float* getEnergy() const {return &energy;}
+
+    bool checkMapCollisions(Map* map);
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {

@@ -113,6 +113,41 @@ void Player::update()
     missileManager.update();
 }
 
+bool Player::checkMapCollisions(Map *map)
+{
+    sf::Vector2f playerPos{getPosition()};
+    sf::FloatRect mapBounds{map->getBounds()};
+    sf::Vector2f hitboxOffset{view->getSize()};
+    bool collisionFound{};
+
+    if (playerPos.x < 0)
+    {
+        setPosition({0.f, playerPos.y});
+        moveBy.x = 0.f;
+        collisionFound = true;
+    }
+    if (playerPos.x > mapBounds.size.x)
+    {
+        setPosition({mapBounds.size.x, playerPos.y});
+        moveBy.x = 0.f;
+        collisionFound = true;
+    }
+    if (playerPos.y < 0)
+    {
+        setPosition({playerPos.x, 0.f});
+        moveBy.y = 0.f;
+        collisionFound = true;
+    }
+    if (playerPos.y > mapBounds.size.y)
+    {
+        setPosition({playerPos.x, mapBounds.size.y});
+        moveBy.y = 0.f;
+        collisionFound = true;
+    }
+
+    return collisionFound;
+}
+
 sf::Angle Player::spinTurret()
 {
     //sf::Vector2f vector{crosshairShip.getPosition().x - turret.getPosition().x,turret.getPosition().y - crosshairShip.getPosition().y};

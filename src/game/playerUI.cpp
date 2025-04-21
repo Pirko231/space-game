@@ -42,6 +42,7 @@ void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
 void PlayerUI::update()
 {
     player.update();
+    player.checkMapCollisions(background);
     radar.update(&player);
     shield.setPosition(player.getCenter());
 
