@@ -34,6 +34,8 @@ struct AssetLoader
     sf::Texture scanner;
 
     sf::Texture asteroids[3];
+
+    sf::Texture shield;
 private:
     AssetLoader();
 };
@@ -61,4 +63,6 @@ inline util::AssetLoader::AssetLoader()
     asteroids[0].loadFromFile("resources/textures/asteroid.png");
     asteroids[1].loadFromFile("resources/textures/asteroid.png");
     asteroids[2].loadFromFile("resources/textures/asteroid.png");
+
+    shield.loadFromFile("resources/textures/shield.png");
 }
