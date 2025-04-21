@@ -6,13 +6,14 @@
 #include "pressed.hpp"
 #include "assetLoader.hpp"
 #include "configLoader.hpp"
+#include "shield.hpp"
 #include "../gameObjects/managers/missileManager.hpp"
 
 class Player : public sf::Drawable
 {
 public:
-    Player(const sf::Texture& texture, Pressed&);
-    Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds, Pressed& _pressed);
+    Player(const sf::Texture& texture, Pressed&, Shield&);
+    Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds, Pressed& _pressed, Shield& _shield);
     
     void handleEvents(const std::optional<sf::Event>& ev);
 
@@ -43,7 +44,12 @@ public:
         return sprite.getGlobalBounds().getCenter();
     }
 
-    void damaged(int damage) const {health -= damage;}
+    void damaged(int damage) const
+    {
+        if (shield.isActive())
+            (damage - shield.getDamageResistance() < 0) ? (damage = 1) : (damage -= shield.getDamageResistance());
+        health -= damage;
+    }
 
     void shoot(IMissileFactory& factoryType, sf::Vector2f crosshairPos)
     {
@@ -99,6 +105,8 @@ private:
     PlayerKeyBinds keyBinds;
 
     Pressed& pressed;
+
+    Shield& shield;
 
     #if DEVINFO
 public:

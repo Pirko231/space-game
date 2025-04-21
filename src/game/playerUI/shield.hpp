@@ -23,6 +23,6 @@ private:
         target.draw(sprite, states);
     }
     int protection{10};
-    float energyUse{5.f};
+    float energyUse{0.5f};
     bool active{};
 };

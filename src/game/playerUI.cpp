@@ -3,7 +3,7 @@
 sf::RenderWindow* PlayerUI::window {nullptr};
 
 PlayerUI::PlayerUI()
-: player{util::AssetLoader::get().ship1, pressed}, healthBar{player.getHealth()}, energyBar{player.getEnergy()},
+: player{util::AssetLoader::get().ship1, pressed, shield}, healthBar{player.getHealth()}, energyBar{player.getEnergy()},
   crosshairPlayer{util::AssetLoader::get().pCrosshair}, crosshairShip{util::AssetLoader::get().sCrosshair}
 {
     player.setView(&view);
