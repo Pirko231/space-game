@@ -1,25 +1,54 @@
 #include "missilePicker.hpp"
 
-MissilePicker::MissilePicker() : background{3}
+MissilePicker::MissilePicker()
+    : spritesArr{new sf::RectangleShape[amount]}, sprites{spritesArr, amount}, missiles{missileTextures}
 {
+    for (int i = 0; i < sprites.size(); i++)
+    {
+        sprites[i].setOutlineThickness(defaultThickness);
+        sprites[i].setOutlineColor(sf::Color::White);
+        sprites[i].setFillColor(sf::Color{0, 0, 0, 0});
+        sprites[i].setSize({10.f, 10.f});
+    }
+    for (auto &i : missiles)
+        i.setOrigin(i.getGlobalBounds().getCenter());
+    missiles[0].setScale({0.2f, 0.2f});
+    missiles[1].setScale({0.2f, 0.2f});
+    missiles[2].setScale({0.2f, 0.2f});
+
+    sprites[0].setOutlineThickness(underlinedThickness);
 }
 
-void MissilePicker::update()
+void MissilePicker::setPosition(sf::Vector2f pos)
 {
+    for (auto &i : sprites)
+    {
+        i.setPosition(pos);
+        pos.x += i.getGlobalBounds().size.x;
+    }
+    // pos.x -= 3 * sprites.begin()->getGlobalBounds().size.x;
+    for (std::size_t i = 0; i < missiles.size(); i++)
+    {
+        missiles[i].setPosition(sprites[i].getGlobalBounds().getCenter());
+    }
 }
 
 void MissilePicker::right()
 {
-    if (current < amount - 1)
-        current++;
+    sprites[currentFactory].setOutlineThickness(defaultThickness);
+    if (currentFactory < amount - 1)
+        currentFactory++;
     else
-        current = 0;
+        currentFactory = 0;
+    sprites[currentFactory].setOutlineThickness(underlinedThickness);
 }
 
 void MissilePicker::left()
 {
-    if (current > 0)
-        current--;
+    sprites[currentFactory].setOutlineThickness(defaultThickness);
+    if (currentFactory > 0)
+        currentFactory--;
     else
-        current = amount - 1;
+        currentFactory = amount - 1;
+    sprites[currentFactory].setOutlineThickness(underlinedThickness);
 }
