@@ -64,7 +64,8 @@ void Player::update()
         shield.activate(true);
     else
         shield.activate(false);
-    
+        if (shield.isActive())
+        window->draw(shield);
     //ruch
     if (pressed.w && moveBy.y > -maxSpeed)
     {
