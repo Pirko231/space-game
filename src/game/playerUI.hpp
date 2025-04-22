@@ -6,6 +6,7 @@
 #include "map.hpp"
 #include "radar.hpp"
 #include "shield.hpp"
+#include "missilePicker.hpp"
 
 /// @brief przechowuje interfejs gracza, czyli paski zycia, celownik i radar
 class PlayerUI
@@ -28,6 +29,8 @@ public:
     PlayerUI& setPlayerPos(sf::Vector2f playerPos)
     {
         player.setPosition(playerPos);
+
+        missilePicker.setPosition({playerPos.x - view.getSize().x / 6.f, playerPos.y - view.getSize().y / 2.2f});
         
         healthBar.setPosition({playerPos.x - view.getSize().x / 4.f, playerPos.y + view.getSize().y / 2.5f});
         energyBar.setPosition({playerPos.x - view.getSize().x / 4.f, playerPos.y + view.getSize().y / 3.2f});
@@ -81,6 +84,8 @@ private:
     Radar radar;
 
     Shield shield;
+
+    MissilePicker missilePicker;
 
     static constexpr float crosshairShipSpeed{0.02f};
 
