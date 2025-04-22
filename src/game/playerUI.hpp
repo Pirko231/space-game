@@ -83,8 +83,6 @@ private:
 
     Radar radar;
 
-    Shield shield;
-
     MissilePicker missilePicker;
 
     static constexpr float crosshairShipSpeed{0.02f};

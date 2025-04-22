@@ -1,7 +1,7 @@
 #include "player.hpp"
 
-Player::Player(const sf::Texture& texture, Pressed& _pressed, Shield& _shield)
-: sprite{texture}, turret{util::AssetLoader::get().turret}, pressed{_pressed}, shield{_shield}
+Player::Player(const sf::Texture& texture, Pressed& _pressed)
+: sprite{texture}, turret{util::AssetLoader::get().turret}, pressed{_pressed}
 {   
     sprite.setOrigin(sprite.getGlobalBounds().getCenter());
     turret.setTexture(util::AssetLoader::get().turret);
@@ -21,8 +21,8 @@ Player::Player(const sf::Texture& texture, Pressed& _pressed, Shield& _shield)
 #endif
 }
 
-Player::Player(const sf::Texture &texture, const PlayerKeyBinds &keyBinds, Pressed& _pressed, Shield& _shield)
-: Player{texture, _pressed, _shield}
+Player::Player(const sf::Texture &texture, const PlayerKeyBinds &keyBinds, Pressed& _pressed)
+: Player{texture, _pressed}
 {
     setTexture(texture);
 
@@ -58,6 +58,14 @@ void Player::handleEvents(const std::optional<sf::Event>& ev)
 
 void Player::update()
 {
+    //tarcza
+    shield.setPosition(getCenter());
+    if (pressed.shield && energy >= shield.getEnergyUse())
+        shield.activate(true);
+    else
+        shield.activate(false);
+    
+    //ruch
     if (pressed.w && moveBy.y > -maxSpeed)
     {
         sf::Vector2f add{0.f, -throttle};
