@@ -45,6 +45,7 @@ add_executable(main
     src/game/playerUI/player.cpp
     src/game/playerUI/bar.cpp
     src/game/playerUI/radar.cpp
+    src/game/playerUI/missilePicker.cpp
     src/game/playerUI.cpp
 
     src/game/gameObjects/managers/asteroidManager.cpp

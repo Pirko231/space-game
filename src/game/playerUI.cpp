@@ -58,6 +58,7 @@ void PlayerUI::update()
     energyBar.move(player.getMoveBy());
 
     radar.move(player.getMoveBy());
+    missilePicker.move(player.getMoveBy());
 
     crosshairPlayer.move(player.getMoveBy());
     crosshairShip.move(player.getMoveBy());
@@ -76,6 +77,7 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(radar);
     if (shield.isActive())
         window->draw(shield);
+    window->draw(missilePicker);
 
     for (auto& i : player.getMissileManager()->getMissiles())
         window->draw(*i);
