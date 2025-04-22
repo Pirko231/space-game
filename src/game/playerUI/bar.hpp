@@ -3,7 +3,7 @@
 class Bar : public sf::Drawable
 {
 public:
-    Bar(float*);
+    Bar(float*, int min = 0, int max = 100);
     Bar(sf::Vector2f pos, sf::Vector2f size, float *linkedValue, sf::Color outlineColor = sf::Color::Black);
 
     void setPosition(sf::Vector2f pos);
