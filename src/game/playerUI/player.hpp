@@ -13,8 +13,8 @@
 class Player : public sf::Drawable
 {
 public:
-    Player(const sf::Texture& texture, Pressed&, Shield&);
-    Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds, Pressed& _pressed, Shield& _shield);
+    Player(const sf::Texture& texture, Pressed&);
+    Player(const sf::Texture &texture, const PlayerKeyBinds& keyBinds, Pressed& _pressed);
     
     void handleEvents(const std::optional<sf::Event>& ev);
 
@@ -80,6 +80,8 @@ private:
     {
         target.draw(sprite, states);
         target.draw(turret, states);
+        if (shield.isActive())
+            target.draw(shield, states);
     }
 
     const sf::View* view;
@@ -109,7 +111,7 @@ private:
 
     Pressed& pressed;
 
-    Shield& shield;
+    Shield shield;
 
     #if DEVINFO
 public:

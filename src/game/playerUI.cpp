@@ -3,7 +3,7 @@
 sf::RenderWindow* PlayerUI::window {nullptr};
 
 PlayerUI::PlayerUI()
-: player{util::AssetLoader::get().ship1, pressed, shield}, healthBar{player.getHealth(), 0, static_cast<int>(*player.getHealth())}, energyBar{player.getEnergy(), 0, static_cast<int>(*player.getEnergy())},
+: player{util::AssetLoader::get().ship1, pressed}, healthBar{player.getHealth(), 0, static_cast<int>(*player.getHealth())}, energyBar{player.getEnergy(), 0, static_cast<int>(*player.getEnergy())},
   crosshairPlayer{util::AssetLoader::get().pCrosshair}, crosshairShip{util::AssetLoader::get().sCrosshair}
 {
     player.setView(&view);
@@ -49,12 +49,6 @@ void PlayerUI::update()
     player.update();
     player.checkMapCollisions(background);
     radar.update(&player);
-    shield.setPosition(player.getCenter());
-
-    if (pressed.shield)
-        shield.activate(true);
-    else
-        shield.activate(false);
 
     healthBar.manageHover(sf::Mouse::getPosition());
     energyBar.manageHover(sf::Mouse::getPosition());
@@ -80,8 +74,6 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(player);
     window->draw(*player2);
     window->draw(radar);
-    if (shield.isActive())
-        window->draw(shield);
     window->draw(missilePicker);
 
     for (auto& i : player.getMissileManager()->getMissiles())
