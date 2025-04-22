@@ -1,7 +1,7 @@
 #include "bar.hpp"
 #include <algorithm>
 
-Bar::Bar(float* linkedValue) : minValue{0}, maxValue{100}, linkedValue{linkedValue}
+Bar::Bar(float* linkedValue, int min, int max) : minValue{min}, maxValue{max}, linkedValue{linkedValue}
 {
     backgroundBar.setPosition({0.f,0.f});
     backgroundBar.setSize({60.f,10.f});

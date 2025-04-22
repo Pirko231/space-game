@@ -55,11 +55,18 @@ void Radar::removeTargets(sf::Vector2f playerPos)
     sf::FloatRect hitbox{{playerPos.x - range / 2.f, playerPos.y - range / 2.f}, {range, range}};
     for (std::size_t i = 0; i < currentlyDisplayed.size(); i++)
         if (currentlyDisplayed[i].second->get())
+        {
             if (!hitbox.findIntersection(currentlyDisplayed[i].second->operator->()->getGlobalBounds()))
             {
                 currentlyDisplayed.erase(currentlyDisplayed.begin() + i);
                 i--;
             }
+        }
+        else
+        {
+            currentlyDisplayed.erase(currentlyDisplayed.begin() + i);
+            i--;
+        }
             
 }
 
