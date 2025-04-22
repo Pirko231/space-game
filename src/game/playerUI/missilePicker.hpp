@@ -2,6 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include <span>
 #include "missileFactory.hpp"
+#include "factories/laserFactory.hpp"
+#include "factories/rocketFactory.hpp"
+#include "factories/scannerFactory.hpp"
 
 struct Background : public sf::Drawable
 {
@@ -44,11 +47,22 @@ public:
     void update();
     void setPosition(sf::Vector2f pos) {background.setPosition(pos);}
     void move(sf::Vector2f offset) {background.setPosition(background.getPosition() + offset);}
+
+    void right();
+    void left();
+
+    IMissileFactory& getCurrentMissile() {return *factories[current];}
 private:
     static constexpr int amount{3};
+    int current{};
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
         target.draw(background, states);
     }
     Background background;
+
+    LaserFactory laserFactory;
+    RocketFactory rocketFactory;
+    ScannerFactory scannerFactory;
+    IMissileFactory* factories[amount]{&laserFactory, &rocketFactory, &scannerFactory};
 };
