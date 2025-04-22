@@ -6,6 +6,7 @@ struct Pressed
     bool upCross{false}, downCross{false}, leftCross{false}, rightCross{false};
     bool shoot{false}, shield{false};
     bool space{false}, tab{false}, lShift{false}, rShift{false};
+    bool weaponLeft{false}, weaponRight{false};
 };
 
 struct PlayerKeyBinds
@@ -13,4 +14,5 @@ struct PlayerKeyBinds
     sf::Keyboard::Key up, down, left, right;
     sf::Keyboard::Key crossUp, crossDown, crossLeft, crossRight;
     sf::Keyboard::Key shoot, shield;
+    sf::Keyboard::Key weaponLeft, weaponRight;
 };
