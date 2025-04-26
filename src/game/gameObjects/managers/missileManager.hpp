@@ -18,6 +18,9 @@ public:
 
     const std::vector<std::unique_ptr<Missile>>& getMissiles() const {return missiles;}
 
+    const std::optional<Rocket*>& getRocket() const {return rocket;}
+
 private:
     std::vector<std::unique_ptr<Missile>> missiles;
+    std::optional<Rocket*> rocket;
 };

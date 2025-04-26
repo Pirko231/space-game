@@ -10,6 +10,7 @@ public:
         damage = 50;
         sprite.setScale({0.4f,0.4f});
         launch(pos,moveBy);
+        moveBy *= 50.f;
     }
     static bool shouldInit() {static bool initted{false}; if (!initted) {initted = true;  return true;} return false;}
     static void init();

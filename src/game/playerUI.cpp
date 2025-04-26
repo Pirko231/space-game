@@ -68,7 +68,10 @@ void PlayerUI::update()
 
 void PlayerUI::display(sf::RenderWindow *window)
 {
-    view.setCenter(player.getGlobalBounds().getCenter());
+    if (player.getMissileManager()->getRocket().has_value())
+        view.setCenter(player.getMissileManager()->getRocket().value()->getGlobalBounds().getCenter());
+    else
+        view.setCenter(player.getGlobalBounds().getCenter());
     window->setView(view);
     window->draw(*background);
     window->draw(player);

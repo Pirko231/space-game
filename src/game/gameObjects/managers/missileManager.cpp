@@ -8,6 +8,23 @@ bool MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
         return false;
     
     missiles.push_back(factoryType.create(pos, dir));
+
+    if (dynamic_cast<Rocket*>((missiles.end() - 1)->get()))
+        rocket.emplace(static_cast<Rocket*>((missiles.end() - 1)->get()));
+    
+    //rocket.emplace(static_cast<Rocket*>((missiles.end() - 1)));
+    /*try
+    {
+        //dynamic_cast<RocketFactory&>(factoryType);
+        rocket.emplace(dynamic_cast<Rocket*>(missiles.end()->get()));
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }*/
+    
+    //if (dynamic_cast<RocketFactory&>(factoryType))
+        //rocket.emplace(static_cast<Rocket*>(missiles.end()->get()));
     return true;
 }
 
