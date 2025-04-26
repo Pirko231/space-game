@@ -14,10 +14,10 @@ public:
     static bool shouldInit() {static bool initted{false}; if (!initted) {initted = true;  return true;} return false;}
     static void init();
 
-    void handleEvents(const std::optional<sf::Event>& ev) override;
+    void handleEvents(const Pressed& pressed) override;
     void update();
     void display();
 private:
     sf::Angle rotationSpeed{sf::degrees(2.5f)};
-    Pressed pressed;
+    const Pressed* pressed;
 };

@@ -43,10 +43,10 @@ bool MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
     return true;
 }
 
-void MissileManager::handleEvents(const std::optional<sf::Event>& ev)
+void MissileManager::handleEvents(const Pressed& pressed)
 {
     for (auto& i : missiles)
-        i->handleEvents(ev);
+        i->handleEvents(pressed);
 }
 
 void MissileManager::update()
