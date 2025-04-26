@@ -18,11 +18,16 @@ public:
     int asteroidAmount{100};
     int asteroidDamage{30};
     float throttle{0.005f};
-    float range{500.f};
+    float range{2000.f};
     float health{100.f};
     float energy{100.f};
     float laserSpeed{3.f};
     int laserDamage{10};
+    float rocketSpeed{4.f};
+    int rocketDamage{50};
+    sf::Angle rocketRotationSpeed{sf::degrees(3.f)};
+    int rocketCooldown{10};
+    float rocketLifetime{800.f};
 
     ~ConfigLoader()
     {
@@ -41,7 +46,12 @@ public:
                 "Player health:" << health << ";\n" <<
                 "Player energy:" << energy << ";\n" <<
                 "Laser speed:" << laserSpeed << ";\n" <<
-                "Laser damage:" << laserDamage << ";\n";
+                "Laser damage:" << laserDamage << ";\n" <<
+                "Rocket speed: " << rocketSpeed << ";\n" <<
+                "Rocket damage: " << rocketDamage << ";\n" <<
+                "Rocket rotation speed: " << rocketRotationSpeed.asDegrees() << ";\n" <<
+                "Rocket cooldown: " << rocketCooldown << ";\n" <<
+                "Rocket lifetime: " << rocketLifetime << ";\n";
     }
     else 
     {
@@ -148,6 +158,57 @@ private:
             {
                 std::cerr << e.what();
             }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                rocketSpeed = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                rocketDamage = std::stoi(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                rocketRotationSpeed = sf::degrees(std::stof(data));
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                rocketCooldown = std::stoi(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                rocketLifetime = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+
             file.close();
         }
         else

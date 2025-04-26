@@ -26,5 +26,5 @@ public:
 private:
     std::vector<std::unique_ptr<Missile>> missiles;
     std::optional<Rocket*> rocket;
-    util::Timer rocketTimer{util::secondsToFrames(10)};
+    util::Timer rocketTimer{util::secondsToFrames(util::ConfigLoader::get().rocketCooldown)};
 };
