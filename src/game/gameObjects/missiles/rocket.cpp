@@ -4,9 +4,10 @@ void Rocket::init()
 {
 }
 
-void Rocket::handleEvents(const std::optional<sf::Event>& ev)
+void Rocket::handleEvents(const Pressed& _pressed)
 {
-    if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
+    pressed = &_pressed;
+    /*if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
     {
         if (keyPressed->code == sf::Keyboard::Key::A)
         {
@@ -27,19 +28,19 @@ void Rocket::handleEvents(const std::optional<sf::Event>& ev)
         {
             pressed.d = false;
         }
-    }
+    }*/
 }
 
 void Rocket::update()
 {
     sprite.move(moveBy);
 
-    if (pressed.a)
+    if (pressed->a)
     {
         sprite.rotate(-rotationSpeed);
         moveBy = moveBy.rotatedBy(-rotationSpeed);
     }
-    if (pressed.d)
+    if (pressed->d)
     {
         sprite.rotate(rotationSpeed);
         moveBy = moveBy.rotatedBy(rotationSpeed);
