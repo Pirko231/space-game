@@ -84,18 +84,21 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(player);
     window->draw(*player2);
     window->draw(radar);
-    window->draw(missilePicker);
+    if (!player.getMissileManager()->getRocket().has_value())
+        window->draw(missilePicker);
 
     for (auto& i : player.getMissileManager()->getMissiles())
         window->draw(*i);
     for (auto& i : player2->getMissileManager()->getMissiles())
         window->draw(*i);
 
-    
-    window->draw(crosshairPlayer);
-    window->draw(crosshairShip);
-    window->draw(healthBar);
-    window->draw(energyBar);
+    if (!player.getMissileManager()->getRocket().has_value())
+    {
+        window->draw(crosshairPlayer);
+        window->draw(crosshairShip);
+        window->draw(healthBar);
+        window->draw(energyBar);
+    }
 }
 
 void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event>& ev)
