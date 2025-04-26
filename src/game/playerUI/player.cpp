@@ -59,6 +59,7 @@ void Player::handleEvents(const std::optional<sf::Event>& ev)
 
 void Player::update()
 {
+    missileManager.update(&rocketRecentlyDeleted);
     
     //tarcza
     shield.setPosition(getCenter());
@@ -66,6 +67,11 @@ void Player::update()
         shield.activate(true);
     else
         shield.activate(false);
+    
+    //kiedy jest rakieta to nie aktualizujemy gracza
+    if (missileManager.getRocket().has_value())
+        return;
+    
     //ruch
     if (pressed.w && moveBy.y > -maxSpeed)
     {
@@ -118,8 +124,6 @@ void Player::update()
         energy += 0.05f;
 
     turret.setRotation(spinTurret());
-
-    missileManager.update(&rocketRecentlyDeleted);
 }
 
 bool Player::checkMapCollisions(Map *map)
