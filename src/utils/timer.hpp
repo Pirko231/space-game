@@ -16,4 +16,10 @@ private:
     int counter{};
 };
 
+/// @brief przelicza sekundy na ilosc klatek
+inline int secondsToFrames(int seconds)
+{
+    return seconds * 60.f;
+}
+
 };
