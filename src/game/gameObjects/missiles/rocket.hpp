@@ -5,7 +5,7 @@ class Rocket : public Missile
 {
 public:
     Rocket(sf::Vector2f pos, sf::Vector2f moveBy)
-    : Missile{800.f, 5.f, 50, util::AssetLoader::get().rocket} 
+    : Missile{800.f, 4.f, 50, util::AssetLoader::get().rocket} 
     {
         damage = 50;
         sprite.setScale({0.4f,0.4f});
@@ -18,5 +18,6 @@ public:
     void update();
     void display();
 private:
-    sf::Angle rotationSpeed{sf::degrees(0.5f)};
+    sf::Angle rotationSpeed{sf::degrees(2.5f)};
+    Pressed pressed;
 };

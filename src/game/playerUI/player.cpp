@@ -54,6 +54,7 @@ void Player::handleEvents(const std::optional<sf::Event>& ev)
         if (keyReleased->code == keyBinds.right)
             pressed.d = false;
     }
+    missileManager.handleEvents(ev);
 }
 
 void Player::update()
