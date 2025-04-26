@@ -12,6 +12,8 @@ bool MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
         try
         {
             dynamic_cast<RocketFactory &>(factoryType);
+            if (rocket.has_value())
+                rocket.value()->del();
             return false;
         }
         catch (const std::exception &e)
