@@ -5,12 +5,11 @@ class Rocket : public Missile
 {
 public:
     Rocket(sf::Vector2f pos, sf::Vector2f moveBy)
-    : Missile{800.f, 1.f, 50, util::AssetLoader::get().rocket} 
+    : Missile{800.f, 5.f, 50, util::AssetLoader::get().rocket} 
     {
         damage = 50;
         sprite.setScale({0.4f,0.4f});
         launch(pos,moveBy);
-        moveBy *= 50.f;
     }
     static bool shouldInit() {static bool initted{false}; if (!initted) {initted = true;  return true;} return false;}
     static void init();

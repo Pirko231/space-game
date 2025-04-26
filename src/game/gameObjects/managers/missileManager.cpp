@@ -35,6 +35,8 @@ void MissileManager::update()
         missiles[i]->update();
         if (missiles[i]->shouldDelete())
         {
+            if (rocket.has_value() && dynamic_cast<Rocket*>(missiles[i].get()))
+                rocket.reset();
             missiles.erase(missiles.begin() + i);
             i--;
         }
