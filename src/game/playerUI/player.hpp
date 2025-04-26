@@ -65,7 +65,12 @@ public:
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
 
-    sf::Vector2f getMoveBy() const {return moveBy;}
+    sf::Vector2f getMoveBy() const
+    {
+        if (!missileManager.getRocket().has_value())
+            return moveBy;
+        return missileManager.getRocket().value()->getMoveBy();
+    }
 
     const MissileManager* getMissileManager() const {return &missileManager;}
 

@@ -48,7 +48,11 @@ void PlayerUI::update()
 {
     player.update();
     player.checkMapCollisions(background);
-    radar.update(&player);
+    if (player.getMissileManager()->getRocket().has_value())
+        radar.update(&player, player.getMissileManager()->getRocket().value()->getGlobalBounds().getCenter());
+    else
+        radar.update(&player);
+    
 
     healthBar.manageHover(sf::Mouse::getPosition());
     energyBar.manageHover(sf::Mouse::getPosition());
