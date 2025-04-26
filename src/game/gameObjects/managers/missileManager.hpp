@@ -2,6 +2,7 @@
 #include "factories/laserFactory.hpp"
 #include "factories/rocketFactory.hpp"
 #include "factories/scannerFactory.hpp"
+#include "timer.hpp"
 
 class MissileManager
 {
@@ -25,4 +26,5 @@ public:
 private:
     std::vector<std::unique_ptr<Missile>> missiles;
     std::optional<Rocket*> rocket;
+    util::Timer rocketTimer{util::secondsToFrames(20)};
 };

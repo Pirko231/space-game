@@ -28,10 +28,6 @@ void Rocket::handleEvents(const std::optional<sf::Event>& ev)
             pressed.d = false;
         }
     }
-    
-    
-    
-    
 }
 
 void Rocket::update()
@@ -48,7 +44,7 @@ void Rocket::update()
         sprite.rotate(rotationSpeed);
         moveBy = moveBy.rotatedBy(rotationSpeed);
     }
-    
+
     lifeSpan++;
 }
 
