@@ -9,7 +9,7 @@ class Missile : public sf::Drawable
 public:
     /// @brief odbiera eventy i reaguje na nie
     /// @param ev 
-    virtual void handleEvents(const sf::Event& ev) {};
+    virtual void handleEvents(const std::optional<sf::Event>& ev) {};
     /// @brief aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych
     virtual void update() = 0;
     /// @brief wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)
