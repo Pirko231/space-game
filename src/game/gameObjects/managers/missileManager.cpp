@@ -51,7 +51,7 @@ void MissileManager::handleEvents(const Pressed& pressed)
         i->handleEvents(pressed);
 }
 
-void MissileManager::update()
+void MissileManager::update(bool* rocketRecentlyDeleted)
 {
     rocketTimer.update();
     for (std::size_t i = 0; i < missiles.size(); i++)
@@ -60,7 +60,10 @@ void MissileManager::update()
         if (missiles[i]->shouldDelete())
         {
             if (rocket.has_value() && dynamic_cast<Rocket*>(missiles[i].get()))
+            {
                 rocket.reset();
+                *rocketRecentlyDeleted = true;
+            }
             missiles.erase(missiles.begin() + i);
             i--;
         }

@@ -59,6 +59,7 @@ void Player::handleEvents(const std::optional<sf::Event>& ev)
 
 void Player::update()
 {
+    
     //tarcza
     shield.setPosition(getCenter());
     if (pressed.shield && energy >= shield.getEnergyUse())
@@ -118,7 +119,7 @@ void Player::update()
 
     turret.setRotation(spinTurret());
 
-    missileManager.update();
+    missileManager.update(&rocketRecentlyDeleted);
 }
 
 bool Player::checkMapCollisions(Map *map)

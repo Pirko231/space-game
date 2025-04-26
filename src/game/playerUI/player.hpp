@@ -61,6 +61,8 @@ public:
         }
     }
 
+    bool rocketDeleted() { if(rocketRecentlyDeleted){rocketRecentlyDeleted = false; return true;}return false;}
+
     sf::Vector2f getPosition() const {return sprite.getPosition();}
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
@@ -107,6 +109,8 @@ private:
 
     mutable float health{util::ConfigLoader::get().health};
     mutable float energy{util::ConfigLoader::get().energy};
+
+    bool rocketRecentlyDeleted{};
 
     sf::Sprite sprite;
 
