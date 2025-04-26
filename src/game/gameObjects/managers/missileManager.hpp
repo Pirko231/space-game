@@ -17,7 +17,7 @@ public:
     void handleEvents(const Pressed& pressed);
     
     /// @brief porusza wszystkie pociski ktore przechowuje
-    void update();
+    void update(bool* rocketRecentlyDeleted);
 
     const std::vector<std::unique_ptr<Missile>>& getMissiles() const {return missiles;}
 

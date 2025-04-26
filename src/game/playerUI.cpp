@@ -52,6 +52,9 @@ void PlayerUI::update()
         radar.update(&player, player.getMissileManager()->getRocket().value()->getGlobalBounds().getCenter());
     else
         radar.update(&player);
+
+    if (player.rocketDeleted())
+        setPlayerPos(player.getCenter());
     
 
     healthBar.manageHover(sf::Mouse::getPosition());
