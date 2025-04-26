@@ -15,8 +15,10 @@ Radar::Radar() : sprite{util::AssetLoader::get().radar}
     scale = range / sprite.getGlobalBounds().size.x;
 }
 
-void Radar::update(const Player* player)
+void Radar::update(const Player* player, sf::Vector2f viewCenter)
 {
+    if (viewCenter == sf::Vector2f{})
+        viewCenter = player->getCenter();
     if (!p2Pointer)
     {
         if (player == p1Hitbox)
@@ -25,10 +27,10 @@ void Radar::update(const Player* player)
             p2Pointer = p1Hitbox;
     }
 
-    findTargets(player->getCenter());
-    removeTargets(player->getCenter());
-    convertCoordinates(player->getCenter());
-    manageP2(player->getCenter());
+    findTargets(viewCenter);
+    removeTargets(viewCenter);
+    convertCoordinates(viewCenter);
+    manageP2(viewCenter);
     p1.setPosition(sprite.getGlobalBounds().getCenter());
 }
 

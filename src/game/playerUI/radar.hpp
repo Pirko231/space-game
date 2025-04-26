@@ -9,7 +9,7 @@ public:
 
     void setPosition(sf::Vector2f pos) {sprite.setPosition(pos);}
 
-    void update(const Player* player);
+    void update(const Player* player, sf::Vector2f viewCenter = {});
 
     void move(sf::Vector2f offset) {sprite.move(offset);}
 

@@ -17,6 +17,8 @@ public:
     void handleEvents(const Pressed& pressed) override;
     void update();
     void display();
+
+    sf::Vector2f getMoveBy() const {return moveBy;}
 private:
     sf::Angle rotationSpeed{sf::degrees(2.5f)};
     const Pressed* pressed;
