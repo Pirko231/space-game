@@ -17,6 +17,9 @@ MissilePicker::MissilePicker()
     missiles[2].setScale({0.2f, 0.2f});
 
     sprites[0].setOutlineThickness(underlinedThickness);
+
+    rocketTimer.setScale({0.2f,0.2f});
+    rocketTimer.setOrigin(rocketTimer.getGlobalBounds().getCenter());
 }
 
 void MissilePicker::setPosition(sf::Vector2f pos)
@@ -31,6 +34,7 @@ void MissilePicker::setPosition(sf::Vector2f pos)
     {
         missiles[i].setPosition(sprites[i].getGlobalBounds().getCenter());
     }
+    rocketTimer.setPosition({sprites[1].getGlobalBounds().getCenter().x - rocketTimer.getGlobalBounds().size.x / 2.f, sprites[1].getGlobalBounds().getCenter().y + rocketTimer.getGlobalBounds().size.y * 1.5f});
 }
 
 void MissilePicker::right()
