@@ -67,26 +67,6 @@ void Player::update()
         shield.activate(true);
     else
         shield.activate(false);
-
-    if (moveBy.y > 0)
-        moveBy.y -= throttle / 5.f;
-    if (moveBy.y < 0)
-        moveBy.y += throttle / 5.f;
-    if (moveBy.x > 0)
-        moveBy.x -= throttle / 7.f;
-    if (moveBy.x < 0)
-        moveBy.x += throttle / 7.f;
-
-    if (moveBy.y >= maxSpeed)
-        moveBy.y = maxSpeed;
-    if (moveBy.y <= -maxSpeed)
-        moveBy.y = -maxSpeed;
-    if (moveBy.x >= maxSpeed)
-        moveBy.x = maxSpeed;
-    if (moveBy.x <= -maxSpeed)
-        moveBy.x = -maxSpeed;
-
-    move(moveBy);
     
     //kiedy jest rakieta to nie aktualizujemy gracza
     if (missileManager.getRocket().has_value())
@@ -116,6 +96,26 @@ void Player::update()
     {
         rotate(sf::degrees(1.f));
     }
+
+    if (moveBy.y > 0)
+        moveBy.y -= throttle / 5.f;
+    if (moveBy.y < 0)
+        moveBy.y += throttle / 5.f;
+    if (moveBy.x > 0)
+        moveBy.x -= throttle / 7.f;
+    if (moveBy.x < 0)
+        moveBy.x += throttle / 7.f;
+
+    if (moveBy.y >= maxSpeed)
+        moveBy.y = maxSpeed;
+    if (moveBy.y <= -maxSpeed)
+        moveBy.y = -maxSpeed;
+    if (moveBy.x >= maxSpeed)
+        moveBy.x = maxSpeed;
+    if (moveBy.x <= -maxSpeed)
+        moveBy.x = -maxSpeed;
+
+    move(moveBy);
 
     if (shield.isActive())
         energy -= shield.getEnergyUse();
