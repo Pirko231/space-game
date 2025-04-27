@@ -18,6 +18,8 @@ public:
     void update();
     void display();
 
+    float getLifeTime() const {return maxLifeSpan - lifeSpan;}
+
     sf::Vector2f getMoveBy() const {return moveBy;}
 private:
     sf::Angle rotationSpeed{util::ConfigLoader::get().rocketRotationSpeed};

@@ -10,7 +10,9 @@ public:
     void setLimit(int limit) {max = limit;}
     void update() {counter++;}
     void restart() {counter = 0;}
-    bool hasTimePassed() {return counter >= max;}
+    bool hasTimePassed() const {return counter >= max;}
+    int maxValue() const {return max;}
+    int currentValue() const {return counter;}
 private:
     int max{};
     int counter{};
@@ -20,6 +22,11 @@ private:
 inline int secondsToFrames(int seconds)
 {
     return seconds * 60.f;
+}
+
+inline int framesToSeconds(int frames)
+{
+    return frames / 60;
 }
 
 };
