@@ -11,6 +11,9 @@ Radar::Radar() : sprite{util::AssetLoader::get().radar}
     p2.setSize({2.f,2.f});
     p2.setOrigin(p2.getGlobalBounds().getCenter());
     p2.setFillColor(sf::Color::White);
+
+    rocket.setSize({1.f,1.f});
+    rocket.setFillColor(sf::Color::Red);
     
     scale = range / sprite.getGlobalBounds().size.x;
 }
@@ -31,6 +34,7 @@ void Radar::update(const Player* player, sf::Vector2f viewCenter)
     removeTargets(viewCenter);
     convertCoordinates(viewCenter);
     manageP2(viewCenter);
+    manageRocket(viewCenter);
     p1.setPosition(sprite.getGlobalBounds().getCenter());
 }
 
@@ -100,6 +104,33 @@ void Radar::manageP2(sf::Vector2f playerPos)
         p2Pos += basePos;
 
         p2.setPosition(p2Pos);
+    }
+}
+
+void Radar::manageRocket(sf::Vector2f playerPos)
+{
+    sf::FloatRect hitbox{{playerPos.x - range / 2.f, playerPos.y - range / 2.f}, {range, range}};
+    sf::Vector2f basePos{sprite.getGlobalBounds().getCenter()};
+
+    if (!p2Pointer->getMissileManager()->getRocket().has_value())
+    {
+        drawRocket = false;
+        return;
+    }
+    
+    //od tego momentu rakieta ma wartosc
+    
+    if (hitbox.findIntersection(p2Pointer->getMissileManager()->getRocket().value()->getGlobalBounds()))
+    {
+        //wyswietlanie rakiety
+        sf::Vector2f rocketPos{p2Pointer->getMissileManager()->getRocket().value()->getGlobalBounds().position};
+        rocketPos -= playerPos;
+        rocketPos /= scale;
+        rocketPos += basePos;
+
+        //rocket.setOrigin(p2Pointer->getMissileManager()->getRocket().value()->getGlobalBounds().getCenter());
+        rocket.setPosition(rocketPos);
+        drawRocket = true;
     }
 }
 

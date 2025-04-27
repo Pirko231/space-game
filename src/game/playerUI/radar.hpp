@@ -19,6 +19,7 @@ private:
     void removeTargets(sf::Vector2f playerPos);
     void convertCoordinates(sf::Vector2f playerPos);
     void manageP2(sf::Vector2f playerPos);
+    void manageRocket(sf::Vector2f playerPos);
 
     bool isRepeated(const std::unique_ptr<Asteroid>*);
 
@@ -27,6 +28,8 @@ private:
         target.draw(sprite, states);
         for (auto& i : currentlyDisplayed)
             target.draw(i.first, states);
+        if (drawRocket)
+            target.draw(rocket, states);
         target.draw(p1, states);
         target.draw(p2,states);
     }
@@ -40,5 +43,7 @@ private:
 
     sf::RectangleShape p1;
     sf::RectangleShape p2;
+    sf::RectangleShape rocket;
+    bool drawRocket{};
     const Player* p2Pointer{};
 };
