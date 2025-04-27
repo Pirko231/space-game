@@ -4,7 +4,7 @@ void Rocket::init()
 {
 }
 
-void Rocket::handleEvents(const Pressed& _pressed)
+void Rocket::handleEvents(const Pressed& _pressed) const
 {
     pressed = &_pressed;
     /*if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())

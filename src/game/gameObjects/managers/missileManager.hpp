@@ -18,7 +18,7 @@ public:
     /// @return czy udalo sie utworzyc pocisk
     bool create(IMissileFactory& factoryType, sf::Vector2f pos, sf::Vector2f dir);
 
-    void handleEvents(const Pressed& pressed);
+    void handleEvents(const Pressed& pressed) const;
     
     /// @brief porusza wszystkie pociski ktore przechowuje
     void update(bool* rocketRecentlyDeleted);
@@ -32,7 +32,7 @@ public:
     int getCooldown() const {return  rocketTimer.maxValue() - rocketTimer.currentValue();}
 
 private:
-    std::vector<std::unique_ptr<Missile>> missiles;
+    mutable std::vector<std::unique_ptr<Missile>> missiles;
     std::optional<Rocket*> rocket;
     util::Timer rocketTimer{util::secondsToFrames(util::ConfigLoader::get().rocketCooldown)};
     sf::Text rocketTimerText{util::AssetLoader::get().font};

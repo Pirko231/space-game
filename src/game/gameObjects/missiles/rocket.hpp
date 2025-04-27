@@ -14,7 +14,7 @@ public:
     static bool shouldInit() {static bool initted{false}; if (!initted) {initted = true;  return true;} return false;}
     static void init();
 
-    void handleEvents(const Pressed& pressed) override;
+    void handleEvents(const Pressed& pressed) const override;
     void update();
     void display();
 
@@ -23,5 +23,5 @@ public:
     sf::Vector2f getMoveBy() const {return moveBy;}
 private:
     sf::Angle rotationSpeed{util::ConfigLoader::get().rocketRotationSpeed};
-    const Pressed* pressed;
+    mutable const Pressed* pressed;
 };
