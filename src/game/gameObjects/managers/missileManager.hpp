@@ -7,6 +7,10 @@
 class MissileManager
 {
 public:
+    MissileManager()
+    {
+        rocketTimerText.setFillColor(sf::Color::Red);
+    }
     /// @brief tworzy pocisk i przechowuje go w wektorze
     /// @param factoryType rodzaj fabryki, rozne fabryki wytwarzaja rozne pociski @see missileFactory
     /// @param pos pozycja startowa
@@ -23,8 +27,11 @@ public:
 
     const std::optional<Rocket*>& getRocket() const {return rocket;}
 
+    const sf::Text& getRocketTimer() const {return rocketTimerText;}
+
 private:
     std::vector<std::unique_ptr<Missile>> missiles;
     std::optional<Rocket*> rocket;
     util::Timer rocketTimer{util::secondsToFrames(util::ConfigLoader::get().rocketCooldown)};
+    sf::Text rocketTimerText{util::AssetLoader::get().font};
 };

@@ -54,6 +54,14 @@ void MissileManager::handleEvents(const Pressed& pressed)
 void MissileManager::update(bool* rocketRecentlyDeleted)
 {
     rocketTimer.update();
+    
+    if( rocket.has_value())
+    {
+        //rocketTimerText.setString(std::to_string(util::framesToSeconds(rocketTimer.maxValue() - rocketTimer.currentValue())));
+        rocketTimerText.setString(std::to_string(util::framesToSeconds(rocket.value()->getLifeTime())));
+        sf::Vector2f pos {rocket.value()->getGlobalBounds().getCenter()};
+        rocketTimerText.setPosition({pos.x - 70.f, pos.y + 30.f});
+    }
     for (std::size_t i = 0; i < missiles.size(); i++)
     {
         missiles[i]->update();
