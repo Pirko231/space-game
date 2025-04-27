@@ -6,6 +6,7 @@
 #include "factories/laserFactory.hpp"
 #include "factories/rocketFactory.hpp"
 #include "factories/scannerFactory.hpp"
+#include "timer.hpp"
 
 struct MissilePicker : public sf::Drawable
 {
@@ -18,9 +19,19 @@ struct MissilePicker : public sf::Drawable
     void right();
     void left();
 
+    void setCooldown(int cooldown)
+    {
+        int rocketCooldown = util::framesToSeconds(cooldown);
+        if (rocketCooldown > 0)
+            rocketTimer.setString(std::to_string(rocketCooldown));
+        else
+            rocketTimer.setString('R');
+    }
+
     IMissileFactory& getCurrentMissile() {return *factories[currentFactory];}
 
     sf::Vector2f getPosition() const {return sprites.begin()->getPosition();}
+    sf::FloatRect getGlobalBounds() const {return sf::FloatRect{{sprites.begin()->getPosition()}, {sprites.begin()->getSize().x * 3.f, sprites.begin()->getSize().y}};}
     ~MissilePicker() {delete[] spritesArr;}
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
@@ -29,6 +40,7 @@ private:
             target.draw(i, states);
         for (auto& i : missiles)
             target.draw(i, states);
+        target.draw(rocketTimer, states);
     }
 
     float defaultThickness{1.f};
@@ -46,4 +58,6 @@ private:
     RocketFactory rocketFactory;
     ScannerFactory scannerFactory;
     IMissileFactory* factories[amount]{&laserFactory, &rocketFactory, &scannerFactory};
+
+    sf::Text rocketTimer{util::AssetLoader::get().font};
 };

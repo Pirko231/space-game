@@ -29,6 +29,8 @@ public:
 
     const sf::Text& getRocketTimer() const {return rocketTimerText;}
 
+    int getCooldown() const {return  rocketTimer.maxValue() - rocketTimer.currentValue();}
+
 private:
     std::vector<std::unique_ptr<Missile>> missiles;
     std::optional<Rocket*> rocket;

@@ -28,20 +28,6 @@ bool MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
         rocket.emplace(static_cast<Rocket*>((missiles.end() - 1)->get()));
         rocketTimer.restart();
     }
-    
-    //rocket.emplace(static_cast<Rocket*>((missiles.end() - 1)));
-    /*try
-    {
-        //dynamic_cast<RocketFactory&>(factoryType);
-        rocket.emplace(dynamic_cast<Rocket*>(missiles.end()->get()));
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }*/
-    
-    //if (dynamic_cast<RocketFactory&>(factoryType))
-        //rocket.emplace(static_cast<Rocket*>(missiles.end()->get()));
     return true;
 }
 
@@ -57,7 +43,7 @@ void MissileManager::update(bool* rocketRecentlyDeleted)
     
     if( rocket.has_value())
     {
-        //rocketTimerText.setString(std::to_string(util::framesToSeconds(rocketTimer.maxValue() - rocketTimer.currentValue())));
+        
         rocketTimerText.setString(std::to_string(util::framesToSeconds(rocket.value()->getLifeTime())));
         sf::Vector2f pos {rocket.value()->getGlobalBounds().getCenter()};
         rocketTimerText.setPosition({pos.x - 70.f, pos.y + 30.f});

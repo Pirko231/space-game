@@ -71,6 +71,8 @@ void PlayerUI::update()
 
     crosshairPlayer.move(moveCross().first);
     crosshairShip.move(moveCross().second);
+
+    missilePicker.setCooldown(player.getMissileManager()->getCooldown());
 }
 
 void PlayerUI::display(sf::RenderWindow *window)
@@ -88,6 +90,7 @@ void PlayerUI::display(sf::RenderWindow *window)
         window->draw(player.getMissileManager()->getRocketTimer());
     if (!player.getMissileManager()->getRocket().has_value())
         window->draw(missilePicker);
+    
 
     for (auto& i : player.getMissileManager()->getMissiles())
         window->draw(*i);
