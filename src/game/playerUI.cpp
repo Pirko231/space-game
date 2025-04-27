@@ -31,8 +31,10 @@ void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
     if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
     {
         if (keyReleased->code == keyBinds.shoot)
+        {
             player.shoot(missilePicker.getCurrentMissile(), crosshairShip.getPosition());
-
+            player.getMissileManager()->handleEvents(pressed);
+        }
         if (keyReleased->code == keyBinds.shield)
             pressed.shield = false;
 
