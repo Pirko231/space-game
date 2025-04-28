@@ -18,7 +18,6 @@ bool MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
     }
         
 

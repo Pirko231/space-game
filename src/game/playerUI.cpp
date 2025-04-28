@@ -74,7 +74,8 @@ void PlayerUI::update()
     crosshairPlayer.move(moveCross().first);
     crosshairShip.move(moveCross().second);
 
-    missilePicker.setCooldown(player.getMissileManager()->getCooldown());
+    missilePicker.setRocketCooldown(player.getMissileManager()->getRocketCooldown());
+    missilePicker.setMineCooldown(player.getMissileManager()->getMineCooldown());
 }
 
 void PlayerUI::display(sf::RenderWindow *window)

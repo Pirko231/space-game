@@ -29,13 +29,12 @@ public:
 
     const sf::Text& getRocketTimer() const {return rocketTimerText;}
 
-    int getCooldown() const {return  rocketTimer.maxValue() - rocketTimer.currentValue();}
-
+    int getRocketCooldown() const {return  rocketTimer.maxValue() - rocketTimer.currentValue();}
+    int getMineCooldown() const {return mineTimer.maxValue() - mineTimer.currentValue();}
 private:
     mutable std::vector<std::unique_ptr<Missile>> missiles;
     std::optional<Rocket*> rocket;
     util::Timer rocketTimer{util::secondsToFrames(util::ConfigLoader::get().rocketCooldown)};
     sf::Text rocketTimerText{util::AssetLoader::get().font};
     util::Timer mineTimer{util::secondsToFrames(util::ConfigLoader::get().mineCooldown)};
-    sf::Text mineTimerText{util::AssetLoader::get().font};
 };

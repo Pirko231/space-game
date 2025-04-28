@@ -19,13 +19,22 @@ struct MissilePicker : public sf::Drawable
     void right();
     void left();
 
-    void setCooldown(int cooldown)
+    void setRocketCooldown(int cooldown)
     {
         int rocketCooldown = util::framesToSeconds(cooldown);
         if (rocketCooldown > 0)
             rocketTimer.setString(std::to_string(rocketCooldown));
         else
             rocketTimer.setString('R');
+    }
+
+    void setMineCooldown(int cooldown)
+    {
+        int mineCooldown = util::framesToSeconds(cooldown);
+        if (mineCooldown > 0)
+            mineTimer.setString(std::to_string(mineCooldown));
+        else
+            mineTimer.setString('R');
     }
 
     IMissileFactory& getCurrentMissile() {return *factories[currentFactory];}
@@ -41,6 +50,7 @@ private:
         for (auto& i : missiles)
             target.draw(i, states);
         target.draw(rocketTimer, states);
+        target.draw(mineTimer, states);
     }
 
     float defaultThickness{1.f};
@@ -60,4 +70,5 @@ private:
     IMissileFactory* factories[amount]{&laserFactory, &rocketFactory, &mineFactory};
 
     sf::Text rocketTimer{util::AssetLoader::get().font};
+    sf::Text mineTimer{util::AssetLoader::get().font};
 };
