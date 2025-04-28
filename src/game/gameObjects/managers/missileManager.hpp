@@ -36,4 +36,6 @@ private:
     std::optional<Rocket*> rocket;
     util::Timer rocketTimer{util::secondsToFrames(util::ConfigLoader::get().rocketCooldown)};
     sf::Text rocketTimerText{util::AssetLoader::get().font};
+    util::Timer mineTimer{util::secondsToFrames(util::ConfigLoader::get().mineCooldown)};
+    sf::Text mineTimerText{util::AssetLoader::get().font};
 };
