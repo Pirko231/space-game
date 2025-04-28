@@ -6,12 +6,7 @@ class LaserFactory : public IMissileFactory
 {
 public:
     std::unique_ptr<Missile> create(sf::Vector2f pos, sf::Vector2f dir) override
-    {
-        //wczytanie tekstury
-        if (Laser::shouldInit())
-            Laser::init();
-
-        
+    {    
         return std::make_unique<Laser>(Laser{pos, dir});
     }
     

@@ -3,7 +3,7 @@
 MissilePicker::MissilePicker()
     : spritesArr{new sf::RectangleShape[amount]}, sprites{spritesArr, amount}, missiles{missileTextures}
 {
-    for (int i = 0; i < sprites.size(); i++)
+    for (std::size_t i = 0; i < sprites.size(); i++)
     {
         sprites[i].setOutlineThickness(defaultThickness);
         sprites[i].setOutlineColor(sf::Color::White);
@@ -32,7 +32,7 @@ void MissilePicker::setPosition(sf::Vector2f pos)
         i.setPosition(pos);
         pos.x += i.getGlobalBounds().size.x;
     }
-    // pos.x -= 3 * sprites.begin()->getGlobalBounds().size.x;
+    
     for (std::size_t i = 0; i < missiles.size(); i++)
     {
         missiles[i].setPosition(sprites[i].getGlobalBounds().getCenter());

@@ -11,8 +11,6 @@ public:
         sprite.setScale({0.4f,0.4f});
         launch(pos,moveBy);
     }
-    static bool shouldInit() {static bool initted{false}; if (!initted) {initted = true;  return true;} return false;}
-    static void init();
 
     void handleEvents(const Pressed& pressed) const override;
     void update();

@@ -6,12 +6,7 @@ class MineFactory : public IMissileFactory
 {
 public:
     std::unique_ptr<Missile> create(sf::Vector2f pos, sf::Vector2f moveBy) override
-    {
-        //wczytanie tekstury
-        if (Mine::shouldInit())
-            Mine::init();
-
-        
+    {    
         return std::make_unique<Mine>(Mine{pos, moveBy});
     }
 

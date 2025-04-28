@@ -10,8 +10,6 @@ public:
         sprite.setScale({0.2f,0.2f});
         launch(pos,moveBy);
     }
-    static bool shouldInit() {static bool initted{false}; if (!initted) {initted = true;  return true;} return false;}
-    static void init();
 
     virtual void update();
     virtual void display();
