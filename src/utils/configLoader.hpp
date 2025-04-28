@@ -28,6 +28,7 @@ public:
     sf::Angle rocketRotationSpeed{sf::degrees(3.f)};
     int rocketCooldown{10};
     float rocketLifetime{800.f};
+    int mineCooldown{10};
 
     ~ConfigLoader()
     {

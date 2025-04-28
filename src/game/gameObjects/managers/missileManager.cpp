@@ -7,6 +7,21 @@ bool MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
     if (_moveBy.x == 0.f && _moveBy.y == 0.f)
         return false;
 
+    
+    try
+    {
+        dynamic_cast<MineFactory &>(factoryType);
+        if (mineTimer.hasTimePassed())
+            mineTimer.restart();
+        else
+            return false;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+        
+
     if (!rocketTimer.hasTimePassed() || rocket.has_value())
     {
         try
@@ -40,6 +55,7 @@ void MissileManager::handleEvents(const Pressed& pressed) const
 void MissileManager::update(bool* rocketRecentlyDeleted)
 {
     rocketTimer.update();
+    mineTimer.update();
     
     if( rocket.has_value())
     {
