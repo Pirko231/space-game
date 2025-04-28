@@ -54,7 +54,7 @@ add_executable(main
 
     src/game/gameObjects/missiles/laser.cpp
     src/game/gameObjects/missiles/rocket.cpp
-    src/game/gameObjects/missiles/scanner.cpp
+    src/game/gameObjects/missiles/mine.cpp
 
 
     src/perf/speedTracker.cpp

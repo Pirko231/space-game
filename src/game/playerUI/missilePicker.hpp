@@ -5,7 +5,7 @@
 #include "missileFactory.hpp"
 #include "factories/laserFactory.hpp"
 #include "factories/rocketFactory.hpp"
-#include "factories/scannerFactory.hpp"
+#include "factories/mineFactory.hpp"
 #include "timer.hpp"
 
 struct MissilePicker : public sf::Drawable
@@ -49,15 +49,15 @@ private:
     sf::RectangleShape current;
     sf::RectangleShape* spritesArr{};
     std::span<sf::RectangleShape>sprites;
-    sf::Sprite missileTextures[3] {sf::Sprite{util::AssetLoader::get().laser}, sf::Sprite{util::AssetLoader::get().rocket}, sf::Sprite{util::AssetLoader::get().scanner}};
+    sf::Sprite missileTextures[3] {sf::Sprite{util::AssetLoader::get().laser}, sf::Sprite{util::AssetLoader::get().rocket}, sf::Sprite{util::AssetLoader::get().mine}};
     std::span<sf::Sprite>missiles;
 
     static constexpr int amount{3};
     int currentFactory{};
     LaserFactory laserFactory;
     RocketFactory rocketFactory;
-    ScannerFactory scannerFactory;
-    IMissileFactory* factories[amount]{&laserFactory, &rocketFactory, &scannerFactory};
+    MineFactory mineFactory;
+    IMissileFactory* factories[amount]{&laserFactory, &rocketFactory, &mineFactory};
 
     sf::Text rocketTimer{util::AssetLoader::get().font};
 };
