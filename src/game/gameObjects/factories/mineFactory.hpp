@@ -1,21 +1,21 @@
 #pragma once
 #include "missileFactory.hpp"
-#include "missiles/scanner.hpp"
+#include "missiles/mine.hpp"
 
-class ScannerFactory : public IMissileFactory
+class MineFactory : public IMissileFactory
 {
 public:
     std::unique_ptr<Missile> create(sf::Vector2f pos, sf::Vector2f moveBy) override
     {
         //wczytanie tekstury
-        if (Scanner::shouldInit())
-            Scanner::init();
+        if (Mine::shouldInit())
+            Mine::init();
 
         
-        return std::make_unique<Scanner>(Scanner{pos, moveBy});
+        return std::make_unique<Mine>(Mine{pos, moveBy});
     }
 
     int cost() const override {return 5;}
     
-    ~ScannerFactory() = default;
+    ~MineFactory() = default;
 };

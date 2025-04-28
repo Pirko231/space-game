@@ -31,7 +31,7 @@ struct AssetLoader
 
     sf::Texture laser;
     sf::Texture rocket;
-    sf::Texture scanner;
+    sf::Texture mine;
 
     sf::Texture asteroids[3];
 
@@ -58,7 +58,7 @@ inline util::AssetLoader::AssetLoader()
 
     laser.loadFromFile("resources/textures/laser.png");
     rocket.loadFromFile("resources/textures/rocket.png");
-    scanner.loadFromFile("resources/textures/scanner.png");
+    mine.loadFromFile("resources/textures/mine.png");
 
     asteroids[0].loadFromFile("resources/textures/asteroid.png");
     asteroids[1].loadFromFile("resources/textures/asteroid.png");
