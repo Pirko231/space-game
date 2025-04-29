@@ -89,23 +89,31 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <a class="code hl_class" href="classRocket.html">Rocket</a>(sf::Vector2f pos, sf::Vector2f moveBy)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    : <a class="code hl_class" href="classMissile.html">Missile</a>{50.f, 1.f, 50, util::AssetLoader::get().rocket} </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    : <a class="code hl_class" href="classMissile.html">Missile</a>{util::ConfigLoader::get().rocketLifetime, util::ConfigLoader::get().rocketSpeed, util::ConfigLoader::get().rocketDamage, util::AssetLoader::get().rocket} </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        launch(pos,moveBy);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    }</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> shouldInit() {<span class="keyword">static</span> <span class="keywordtype">bool</span> initted{<span class="keyword">false</span>}; <span class="keywordflow">if</span> (!initted) {initted = <span class="keyword">true</span>;  <span class="keywordflow">return</span> <span class="keyword">true</span>;} <span class="keywordflow">return</span> <span class="keyword">false</span>;}</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> init();</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        damage = 50;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        sprite.setScale({0.4f,0.4f});</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        launch(pos,moveBy);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classRocket.html#aa0f4dcf673358e841e4b4b2fa0b1462e">update</a>();</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classRocket.html#a7a238da76ae41e649bca866b858c966a">display</a>();</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRocket.html#a261a152192c7581cf03eac07a905613e">handleEvents</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structPressed.html">Pressed</a>&amp; pressed) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRocket.html#aa0f4dcf673358e841e4b4b2fa0b1462e">update</a>();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRocket.html#a7a238da76ae41e649bca866b858c966a">display</a>();</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">float</span> getLifeTime()<span class="keyword"> const </span>{<span class="keywordflow">return</span> maxLifeSpan - lifeSpan;}</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    sf::Vector2f getMoveBy()<span class="keyword"> const </span>{<span class="keywordflow">return</span> moveBy;}</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    sf::Angle rotationSpeed{util::ConfigLoader::get().rocketRotationSpeed};</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">mutable</span> <span class="keyword">const</span> <a class="code hl_struct" href="structPressed.html">Pressed</a>* pressed;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
 </div>
-<div class="ttc" id="aclassMissile_html"><div class="ttname"><a href="classMissile.html">Missile</a></div><div class="ttdef"><b>Definition</b> missile.hpp:8</div></div>
+<div class="ttc" id="aclassMissile_html"><div class="ttname"><a href="classMissile.html">Missile</a></div><div class="ttdef"><b>Definition</b> missile.hpp:9</div></div>
 <div class="ttc" id="aclassRocket_html"><div class="ttname"><a href="classRocket.html">Rocket</a></div><div class="ttdef"><b>Definition</b> rocket.hpp:5</div></div>
-<div class="ttc" id="aclassRocket_html_a7a238da76ae41e649bca866b858c966a"><div class="ttname"><a href="classRocket.html#a7a238da76ae41e649bca866b858c966a">Rocket::display</a></div><div class="ttdeci">virtual void display()</div><div class="ttdoc">wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)</div><div class="ttdef"><b>Definition</b> rocket.cpp:13</div></div>
-<div class="ttc" id="aclassRocket_html_aa0f4dcf673358e841e4b4b2fa0b1462e"><div class="ttname"><a href="classRocket.html#aa0f4dcf673358e841e4b4b2fa0b1462e">Rocket::update</a></div><div class="ttdeci">virtual void update()</div><div class="ttdoc">aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych</div><div class="ttdef"><b>Definition</b> rocket.cpp:7</div></div>
+<div class="ttc" id="aclassRocket_html_a261a152192c7581cf03eac07a905613e"><div class="ttname"><a href="classRocket.html#a261a152192c7581cf03eac07a905613e">Rocket::handleEvents</a></div><div class="ttdeci">void handleEvents(const Pressed &amp;pressed) const override</div><div class="ttdoc">odbiera eventy i reaguje na nie</div><div class="ttdef"><b>Definition</b> rocket.cpp:3</div></div>
+<div class="ttc" id="aclassRocket_html_a7a238da76ae41e649bca866b858c966a"><div class="ttname"><a href="classRocket.html#a7a238da76ae41e649bca866b858c966a">Rocket::display</a></div><div class="ttdeci">void display()</div><div class="ttdoc">wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej)</div><div class="ttdef"><b>Definition</b> rocket.cpp:26</div></div>
+<div class="ttc" id="aclassRocket_html_aa0f4dcf673358e841e4b4b2fa0b1462e"><div class="ttname"><a href="classRocket.html#aa0f4dcf673358e841e4b4b2fa0b1462e">Rocket::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych</div><div class="ttdef"><b>Definition</b> rocket.cpp:8</div></div>
+<div class="ttc" id="astructPressed_html"><div class="ttname"><a href="structPressed.html">Pressed</a></div><div class="ttdef"><b>Definition</b> pressed.hpp:4</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

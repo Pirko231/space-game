@@ -81,13 +81,28 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a528a5196b378d5345196b91ebfe04d14" id="r_a528a5196b378d5345196b91ebfe04d14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissileManager.html#a528a5196b378d5345196b91ebfe04d14">create</a> (<a class="el" href="classIMissileFactory.html">IMissileFactory</a> &amp;factoryType, sf::Vector2f pos, sf::Vector2f dir)</td></tr>
 <tr class="memdesc:a528a5196b378d5345196b91ebfe04d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">tworzy pocisk i przechowuje go w wektorze  <br /></td></tr>
 <tr class="separator:a528a5196b378d5345196b91ebfe04d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad92e9494f9dfebd27b4a025743620347" id="r_ad92e9494f9dfebd27b4a025743620347"><td class="memItemLeft" align="right" valign="top"><a id="ad92e9494f9dfebd27b4a025743620347" name="ad92e9494f9dfebd27b4a025743620347"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
-<tr class="memdesc:ad92e9494f9dfebd27b4a025743620347"><td class="mdescLeft">&#160;</td><td class="mdescRight">porusza wszystkie pociski ktore przechowuje <br /></td></tr>
-<tr class="separator:ad92e9494f9dfebd27b4a025743620347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a432dbddfbd8d9de549baa95e7654df3e" id="r_a432dbddfbd8d9de549baa95e7654df3e"><td class="memItemLeft" align="right" valign="top"><a id="a432dbddfbd8d9de549baa95e7654df3e" name="a432dbddfbd8d9de549baa95e7654df3e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvents</b> (const <a class="el" href="structPressed.html">Pressed</a> &amp;pressed) const</td></tr>
+<tr class="separator:a432dbddfbd8d9de549baa95e7654df3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f85b579d3e40ef0bc8bbdab9043c0f" id="r_a36f85b579d3e40ef0bc8bbdab9043c0f"><td class="memItemLeft" align="right" valign="top"><a id="a36f85b579d3e40ef0bc8bbdab9043c0f" name="a36f85b579d3e40ef0bc8bbdab9043c0f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (bool *rocketRecentlyDeleted)</td></tr>
+<tr class="memdesc:a36f85b579d3e40ef0bc8bbdab9043c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">porusza wszystkie pociski ktore przechowuje <br /></td></tr>
+<tr class="separator:a36f85b579d3e40ef0bc8bbdab9043c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab83b38b3b0e27b2730949128fceba66f" id="r_ab83b38b3b0e27b2730949128fceba66f"><td class="memItemLeft" align="right" valign="top"><a id="ab83b38b3b0e27b2730949128fceba66f" name="ab83b38b3b0e27b2730949128fceba66f"></a>
 const std::vector&lt; std::unique_ptr&lt; <a class="el" href="classMissile.html">Missile</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getMissiles</b> () const</td></tr>
 <tr class="separator:ab83b38b3b0e27b2730949128fceba66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad706431e200c0e724b6e58f71d2a0e43" id="r_ad706431e200c0e724b6e58f71d2a0e43"><td class="memItemLeft" align="right" valign="top"><a id="ad706431e200c0e724b6e58f71d2a0e43" name="ad706431e200c0e724b6e58f71d2a0e43"></a>
+const std::optional&lt; <a class="el" href="classRocket.html">Rocket</a> * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getRocket</b> () const</td></tr>
+<tr class="separator:ad706431e200c0e724b6e58f71d2a0e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4711980f56b1d506055beeeaddf11b" id="r_a1f4711980f56b1d506055beeeaddf11b"><td class="memItemLeft" align="right" valign="top"><a id="a1f4711980f56b1d506055beeeaddf11b" name="a1f4711980f56b1d506055beeeaddf11b"></a>
+const sf::Text &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getRocketTimer</b> () const</td></tr>
+<tr class="separator:a1f4711980f56b1d506055beeeaddf11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92ae94100e00cb2bf429283f2da316d9" id="r_a92ae94100e00cb2bf429283f2da316d9"><td class="memItemLeft" align="right" valign="top"><a id="a92ae94100e00cb2bf429283f2da316d9" name="a92ae94100e00cb2bf429283f2da316d9"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getRocketCooldown</b> () const</td></tr>
+<tr class="separator:a92ae94100e00cb2bf429283f2da316d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabe5d4acff523be609343c444882c62d" id="r_aabe5d4acff523be609343c444882c62d"><td class="memItemLeft" align="right" valign="top"><a id="aabe5d4acff523be609343c444882c62d" name="aabe5d4acff523be609343c444882c62d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getMineCooldown</b> () const</td></tr>
+<tr class="separator:aabe5d4acff523be609343c444882c62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a528a5196b378d5345196b91ebfe04d14" name="a528a5196b378d5345196b91ebfe04d14"></a>
