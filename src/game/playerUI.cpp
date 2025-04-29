@@ -13,6 +13,9 @@ PlayerUI::PlayerUI()
 
     crosshairPlayer.setScale({0.04f,0.04f});
     crosshairShip.setScale({0.04f,0.04f});
+
+    crosshairPos = {player.getCenter().x, player.getCenter().y + crosshairRadius};
+    crosshairPlayer.setPosition({player.getCenter().x, player.getCenter().y + crosshairRadius});
 }
 
 void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
@@ -68,10 +71,11 @@ void PlayerUI::update()
     radar.move(player.getMoveBy());
     missilePicker.move(player.getMoveBy());
 
-    crosshairPlayer.move(player.getMoveBy());
+    managePlayerCross();
+
     crosshairShip.move(player.getMoveBy());
 
-    crosshairPlayer.move(moveCross().first);
+    
     crosshairShip.move(moveCross().second);
 
     missilePicker.setRocketCooldown(player.getMissileManager()->getRocketCooldown());
@@ -139,16 +143,21 @@ void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event>& ev)
 std::pair<sf::Vector2f, sf::Vector2f> PlayerUI::moveCross()
 {
     sf::Vector2f moveCross;
-    if (pressed.upCross)
-        moveCross.y -= 0.5f;
-    if (pressed.downCross)
-        moveCross.y += 0.5f;
+    //if (pressed.upCross)
+        //moveCross.y -= 0.5f;
+    //if (pressed.downCross)
+        //moveCross.y += 0.5f;
     if (pressed.leftCross)
         moveCross.x -= 0.5f;
     if (pressed.rightCross)
         moveCross.x += 0.5f;
 
+    moveCross = player.getCenter() + sf::Vector2f{crosshairPos + moveCross}.normalized() * crosshairRadius;
+
+    //moveCross = player.getCenter() + sf::Vector2f(crosshairPos + moveCross - player.getCenter()).normalized()  * crosshairRadius;
+
     //check kolizji
+    /*
     if (crosshairPlayer.getPosition().x > player.getPosition().x + view.getSize().x / 2.f)
         crosshairPlayer.setPosition({player.getPosition().x + view.getSize().x / 2.f, crosshairPlayer.getPosition().y});
     if (crosshairPlayer.getPosition().x < player.getPosition().x - view.getSize().x / 2.f + crosshairPlayer.getGlobalBounds().size.x)
@@ -157,6 +166,7 @@ std::pair<sf::Vector2f, sf::Vector2f> PlayerUI::moveCross()
         crosshairPlayer.setPosition({crosshairPlayer.getPosition().x, player.getPosition().y + view.getSize().y / 2.f});
     if (crosshairPlayer.getPosition().y < player.getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().size.y * 2.f)
         crosshairPlayer.setPosition({crosshairPlayer.getPosition().x, player.getPosition().y - view.getSize().y / 2.f + crosshairPlayer.getGlobalBounds().size.y * 2.f});
+    */
     
     sf::Vector2f moveCrossShip {crosshairPlayer.getPosition().x - crosshairShip.getPosition().x, crosshairPlayer.getPosition().y - crosshairShip.getPosition().y};
     
@@ -164,4 +174,18 @@ std::pair<sf::Vector2f, sf::Vector2f> PlayerUI::moveCross()
     moveCrossShip.y = moveCrossShip.y * crosshairShipSpeed;
     
     return {moveCross, moveCrossShip};
+}
+
+void PlayerUI::managePlayerCross()
+{
+    sf::Vector2f moveCross{};
+    if (pressed.leftCross)
+        moveCross.x -= 2.f;
+    if (pressed.rightCross)
+        moveCross.x += 2.f;
+
+    crosshairPos = player.getCenter() + sf::Vector2f{crosshairPos + moveCross - player.getCenter()}.normalized() * crosshairRadius;
+    
+    crosshairPos += player.getMoveBy();
+    crosshairPlayer.setPosition(crosshairPos);
 }
