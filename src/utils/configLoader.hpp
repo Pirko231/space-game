@@ -18,16 +18,22 @@ public:
     int asteroidAmount{100};
     int asteroidDamage{30};
     float throttle{0.005f};
-    float range{2000.f};
+    sf::Angle shipRotationSpeed{sf::degrees(1.f)};
     float health{100.f};
     float energy{100.f};
+    float range{2000.f};
+    int shieldProtection{30};
+    float shieldEnergyUse{0.5f};
     float laserSpeed{3.f};
     int laserDamage{10};
+    float laserLifetime{600.f};
     float rocketSpeed{4.f};
     int rocketDamage{50};
     sf::Angle rocketRotationSpeed{sf::degrees(3.f)};
     int rocketCooldown{10};
     float rocketLifetime{800.f};
+    int mineDamage{20};
+    float mineLifetime{2000.f};
     int mineCooldown{10};
 
     ~ConfigLoader()
@@ -43,16 +49,23 @@ public:
                 "Asteroid amount:" << asteroidAmount << ";\n" <<
                 "Asteroid damage:" << asteroidDamage << ";\n" <<
                 "Ship throttle:" << throttle << ";\n" <<
-                "Radar range:" << range << ";\n" <<
+                "Ship rotation speed:" << shipRotationSpeed.asDegrees() << ";\n" <<
                 "Player health:" << health << ";\n" <<
                 "Player energy:" << energy << ";\n" <<
+                "Radar range:" << range << ";\n" <<
+                "Shield protection:" << shieldProtection << ";\n" <<
+                "Shield energy use:" << shieldEnergyUse << ";\n" <<
                 "Laser speed:" << laserSpeed << ";\n" <<
                 "Laser damage:" << laserDamage << ";\n" <<
-                "Rocket speed: " << rocketSpeed << ";\n" <<
-                "Rocket damage: " << rocketDamage << ";\n" <<
-                "Rocket rotation speed: " << rocketRotationSpeed.asDegrees() << ";\n" <<
-                "Rocket cooldown: " << rocketCooldown << ";\n" <<
-                "Rocket lifetime: " << rocketLifetime << ";\n";
+                "Laser lifetime:" << laserLifetime << ";\n" <<
+                "Rocket speed:" << rocketSpeed << ";\n" <<
+                "Rocket damage:" << rocketDamage << ";\n" <<
+                "Rocket rotation speed:" << rocketRotationSpeed.asDegrees() << ";\n" <<
+                "Rocket cooldown:" << rocketCooldown << ";\n" <<
+                "Rocket lifetime:" << rocketLifetime << ";\n" <<
+                "Mine damage:" << mineDamage << ";\n" <<
+                "Mine lifetime:" << mineLifetime << ";\n" <<
+                "Mine cooldown:" << mineCooldown << ";\n";
     }
     else 
     {
@@ -113,7 +126,7 @@ private:
             std::getline(file, data, ';');
             try
             {
-                range = std::stof(data);
+                shipRotationSpeed = sf::degrees(std::stof(data));
             }
             catch(std::exception& e)
             {
@@ -143,6 +156,36 @@ private:
             std::getline(file, data, ';');
             try
             {
+                range = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                shieldProtection = std::stoi(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                shieldEnergyUse  = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
                 laserSpeed = std::stof(data);
             }
             catch(std::exception& e)
@@ -154,6 +197,16 @@ private:
             try
             {
                 laserDamage = std::stoi(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                laserLifetime = std::stof(data);
             }
             catch(std::exception& e)
             {
@@ -204,6 +257,36 @@ private:
             try
             {
                 rocketLifetime = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                mineDamage = std::stoi(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                mineLifetime = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                mineCooldown = std::stoi(data);
             }
             catch(std::exception& e)
             {

@@ -107,6 +107,8 @@ private:
 
     float maxSpeed{3.5f};
 
+    sf::Angle rotationSpeed{util::ConfigLoader::get().shipRotationSpeed};
+
     mutable float health{util::ConfigLoader::get().health};
     mutable float energy{util::ConfigLoader::get().energy};
 
