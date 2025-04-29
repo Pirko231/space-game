@@ -22,7 +22,7 @@ private:
     {
         target.draw(sprite, states);
     }
-    int protection{10};
-    float energyUse{0.5f};
+    int protection{util::ConfigLoader::get().shieldProtection};
+    float energyUse{util::ConfigLoader::get().shieldEnergyUse};
     bool active{};
 };

@@ -110,11 +110,11 @@ void Player::update()
     }
     if (pressed.a)
     {
-        rotate(sf::degrees(-1.f));
+        rotate(-rotationSpeed);
     }
     if (pressed.d)
     {
-        rotate(sf::degrees(1.f));
+        rotate(rotationSpeed);
     }
 
     if (shield.isActive())
