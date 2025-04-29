@@ -82,15 +82,15 @@ Inheritance diagram for Missile:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMissile__inherit__graph.png" border="0" usemap="#aMissile_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMissile_inherit__map" id="aMissile_inherit__map">
-<area shape="rect" title=" " alt="" coords="87,79,155,104"/>
+<area shape="rect" title=" " alt="" coords="80,79,148,104"/>
 <area shape="rect" href="classLaser.html" title=" " alt="" coords="5,152,63,177"/>
-<area shape="poly" title=" " alt="" coords="98,115,50,154,46,150,95,110"/>
-<area shape="rect" href="classRocket.html" title=" " alt="" coords="87,152,154,177"/>
-<area shape="poly" title=" " alt="" coords="123,118,123,152,118,152,118,118"/>
-<area shape="rect" href="classScanner.html" title=" " alt="" coords="178,152,253,177"/>
-<area shape="poly" title=" " alt="" coords="148,110,201,150,198,154,145,114"/>
-<area shape="rect" title=" " alt="" coords="69,5,172,31"/>
-<area shape="poly" title=" " alt="" coords="123,44,123,79,118,79,118,44"/>
+<area shape="poly" title=" " alt="" coords="93,115,49,154,45,150,89,111"/>
+<area shape="rect" href="classMine.html" title=" " alt="" coords="87,152,141,177"/>
+<area shape="poly" title=" " alt="" coords="117,118,117,152,111,152,111,118"/>
+<area shape="rect" href="classRocket.html" title=" " alt="" coords="166,152,233,177"/>
+<area shape="poly" title=" " alt="" coords="140,110,187,150,184,154,136,115"/>
+<area shape="rect" title=" " alt="" coords="63,5,165,31"/>
+<area shape="poly" title=" " alt="" coords="117,44,117,79,111,79,111,44"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -106,9 +106,9 @@ Collaboration diagram for Missile:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4a07ef458c9b3b9632ad685be4da9276" id="r_a4a07ef458c9b3b9632ad685be4da9276"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a4a07ef458c9b3b9632ad685be4da9276">handleEvents</a> (const sf::Event &amp;ev)</td></tr>
-<tr class="memdesc:a4a07ef458c9b3b9632ad685be4da9276"><td class="mdescLeft">&#160;</td><td class="mdescRight">odbiera eventy i reaguje na nie  <br /></td></tr>
-<tr class="separator:a4a07ef458c9b3b9632ad685be4da9276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1821da6d2e95de963b029847028fda78" id="r_a1821da6d2e95de963b029847028fda78"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a1821da6d2e95de963b029847028fda78">handleEvents</a> (const <a class="el" href="structPressed.html">Pressed</a> &amp;pressed) const</td></tr>
+<tr class="memdesc:a1821da6d2e95de963b029847028fda78"><td class="mdescLeft">&#160;</td><td class="mdescRight">odbiera eventy i reaguje na nie  <br /></td></tr>
+<tr class="separator:a1821da6d2e95de963b029847028fda78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f3bda5b9ece56f3a86ae29b3f93ca90" id="r_a0f3bda5b9ece56f3a86ae29b3f93ca90"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a0f3bda5b9ece56f3a86ae29b3f93ca90">update</a> ()=0</td></tr>
 <tr class="memdesc:a0f3bda5b9ece56f3a86ae29b3f93ca90"><td class="mdescLeft">&#160;</td><td class="mdescRight">aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych  <br /></td></tr>
 <tr class="separator:a0f3bda5b9ece56f3a86ae29b3f93ca90"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,12 +184,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>damage</b> {}</td></tr
 
 <p>wyswietla na specjalny ekran dodatkowe rzeczy (zalezy od klasy dziedziczacej) </p>
 
-<p>Reimplemented in <a class="el" href="classLaser.html#a8f77da97743e4e5f6c29a66ec20dd7de">Laser</a>, <a class="el" href="classRocket.html#a7a238da76ae41e649bca866b858c966a">Rocket</a>, and <a class="el" href="classScanner.html#a7154154d81063b3cbec96784db014b28">Scanner</a>.</p>
+<p>Reimplemented in <a class="el" href="classLaser.html#a8f77da97743e4e5f6c29a66ec20dd7de">Laser</a>, <a class="el" href="classMine.html#aa761db76de466de26d27399781abdd1d">Mine</a>, and <a class="el" href="classRocket.html#a7a238da76ae41e649bca866b858c966a">Rocket</a>.</p>
 
 </div>
 </div>
-<a id="a4a07ef458c9b3b9632ad685be4da9276" name="a4a07ef458c9b3b9632ad685be4da9276"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a07ef458c9b3b9632ad685be4da9276">&#9670;&#160;</a></span>handleEvents()</h2>
+<a id="a1821da6d2e95de963b029847028fda78" name="a1821da6d2e95de963b029847028fda78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1821da6d2e95de963b029847028fda78">&#9670;&#160;</a></span>handleEvents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,9 +200,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>damage</b> {}</td></tr
         <tr>
           <td class="memname">virtual void Missile::handleEvents </td>
           <td>(</td>
-          <td class="paramtype">const sf::Event &amp;&#160;</td>
-          <td class="paramname"><em>ev</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const <a class="el" href="structPressed.html">Pressed</a> &amp;&#160;</td>
+          <td class="paramname"><em>pressed</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -220,6 +220,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>damage</b> {}</td></tr
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented in <a class="el" href="classRocket.html#a261a152192c7581cf03eac07a905613e">Rocket</a>.</p>
 
 </div>
 </div>
@@ -248,7 +250,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>damage</b> {}</td></tr
 
 <p>aktualizuje swoją pozycję bazujac na wczesniej wyliczonych danych </p>
 
-<p>Implemented in <a class="el" href="classLaser.html#ae7317375cf2b7a5bff4281c359797255">Laser</a>, <a class="el" href="classRocket.html#aa0f4dcf673358e841e4b4b2fa0b1462e">Rocket</a>, and <a class="el" href="classScanner.html#a6e96c1d58d897787ea1548e4c18d4127">Scanner</a>.</p>
+<p>Implemented in <a class="el" href="classLaser.html#ae7317375cf2b7a5bff4281c359797255">Laser</a>, <a class="el" href="classMine.html#a03bec0390f9ecbc6d413e7a6b17c8879">Mine</a>, and <a class="el" href="classRocket.html#aa0f4dcf673358e841e4b4b2fa0b1462e">Rocket</a>.</p>
 
 </div>
 </div>
