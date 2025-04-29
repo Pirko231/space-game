@@ -81,6 +81,10 @@ private:
     sf::Sprite crosshairPlayer;
     sf::Sprite crosshairShip;
 
+    sf::Vector2f crosshairPos{};
+    float crosshairSpeed{0.5f};
+    float crosshairRadius{20.f};
+
     Radar radar;
 
     MissilePicker missilePicker;
@@ -90,6 +94,8 @@ private:
     void crosshairHandleEvents(const std::optional<sf::Event>& ev);
 
     std::pair<sf::Vector2f, sf::Vector2f> moveCross();
+
+    void managePlayerCross();
 
     Map* background;
 };
