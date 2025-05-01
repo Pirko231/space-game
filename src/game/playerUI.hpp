@@ -37,6 +37,8 @@ public:
 
         radar.setPosition({playerPos.x + view.getSize().x / 5.f, playerPos.y + view.getSize().x / 5.f});
 
+        crosshairShip.setPosition(playerPos);
+        
         return *this;
     }
 
@@ -93,7 +95,7 @@ private:
 
     void crosshairHandleEvents(const std::optional<sf::Event>& ev);
 
-    std::pair<sf::Vector2f, sf::Vector2f> moveCross();
+    void moveCrosshairShip();
 
     void managePlayerCross();
 
