@@ -83,7 +83,7 @@ private:
 
     sf::Vector2f crosshairPos{};
     float crosshairSpeed{0.5f};
-    float crosshairRadius{20.f};
+    float crosshairRadius{40.f};
 
     Radar radar;
 
