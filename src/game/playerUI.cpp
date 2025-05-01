@@ -179,10 +179,42 @@ std::pair<sf::Vector2f, sf::Vector2f> PlayerUI::moveCross()
 void PlayerUI::managePlayerCross()
 {
     sf::Vector2f moveCross{};
-    if (pressed.leftCross)
-        moveCross.x -= 2.f;
-    if (pressed.rightCross)
-        moveCross.x += 2.f;
+    if (crosshairPos.x - player.getCenter().x < 0.f)
+    {
+        if (crosshairPos.y - player.getCenter().y < 0)
+        {
+            if (pressed.leftCross)
+                moveCross += {-1.f, 1.f};
+            if (pressed.rightCross)
+                moveCross += {1.f, -1.f};
+        }
+        else
+        {
+            if (pressed.leftCross)
+                moveCross += {1.f, 1.f};
+            if (pressed.rightCross)
+                moveCross -= {1.f, 1.f};
+        }    
+    }
+    else
+    {
+        if (crosshairPos.y - player.getCenter().y < 0)
+        {
+            if (pressed.leftCross)
+                moveCross += {-1.f, -1.f};
+            if (pressed.rightCross)
+                moveCross += {1.f, 1.f};
+        }
+        else
+        {
+            if (pressed.leftCross)
+                moveCross += {1.f, -1.f};
+            if (pressed.rightCross)
+                moveCross += {-1.f, 1.f};
+        }
+    }
+    if (moveCross != sf::Vector2f{})
+        moveCross = moveCross.normalized();
 
     crosshairPos = player.getCenter() + sf::Vector2f{crosshairPos + moveCross - player.getCenter()}.normalized() * crosshairRadius;
     
