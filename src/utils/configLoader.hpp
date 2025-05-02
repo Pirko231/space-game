@@ -15,9 +15,9 @@ public:
     }
 
     int mapSize{1};
-    float mapScale{4.f};
+    float mapScale{2.f};
     float playerViewZoom{0.15f};
-    int asteroidAmount{100};
+    int asteroidAmount{30};
     int asteroidDamage{30};
     float asteroidHealth{30};
     float throttle{0.005f};
