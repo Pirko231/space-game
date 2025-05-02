@@ -6,13 +6,13 @@ class Scanner
 public:
     static sf::Color setColor(int temperature)
     {
-        if (temperature < 50)
+        if (temperature < 100)
             return sf::Color::White;
-        if (temperature < 200)
-            return sf::Color::Blue;
         if (temperature < 600)
+            return sf::Color::Blue;
+        if (temperature < 1200)
             return sf::Color::Yellow;
-        if (temperature < 1000)
+        if (temperature < 2000)
             return sf::Color{255,128,0};
         return sf::Color::Red;
     }

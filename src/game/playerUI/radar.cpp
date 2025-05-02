@@ -99,6 +99,7 @@ void Radar::manageP2(sf::Vector2f playerPos)
 
     if (hitbox.findIntersection(p2Pointer->getGlobalBounds()))
     {
+        drawP2 = true;
         //wyswietlanie drugiego gracza
         sf::Vector2f p2Pos{p2Pointer->getGlobalBounds().position};
         p2Pos -= playerPos;
@@ -107,10 +108,18 @@ void Radar::manageP2(sf::Vector2f playerPos)
 
         p2.setPosition(p2Pos);
         if (scannerActive)
-            p2.setFillColor(Scanner::setColor(p2Hitbox->getTemperature()));
+        {
+            p2.setFillColor(Scanner::setColor(p2Pointer->getTemperature()));
+            p2.setSize(objectSize);
+        }
         else
+        {
             p2.setFillColor(sf::Color::White);
+            p2.setSize(objectSize);
+        }    
     }
+    else
+        drawP2 = false;
 }
 
 void Radar::manageRocket(sf::Vector2f playerPos)

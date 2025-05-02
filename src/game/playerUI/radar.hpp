@@ -45,7 +45,8 @@ private:
         if (drawRocket)
             target.draw(rocket, states);
         target.draw(p1, states);
-        target.draw(p2,states);
+        if (drawP2)
+            target.draw(p2,states);
     }
     void deleteDatabase()
     {
@@ -65,6 +66,7 @@ private:
     std::vector<std::pair<sf::RectangleShape, const std::unique_ptr<Asteroid>*>> currentlyDisplayed;
 
     sf::RectangleShape p1;
+    bool drawP2{};
     sf::RectangleShape p2;
     sf::RectangleShape rocket;
     bool drawRocket{};
