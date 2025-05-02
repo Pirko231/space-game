@@ -64,7 +64,10 @@ void Player::update()
     //tarcza
     shield.setPosition(getCenter());
     if (pressed.shield && energy >= shield.getEnergyUse())
+    {
         shield.activate(true);
+        temperature += 1;
+    }
     else
         shield.activate(false);
 
@@ -86,6 +89,8 @@ void Player::update()
     if (moveBy.x <= -maxSpeed)
         moveBy.x = -maxSpeed;
 
+    temperature -= 2;
+
     move(moveBy);
     
     //kiedy jest rakieta to nie aktualizujemy gracza
@@ -98,12 +103,14 @@ void Player::update()
         sf::Vector2f add{0.f, -throttle};
         add = add.rotatedBy(sprite.getRotation());
         moveBy += add;
+        temperature += 5;
     }
     if (pressed.s)
     {
         sf::Vector2f add{0.f, throttle};
         add = add.rotatedBy(sprite.getRotation());
         moveBy += add;
+        temperature += 5;
         //moveBy.y += throttle / 2.5f;
         /*if (moveBy.y < 0)
             moveBy.y += throttle;*/
@@ -111,10 +118,12 @@ void Player::update()
     if (pressed.a)
     {
         rotate(-rotationSpeed);
+        temperature += 1;
     }
     if (pressed.d)
     {
         rotate(rotationSpeed);
+        temperature += 1;
     }
 
     if (shield.isActive())

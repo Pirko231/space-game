@@ -106,6 +106,10 @@ void Radar::manageP2(sf::Vector2f playerPos)
         p2Pos += basePos;
 
         p2.setPosition(p2Pos);
+        if (scannerActive)
+            p2.setFillColor(Scanner::setColor(p2Hitbox->getTemperature()));
+        else
+            p2.setFillColor(sf::Color::White);
     }
 }
 

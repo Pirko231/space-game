@@ -74,6 +74,8 @@ public:
         return missileManager.getRocket().value()->getMoveBy();
     }
 
+    int getTemperature() const {return temperature;}
+
     const MissileManager* getMissileManager() const {return &missileManager;}
 
     const sf::Sprite* getHitbox() const {return &sprite;}
@@ -102,6 +104,8 @@ private:
     MissileManager missileManager;
 
     sf::Vector2f moveBy{0.f,0.f};
+
+    int temperature{};
 
     float throttle{util::ConfigLoader::get().throttle};
 
