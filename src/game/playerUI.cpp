@@ -24,6 +24,8 @@ PlayerUI::PlayerUI()
 
 void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
 {
+    if (player.isDestroyed())
+        return;
     player.handleEvents(ev);
 
     crosshairHandleEvents(ev);

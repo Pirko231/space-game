@@ -31,6 +31,9 @@ Player::Player(const sf::Texture &texture, const PlayerKeyBinds &keyBinds, Press
 
 void Player::handleEvents(const std::optional<sf::Event>& ev)
 {
+    if (destroyed)
+        return;
+
     if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
     {
         if (keyPressed->code == keyBinds.up)
@@ -60,6 +63,16 @@ void Player::handleEvents(const std::optional<sf::Event>& ev)
 void Player::update()
 {
     missileManager.update(&rocketRecentlyDeleted);
+
+    health = 0;
+    if (health <= 0 && !destroyed)
+        destroy();
+
+    if (destroyed)
+    {
+        animateExplosion();
+        return;
+    }
     
     //tarcza
     shield.setPosition(getCenter());
@@ -191,4 +204,37 @@ void Player::move(sf::Vector2f offset)
 {
     sprite.move(offset);
     turret.move(offset);
+}
+
+void Player::destroy()
+{
+    destroyed = true;
+    temperature = 4000;
+
+    //przygotoanie animacji
+    explosion.setTextureRect(sf::IntRect{sf::Vector2i{0,0}, sf::Vector2i{128,128}});
+    explosion.setOrigin(explosion.getGlobalBounds().getCenter());
+    explosion.setPosition(getCenter());
+    explosion.setScale({5.f,5.f});
+}
+
+void Player::animateExplosion()
+{
+    //animacja jest przygotowana w Player::destroy 
+    explosion.setPosition(getCenter()- sf::Vector2f{100.f,40.f});  
+    static int currentFrame{};
+    static int frames{};
+    if (frames >= 10)
+        frames = 0;
+    else
+    {
+        frames++; return;
+    }
+    if (currentFrame < 17)
+    {
+        sf::IntRect pos {explosion.getTextureRect()};
+        pos.position.x += pos.size.x;
+        explosion.setTextureRect(pos);
+        currentFrame++;
+    }
 }
