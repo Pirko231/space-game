@@ -114,10 +114,6 @@ void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event>& ev)
 {
     if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
     {
-        if (keyPressed->code == keyBinds.crossUp)
-            pressed.upCross = true;
-        if (keyPressed->code == keyBinds.crossDown)
-            pressed.downCross = true;
         if (keyPressed->code == keyBinds.crossLeft)
             pressed.leftCross = true;
         if (keyPressed->code == keyBinds.crossRight)
@@ -126,10 +122,6 @@ void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event>& ev)
 
     if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
     {
-        if (keyReleased->code == keyBinds.crossUp)
-            pressed.upCross = false;
-        if (keyReleased->code == keyBinds.crossDown)
-            pressed.downCross = false;
         if (keyReleased->code == keyBinds.crossLeft)
             pressed.leftCross = false;
         if (keyReleased->code == keyBinds.crossRight)
