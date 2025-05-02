@@ -8,7 +8,7 @@ public:
     : Missile{util::ConfigLoader::get().laserLifetime, util::ConfigLoader::get().laserSpeed, util::ConfigLoader::get().laserDamage, util::AssetLoader::get().laser}
     {
         sprite.setScale({0.2f,0.2f});
-
+        temperature = 4000;
         launch(pos,dir);
     }
 
