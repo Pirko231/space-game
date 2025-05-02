@@ -21,7 +21,10 @@ public:
     sf::Angle shipRotationSpeed{sf::degrees(1.f)};
     float health{100.f};
     float energy{100.f};
+    float energyRefill{0.1f};
     float range{2000.f};
+    float scannerRange{4000.f};
+    float scannerEnergyUse{1.f};
     int shieldProtection{30};
     float shieldEnergyUse{0.5f};
     float laserSpeed{3.f};
@@ -52,7 +55,10 @@ public:
                 "Ship rotation speed:" << shipRotationSpeed.asDegrees() << ";\n" <<
                 "Player health:" << health << ";\n" <<
                 "Player energy:" << energy << ";\n" <<
+                "Energy refill:" << energyRefill << ";\n" <<
                 "Radar range:" << range << ";\n" <<
+                "Scanner range:" << scannerRange << ";\n" <<
+                "Scanner energy use:" << scannerEnergyUse << ";\n" <<
                 "Shield protection:" << shieldProtection << ";\n" <<
                 "Shield energy use:" << shieldEnergyUse << ";\n" <<
                 "Laser speed:" << laserSpeed << ";\n" <<
@@ -156,7 +162,37 @@ private:
             std::getline(file, data, ';');
             try
             {
+                energyRefill = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
                 range = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                scannerRange = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                scannerEnergyUse = std::stof(data);
             }
             catch(std::exception& e)
             {
