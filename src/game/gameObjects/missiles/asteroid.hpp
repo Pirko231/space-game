@@ -17,6 +17,7 @@ public:
         sf::Vector2f scale{static_cast<float>(std::rand() % 5 + 1), static_cast<float>(std::rand() % 5 + 1)};
         scale /= 10.f;
         sprite.setScale(scale);
+        temperature = std::rand() % 100;
     }
     void update()
     {

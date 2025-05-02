@@ -50,6 +50,8 @@ void Radar::findTargets(sf::Vector2f playerPos)
             if (hitbox.findIntersection(i->getGlobalBounds()))
             {
                 sf::RectangleShape shape{objectSize};
+                if (scannerActive)
+                    shape.setFillColor(Scanner::setColor(i->getTemperature()));
                 currentlyDisplayed.push_back({std::move(shape), &i});
             }
         }

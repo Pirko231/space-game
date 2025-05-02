@@ -1,6 +1,7 @@
 #pragma once
 #include "managers/collisionManager.hpp"
 #include "assetLoader.hpp"
+#include "scanner.hpp"
 
 class Radar : private CollisionManager, public sf::Drawable
 {
@@ -9,11 +10,11 @@ public:
 
     void setRange(float _range, sf::Vector2f _objectSize)
     {
-        range = _range; objectSize = _objectSize;
+        range = _range; objectSize = _objectSize; scannerActive = true;
     }
     void setDefault()
     {
-        range = defaultRange; objectSize = defaultObjectSize;
+        range = defaultRange; objectSize = defaultObjectSize; scannerActive = false;
     }
 
     void setPosition(sf::Vector2f pos) {sprite.setPosition(pos);}
@@ -47,6 +48,7 @@ private:
     float defaultRange{util::ConfigLoader::get().range};
     sf::Vector2f objectSize{2.f,2.f};
     sf::Vector2f defaultObjectSize{2.f,2.f};
+    bool scannerActive{};
     float scale{};
     /// @brief para obiektow
     /// @param sf::RectangleShape - obiekt na radarze
