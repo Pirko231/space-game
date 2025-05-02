@@ -15,15 +15,20 @@ public:
     }
 
     int mapSize{1};
+    float mapScale{4.f};
+    float playerViewZoom{0.15f};
     int asteroidAmount{100};
     int asteroidDamage{30};
+    float asteroidHealth{30};
     float throttle{0.005f};
     sf::Angle shipRotationSpeed{sf::degrees(1.f)};
     float health{100.f};
     float energy{100.f};
     float energyRefill{0.1f};
     float range{2000.f};
+    float radarObjectSize{2.f};
     float scannerRange{4000.f};
+    float scannerObjectSize{1.f};
     float scannerEnergyUse{1.f};
     int shieldProtection{30};
     float shieldEnergyUse{0.5f};
@@ -49,15 +54,20 @@ public:
         stream << "DANGER - modification of special characters might result in program malfunction. In that case delete this file.\n!--------------Settings--------------!\n";
             stream << 
                 "Map size:" << mapSize << ";\n" <<
+                "Map scale:" << mapScale << ";\n" <<
+                "Player view zoom (experimental):" << playerViewZoom << ";\n" <<
                 "Asteroid amount:" << asteroidAmount << ";\n" <<
                 "Asteroid damage:" << asteroidDamage << ";\n" <<
+                "Asteroid health:" << asteroidHealth << ";\n" <<
                 "Ship throttle:" << throttle << ";\n" <<
                 "Ship rotation speed:" << shipRotationSpeed.asDegrees() << ";\n" <<
                 "Player health:" << health << ";\n" <<
                 "Player energy:" << energy << ";\n" <<
                 "Energy refill:" << energyRefill << ";\n" <<
                 "Radar range:" << range << ";\n" <<
+                "Radar object size:" << radarObjectSize << ";\n" <<
                 "Scanner range:" << scannerRange << ";\n" <<
+                "Scanner object size:" << scannerObjectSize << ";\n" <<
                 "Scanner energy use:" << scannerEnergyUse << ";\n" <<
                 "Shield protection:" << shieldProtection << ";\n" <<
                 "Shield energy use:" << shieldEnergyUse << ";\n" <<
@@ -102,6 +112,26 @@ private:
             std::getline(file, data, ';');
             try
             {
+                mapScale = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                playerViewZoom = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
                 asteroidAmount = std::stoi(data);
             }
             catch(std::exception& e)
@@ -113,6 +143,16 @@ private:
             try
             {
                 asteroidDamage = std::stoi(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                asteroidHealth = std::stof(data);
             }
             catch(std::exception& e)
             {
@@ -182,7 +222,27 @@ private:
             std::getline(file, data, ';');
             try
             {
+                radarObjectSize = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
                 scannerRange = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                scannerObjectSize = std::stoi(data);
             }
             catch(std::exception& e)
             {

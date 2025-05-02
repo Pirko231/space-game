@@ -10,13 +10,13 @@ Program::Program()
     {
         sf::View view;
         view.setViewport(sf::FloatRect{{0.f, 0.f}, {0.5f, 1.f}});
-        view.zoom(0.15f);
+        view.zoom(util::ConfigLoader::get().playerViewZoom);
         p1UI.setView(view);
     }
     {
         sf::View view;
         view.setViewport(sf::FloatRect{{0.5f, 0.f}, {0.5f, 1.f}});
-        view.zoom(0.15f);
+        view.zoom(util::ConfigLoader::get().playerViewZoom);
         p2UI.setView(view);
     }
 

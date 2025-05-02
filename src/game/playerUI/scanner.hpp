@@ -25,5 +25,5 @@ private:
     bool status{};
     float range{util::ConfigLoader::get().scannerRange};
     float energyUse{util::ConfigLoader::get().scannerEnergyUse};
-    sf::Vector2f rectSize{1.f,1.f};
+    sf::Vector2f rectSize{util::ConfigLoader::get().scannerObjectSize, util::ConfigLoader::get().scannerObjectSize};
 };

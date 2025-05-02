@@ -5,7 +5,7 @@
 class Map : public sf::Drawable
 {
 public:
-    Map(int rectSize, sf::Vector2f scale = {4.f,4.f})
+    Map(int rectSize, sf::Vector2f scale = {util::ConfigLoader::get().mapScale,util::ConfigLoader::get().mapScale})
     {
         sf::Vector2f startPos{};
         sf::Sprite forCopy{util::AssetLoader::get().background};

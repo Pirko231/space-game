@@ -56,7 +56,7 @@ private:
     sf::Sprite sprite;
     float range{util::ConfigLoader::get().range};
     float defaultRange{util::ConfigLoader::get().range};
-    sf::Vector2f objectSize{2.f,2.f};
+    sf::Vector2f objectSize{util::ConfigLoader::get().radarObjectSize, util::ConfigLoader::get().radarObjectSize};
     sf::Vector2f defaultObjectSize{2.f,2.f};
     bool scannerActive{};
     float scale{};
