@@ -7,6 +7,15 @@ class Radar : private CollisionManager, public sf::Drawable
 public:
     Radar();
 
+    void setRange(float _range, sf::Vector2f _objectSize)
+    {
+        range = _range; objectSize = _objectSize;
+    }
+    void setDefault()
+    {
+        range = defaultRange; objectSize = defaultObjectSize;
+    }
+
     void setPosition(sf::Vector2f pos) {sprite.setPosition(pos);}
 
     void update(const Player* player, sf::Vector2f viewCenter = {});
@@ -35,6 +44,9 @@ private:
     }
     sf::Sprite sprite;
     float range{util::ConfigLoader::get().range};
+    float defaultRange{util::ConfigLoader::get().range};
+    sf::Vector2f objectSize{2.f,2.f};
+    sf::Vector2f defaultObjectSize{2.f,2.f};
     float scale{};
     /// @brief para obiektow
     /// @param sf::RectangleShape - obiekt na radarze
