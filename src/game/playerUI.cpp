@@ -113,9 +113,11 @@ void PlayerUI::display(sf::RenderWindow *window)
 
 void PlayerUI::updateRadar()
 {
+    radar.setDefault();
     if (pressed.scanner && *player.getEnergy() > scanner.getEnergyUse())
     {
         *player.getEnergy() -= scanner.getEnergyUse();
+        radar.setRange(scanner.getRange(), scanner.getRectSize());
     }
     if (player.getMissileManager()->getRocket().has_value())
         radar.update(&player, player.getMissileManager()->getRocket().value()->getGlobalBounds().getCenter());

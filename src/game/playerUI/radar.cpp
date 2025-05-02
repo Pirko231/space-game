@@ -49,7 +49,7 @@ void Radar::findTargets(sf::Vector2f playerPos)
             //pierwsze wrzucenie do radaru (razem z adresem)
             if (hitbox.findIntersection(i->getGlobalBounds()))
             {
-                sf::RectangleShape shape{{2.f,2.f}};
+                sf::RectangleShape shape{objectSize};
                 currentlyDisplayed.push_back({std::move(shape), &i});
             }
         }

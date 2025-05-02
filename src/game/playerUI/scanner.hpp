@@ -12,6 +12,6 @@ public:
 private:
     bool status{};
     float range{4000.f};
-    float energyUse{5};
+    float energyUse{1};
     sf::Vector2f rectSize{1.f,1.f};
 };
