@@ -8,6 +8,7 @@ public:
     : Missile{util::ConfigLoader::get().mineLifetime, 0.f, util::ConfigLoader::get().mineDamage, util::AssetLoader::get().mine}
     {
         sprite.setScale({0.2f,0.2f});
+        temperature = 10;
         launch(pos,moveBy);
     }
 

@@ -7,8 +7,8 @@ public:
     Rocket(sf::Vector2f pos, sf::Vector2f moveBy)
     : Missile{util::ConfigLoader::get().rocketLifetime, util::ConfigLoader::get().rocketSpeed, util::ConfigLoader::get().rocketDamage, util::AssetLoader::get().rocket} 
     {
-        damage = 50;
         sprite.setScale({0.4f,0.4f});
+        temperature = 1000;
         launch(pos,moveBy);
     }
 

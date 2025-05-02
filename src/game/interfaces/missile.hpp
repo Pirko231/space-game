@@ -23,6 +23,8 @@ public:
 
     sf::FloatRect getGlobalBounds() const {return sprite.getGlobalBounds();}
 
+    int getTemperature() const {return temperature;}
+    
     virtual ~Missile() = default;
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
@@ -56,4 +58,5 @@ protected:
     const float maxLifeSpan;
     float lifeSpan{0};
     int damage{};
+    int temperature{};
 };

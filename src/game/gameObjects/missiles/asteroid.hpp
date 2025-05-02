@@ -30,6 +30,8 @@ public:
 
     void del() {health = 0;}
 
+    int getTemperature() const {return temperature;}
+
     bool shouldDelete() const {return health <= 0;}
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
@@ -42,4 +44,5 @@ private:
 
     float health{100};
     int damage{util::ConfigLoader::get().asteroidDamage};
+    int temperature{};
 };
