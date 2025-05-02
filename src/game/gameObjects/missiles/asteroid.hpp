@@ -29,6 +29,8 @@ public:
 
     int getDamage() const {return damage;}
 
+    void dealDamage(int dmg) {health -= dmg;}
+
     void del() {health = 0;}
 
     int getTemperature() const {return temperature;}
@@ -43,7 +45,7 @@ private:
     sf::Vector2f moveBy;
     sf::Angle rotationPerFrame;
 
-    float health{100};
+    float health{30};
     int damage{util::ConfigLoader::get().asteroidDamage};
     int temperature{};
 };
