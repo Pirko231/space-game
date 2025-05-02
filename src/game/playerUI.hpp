@@ -39,6 +39,9 @@ public:
         radar.setPosition({playerPos.x + view.getSize().x / 5.f, playerPos.y + view.getSize().x / 5.f});
 
         crosshairShip.setPosition(playerPos);
+
+        temperatureBackground.setPosition({playerPos.x - 70.f, playerPos.y + 60.f});
+        temperatureText.setPosition({temperatureBackground.getGlobalBounds().getCenter().x - temperatureText.getGlobalBounds().size.x, temperatureBackground.getGlobalBounds().getCenter().y - temperatureText.getGlobalBounds().size.y});
         
         return *this;
     }
@@ -87,6 +90,10 @@ private:
     sf::Vector2f crosshairPos{};
     float crosshairSpeed{0.5f};
     float crosshairRadius{40.f};
+
+    sf::RectangleShape temperatureBackground;
+    sf::Text temperatureText{util::AssetLoader::get().font};
+    void updateTemperature();
 
     Radar radar;
     Scanner scanner;

@@ -16,6 +16,10 @@ PlayerUI::PlayerUI()
 
     crosshairPos = {player.getCenter().x, player.getCenter().y + crosshairRadius};
     crosshairPlayer.setPosition({player.getCenter().x, player.getCenter().y + crosshairRadius});
+
+    temperatureBackground.setSize({25.f,10.f});
+    temperatureText.setScale({0.2f,0.2f});
+    temperatureText.setFillColor(sf::Color::Black);
 }
 
 void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
@@ -76,6 +80,8 @@ void PlayerUI::update()
 
     moveCrosshairShip();
 
+    updateTemperature();
+
     missilePicker.setRocketCooldown(player.getMissileManager()->getRocketCooldown());
     missilePicker.setMineCooldown(player.getMissileManager()->getMineCooldown());
 }
@@ -108,7 +114,18 @@ void PlayerUI::display(sf::RenderWindow *window)
         window->draw(crosshairShip);
         window->draw(healthBar);
         window->draw(energyBar);
+        window->draw(temperatureBackground);
+        window->draw(temperatureText);
     }
+}
+
+void PlayerUI::updateTemperature()
+{
+    temperatureText.setString(std::to_string(player.getTemperature()));
+    temperatureBackground.setFillColor(Scanner::setColor(player.getTemperature()));
+    temperatureBackground.move(player.getMoveBy());
+    temperatureText.move(player.getMoveBy());
+    temperatureText.setPosition({temperatureBackground.getGlobalBounds().getCenter().x - temperatureText.getGlobalBounds().size.x / 2.f, temperatureBackground.getGlobalBounds().getCenter().y - temperatureText.getGlobalBounds().size.y / 2.f});
 }
 
 void PlayerUI::updateRadar()

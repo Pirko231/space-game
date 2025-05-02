@@ -89,9 +89,11 @@ void Player::update()
     if (moveBy.x <= -maxSpeed)
         moveBy.x = -maxSpeed;
 
-    temperature -= 6;
+    temperature -= 5;
     if (temperature < -60)
         temperature = -60;
+    if (temperature > 4000)
+        temperature = 4000;
 
     move(moveBy);
     
