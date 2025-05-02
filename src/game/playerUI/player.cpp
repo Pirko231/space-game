@@ -133,8 +133,8 @@ void Player::update()
     if (shield.isActive())
         energy -= shield.getEnergyUse();
     
-    if (energy <= 100.f)
-        energy += 0.05f;
+    if (energy <= maxEnergy)
+        energy += energyRefill;
 
     turret.setRotation(spinTurret());
 }

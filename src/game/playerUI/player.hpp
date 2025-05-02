@@ -115,6 +115,8 @@ private:
 
     mutable float health{util::ConfigLoader::get().health};
     mutable float energy{util::ConfigLoader::get().energy};
+    float maxEnergy{util::ConfigLoader::get().energy};
+    float energyRefill{util::ConfigLoader::get().energyRefill};
 
     bool rocketRecentlyDeleted{};
 

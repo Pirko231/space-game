@@ -23,7 +23,7 @@ public:
     float getEnergyUse() const {return energyUse;}
 private:
     bool status{};
-    float range{4000.f};
-    float energyUse{1};
+    float range{util::ConfigLoader::get().scannerRange};
+    float energyUse{util::ConfigLoader::get().scannerEnergyUse};
     sf::Vector2f rectSize{1.f,1.f};
 };
