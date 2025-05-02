@@ -4,7 +4,7 @@ struct Pressed
 {
     bool w{false},s{false},a{false},d{false};
     bool leftCross{false}, rightCross{false};
-    bool shoot{false}, shield{false};
+    bool shoot{false}, shield{false}, scanner{false};
     bool space{false}, tab{false}, lShift{false}, rShift{false};
     bool weaponLeft{false}, weaponRight{false};
 };

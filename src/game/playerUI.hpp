@@ -7,6 +7,7 @@
 #include "radar.hpp"
 #include "shield.hpp"
 #include "missilePicker.hpp"
+#include "scanner.hpp"
 
 /// @brief przechowuje interfejs gracza, czyli paski zycia, celownik i radar
 class PlayerUI
@@ -88,6 +89,9 @@ private:
     float crosshairRadius{40.f};
 
     Radar radar;
+    Scanner scanner;
+    /// @brief aktualizuje radar uwzgledniajac skaner
+    void updateRadar();
 
     MissilePicker missilePicker;
 
