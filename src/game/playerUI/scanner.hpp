@@ -4,6 +4,18 @@
 class Scanner
 {
 public:
+    static sf::Color setColor(int temperature)
+    {
+        if (temperature < 50)
+            return sf::Color::White;
+        if (temperature < 200)
+            return sf::Color::Blue;
+        if (temperature < 600)
+            return sf::Color::Yellow;
+        if (temperature < 1000)
+            return sf::Color{255,128,0};
+        return sf::Color::Red;
+    }
     void setStatus(bool _status) {status = _status;}
     bool isActive() const {return status;}
     float getRange() const {return range;}
