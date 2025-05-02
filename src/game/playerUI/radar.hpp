@@ -10,10 +10,14 @@ public:
 
     void setRange(float _range, sf::Vector2f _objectSize)
     {
+        if (!scannerActive)
+            deleteDatabase();
         range = _range; objectSize = _objectSize; scannerActive = true;
     }
     void setDefault()
     {
+        if (scannerActive)
+            deleteDatabase();
         range = defaultRange; objectSize = defaultObjectSize; scannerActive = false;
     }
 
@@ -43,6 +47,11 @@ private:
         target.draw(p1, states);
         target.draw(p2,states);
     }
+    void deleteDatabase()
+    {
+        currentlyDisplayed.erase(currentlyDisplayed.begin(), currentlyDisplayed.end());
+    }
+
     sf::Sprite sprite;
     float range{util::ConfigLoader::get().range};
     float defaultRange{util::ConfigLoader::get().range};
