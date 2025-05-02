@@ -28,6 +28,8 @@ void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
     {
         if (keyPressed->code == keyBinds.shield)
             pressed.shield = true;
+        if (keyPressed->code == keyBinds.scanner)
+            pressed.scanner = true;
         
     }
     
@@ -40,6 +42,8 @@ void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
         }
         if (keyReleased->code == keyBinds.shield)
             pressed.shield = false;
+        if (keyReleased->code == keyBinds.scanner)
+            pressed.scanner = false;
 
         if (keyReleased->code == keyBinds.weaponLeft)
             missilePicker.left();
@@ -53,10 +57,7 @@ void PlayerUI::update()
 {
     player.update();
     player.checkMapCollisions(background);
-    if (player.getMissileManager()->getRocket().has_value())
-        radar.update(&player, player.getMissileManager()->getRocket().value()->getGlobalBounds().getCenter());
-    else
-        radar.update(&player);
+    updateRadar();
 
     if (player.rocketDeleted())
         setPlayerPos(player.getCenter());
@@ -110,7 +111,19 @@ void PlayerUI::display(sf::RenderWindow *window)
     }
 }
 
-void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event>& ev)
+void PlayerUI::updateRadar()
+{
+    if (pressed.scanner && *player.getEnergy() > scanner.getEnergyUse())
+    {
+        *player.getEnergy() -= scanner.getEnergyUse();
+    }
+    if (player.getMissileManager()->getRocket().has_value())
+        radar.update(&player, player.getMissileManager()->getRocket().value()->getGlobalBounds().getCenter());
+    else
+        radar.update(&player);
+}
+
+void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event> &ev)
 {
     if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
     {
