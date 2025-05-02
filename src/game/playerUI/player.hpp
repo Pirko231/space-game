@@ -88,7 +88,8 @@ public:
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
-        target.draw(sprite, states);
+        if (!destroyed)
+            target.draw(sprite, states);
         target.draw(turret, states);
         if (shield.isActive())
             target.draw(shield, states);

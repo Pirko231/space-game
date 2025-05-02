@@ -64,7 +64,7 @@ void Player::update()
 {
     missileManager.update(&rocketRecentlyDeleted);
 
-    health = 0;
+    
     if (health <= 0 && !destroyed)
         destroy();
 
@@ -210,21 +210,24 @@ void Player::destroy()
 {
     destroyed = true;
     temperature = 4000;
+    moveBy = {0.f,0.f};
+    if (missileManager.getRocket().has_value())
+        const_cast<std::optional<Rocket*>&>(missileManager.getRocket()).reset();
 
     //przygotoanie animacji
     explosion.setTextureRect(sf::IntRect{sf::Vector2i{0,0}, sf::Vector2i{128,128}});
-    explosion.setOrigin(explosion.getGlobalBounds().getCenter());
+    explosion.setOrigin(explosion.getLocalBounds().getCenter());
+    explosion.setScale({1.f,1.f});
     explosion.setPosition(getCenter());
-    explosion.setScale({5.f,5.f});
 }
 
 void Player::animateExplosion()
 {
     //animacja jest przygotowana w Player::destroy 
-    explosion.setPosition(getCenter()- sf::Vector2f{100.f,40.f});  
+    explosion.setPosition(getCenter());  
     static int currentFrame{};
     static int frames{};
-    if (frames >= 10)
+    if (frames >= 5)
         frames = 0;
     else
     {
