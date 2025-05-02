@@ -31,5 +31,17 @@ void HitChecker::check()
             p2Hitbox->damaged(aster->getDamage());
             aster->del();
         }
+        for (auto& obj : p1Missiles->getMissiles())
+            if (obj->getGlobalBounds().findIntersection(aster->getGlobalBounds()))
+            {
+                obj->del();
+                aster->dealDamage(obj->getDamage());
+            }
+        for (auto& obj : p2Missiles->getMissiles())
+            if (obj->getGlobalBounds().findIntersection(aster->getGlobalBounds()))
+            {
+                obj->del();
+                aster->dealDamage(obj->getDamage());
+            }
     }
 }
