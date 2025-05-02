@@ -84,6 +84,7 @@ public:
     float* getEnergy() const {return &energy;}
 
     bool checkMapCollisions(Map* map);
+    bool isDestroyed() const {return destroyed;}
 private:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
@@ -91,6 +92,8 @@ private:
         target.draw(turret, states);
         if (shield.isActive())
             target.draw(shield, states);
+        if (destroyed)
+            target.draw(explosion,states);
     }
 
     const sf::View* view;
@@ -104,6 +107,11 @@ private:
     MissileManager missileManager;
 
     sf::Vector2f moveBy{0.f,0.f};
+
+    bool destroyed{};
+    void destroy();
+    sf::Sprite explosion{util::AssetLoader::get().explosion};
+    void animateExplosion();
 
     int temperature{};
 
