@@ -225,8 +225,6 @@ void Player::animateExplosion()
 {
     //animacja jest przygotowana w Player::destroy 
     explosion.setPosition(getCenter());  
-    static int currentFrame{};
-    static int frames{};
     if (frames >= 5)
         frames = 0;
     else

@@ -113,6 +113,8 @@ private:
     void destroy();
     sf::Sprite explosion{util::AssetLoader::get().explosion};
     void animateExplosion();
+    int currentFrame{};
+    int frames{};
 
     int temperature{};
 
