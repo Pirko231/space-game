@@ -17,7 +17,7 @@ public:
         sf::Vector2f scale{static_cast<float>(std::rand() % 5 + 1), static_cast<float>(std::rand() % 5 + 1)};
         scale /= 10.f;
         sprite.setScale(scale);
-        temperature = std::rand() % 100;
+        temperature = std::rand() % 700;
     }
     void update()
     {
@@ -45,7 +45,7 @@ private:
     sf::Vector2f moveBy;
     sf::Angle rotationPerFrame;
 
-    float health{30};
+    float health{util::ConfigLoader::get().asteroidHealth};
     int damage{util::ConfigLoader::get().asteroidDamage};
     int temperature{};
 };
