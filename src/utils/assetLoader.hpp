@@ -48,6 +48,7 @@ struct AssetLoader
 
     sf::SoundBuffer explosionSound;
     sf::SoundBuffer hitSound;
+    sf::SoundBuffer rocketHitSound;
 private:
     AssetLoader();
 };
@@ -87,4 +88,5 @@ inline util::AssetLoader::AssetLoader()
 
     explosionSound.loadFromFile("resources/music/soundeffects/explosion.flac");
     hitSound.loadFromFile("resources/music/soundeffects/hitSound.wav");
+    rocketHitSound.loadFromFile("resources/music/soundeffects/rocketExplosion.ogg");
 }

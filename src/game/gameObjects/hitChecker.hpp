@@ -9,5 +9,6 @@ public:
     static void check();
 
 private:
-    static sf::Sound sound;
+    static sf::Sound laserSound;
+    static sf::Sound explosionSound;
 };
