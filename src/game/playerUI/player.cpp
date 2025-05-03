@@ -213,6 +213,7 @@ void Player::destroy()
     moveBy = {0.f,0.f};
     if (missileManager.getRocket().has_value())
         const_cast<std::optional<Rocket*>&>(missileManager.getRocket()).reset();
+    shield.activate(false);
 
     //przygotoanie animacji
     explosion.setTextureRect(sf::IntRect{sf::Vector2i{0,0}, sf::Vector2i{128,128}});
