@@ -55,6 +55,8 @@ public:
     {
         stream << "DANGER - modification of special characters might result in program malfunction. In that case delete this file.\n!--------------Settings--------------!\n";
             stream << 
+                "Music volume:" << musicVolume << ";\n" <<
+                "Sounds volume:" << soundVolume << ";\n" <<
                 "Map size:" << mapSize << ";\n" <<
                 "Map scale:" << mapScale << ";\n" <<
                 "Player view zoom (experimental):" << playerViewZoom << ";\n" <<
@@ -100,6 +102,26 @@ private:
         std::string data;
         if (file.is_open())
         {
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                musicVolume = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                soundVolume = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
             std::getline(file, dump, ':');
             std::getline(file, data, ';');
             try
