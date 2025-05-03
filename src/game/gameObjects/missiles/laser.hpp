@@ -5,7 +5,7 @@ class Laser : public Missile
 {
 public:
     Laser(sf::Vector2f pos, sf::Vector2f dir)
-    : Missile{util::ConfigLoader::get().laserLifetime, util::ConfigLoader::get().laserSpeed, util::ConfigLoader::get().laserDamage, util::AssetLoader::get().laser}
+    : Missile{util::ConfigLoader::get().laserLifetime, util::ConfigLoader::get().laserSpeed, util::ConfigLoader::get().laserDamage, util::AssetLoader::get().laser, util::AssetLoader::get().laserSound}
     {
         sprite.setScale({0.2f,0.2f});
         temperature = 4000;

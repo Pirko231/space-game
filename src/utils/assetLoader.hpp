@@ -1,6 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <iostream>
 
 #pragma GCC diagnostic ignored "-Wunused-result"
 
@@ -38,6 +40,12 @@ struct AssetLoader
     sf::Texture shield;
 
     sf::Texture explosion;
+
+    sf::SoundBuffer laserSound;
+    sf::SoundBuffer rocketSound;
+    sf::SoundBuffer mineSound;
+
+    sf::SoundBuffer explosionSound;
 private:
     AssetLoader();
 };
@@ -69,4 +77,8 @@ inline util::AssetLoader::AssetLoader()
     shield.loadFromFile("resources/textures/shield.png");
 
     explosion.loadFromFile("resources/textures/explosion.png");
+
+    laserSound.loadFromFile("resources/music/soundeffects/laser.mp3");
+    rocketSound.loadFromFile("resources/music/soundeffects/laser.mp3");
+    mineSound.loadFromFile("resources/music/soundeffects/laser.mp3");
 }
