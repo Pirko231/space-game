@@ -1,5 +1,7 @@
 #include "hitChecker.hpp"
 
+sf::Sound HitChecker::sound{util::AssetLoader::get().hitSound};
+
 void HitChecker::check()
 {
     for (auto& obj : p1Missiles->getMissiles())
@@ -8,6 +10,7 @@ void HitChecker::check()
         {
             obj->del();
             p2Hitbox->damaged(obj->getDamage());
+            sound.play();
         }
     }
     for (auto& obj : p2Missiles->getMissiles())
@@ -16,6 +19,7 @@ void HitChecker::check()
         {
             obj->del();
             p1Hitbox->damaged(obj->getDamage());
+            sound.play();
         }
     }
 
