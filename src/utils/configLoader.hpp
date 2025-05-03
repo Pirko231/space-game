@@ -15,6 +15,7 @@ public:
     }
 
     float musicVolume{100.f};
+    float soundVolume{100.f};
     int mapSize{1};
     float mapScale{2.f};
     float playerViewZoom{0.15f};

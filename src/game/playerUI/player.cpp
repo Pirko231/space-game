@@ -220,6 +220,10 @@ void Player::destroy()
     explosion.setOrigin(explosion.getLocalBounds().getCenter());
     explosion.setScale({1.f,1.f});
     explosion.setPosition(getCenter());
+
+    //dzwiek
+    explosionSound.setVolume(util::ConfigLoader::get().soundVolume * 6.f);
+    explosionSound.play();
 }
 
 void Player::animateExplosion()

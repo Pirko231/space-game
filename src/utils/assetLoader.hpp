@@ -81,4 +81,6 @@ inline util::AssetLoader::AssetLoader()
     laserSound.loadFromFile("resources/music/soundeffects/laser.mp3");
     rocketSound.loadFromFile("resources/music/soundeffects/laser.mp3");
     mineSound.loadFromFile("resources/music/soundeffects/laser.mp3");
+
+    explosionSound.loadFromFile("resources/music/soundeffects/explosion.flac");
 }

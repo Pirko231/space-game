@@ -112,6 +112,7 @@ private:
     bool destroyed{};
     void destroy();
     sf::Sprite explosion{util::AssetLoader::get().explosion};
+    sf::Sound explosionSound{util::AssetLoader::get().explosionSound};
     void animateExplosion();
     int currentFrame{};
     int frames{};
