@@ -33,8 +33,8 @@ private:
         target.draw(sprite, states);
     }
 protected:
-    Missile(float _maxLifeSpan, float _speed, int _damage, const sf::Texture& _texture, const sf::SoundBuffer& _soundBuffer)
-    : sprite{_texture}, speed{_speed}, maxLifeSpan{_maxLifeSpan}, damage{_damage}, sound{_soundBuffer}
+    Missile(float _maxLifeSpan, float _speed, int _damage, const sf::Texture& _texture)
+    : sprite{_texture}, speed{_speed}, maxLifeSpan{_maxLifeSpan}, damage{_damage}
     {}
 
     void launch(sf::Vector2f _pos, sf::Vector2f dir)
@@ -51,10 +51,6 @@ protected:
         }
         else
             lifeSpan = maxLifeSpan;
-
-        sound.setLooping(true);
-        sound.play();
-        
     }
 
     sf::Sprite sprite;
@@ -64,5 +60,4 @@ protected:
     float lifeSpan{0};
     int damage{};
     int temperature{};
-    sf::Sound sound;
 };

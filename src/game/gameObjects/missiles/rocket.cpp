@@ -1,5 +1,7 @@
 #include "rocket.hpp"
 
+sf::Sound Rocket::sound{util::AssetLoader::get().rocketSound};
+
 void Rocket::handleEvents(const Pressed& _pressed) const
 {
     pressed = &_pressed;
