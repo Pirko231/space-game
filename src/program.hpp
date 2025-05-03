@@ -5,6 +5,7 @@
 #include "game/playerUI.hpp"
 #include "game/gameObjects/hitChecker.hpp"
 #include "game/gameObjects/managers/asteroidManager.hpp"
+#include "musicPlayer.hpp"
 
 #ifdef SPEEDTRACKER
 #include "perf/speedTracker.hpp"

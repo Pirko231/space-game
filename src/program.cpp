@@ -59,6 +59,7 @@ void Program::update()
     asteroidManager.update();
 
     HitChecker::check();
+    util::MusicPlayer::get().play();
 }
 
 void Program::display()
