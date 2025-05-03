@@ -7,4 +7,7 @@ class HitChecker : private CollisionManager
 public:
     /// @brief sprawdzenie kolizji
     static void check();
+
+private:
+    static sf::Sound sound;
 };

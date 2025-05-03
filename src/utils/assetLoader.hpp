@@ -46,6 +46,7 @@ struct AssetLoader
     sf::SoundBuffer mineSound;
 
     sf::SoundBuffer explosionSound;
+    sf::SoundBuffer hitSound;
 private:
     AssetLoader();
 };
@@ -83,4 +84,5 @@ inline util::AssetLoader::AssetLoader()
     mineSound.loadFromFile("resources/music/soundeffects/laser.mp3");
 
     explosionSound.loadFromFile("resources/music/soundeffects/explosion.flac");
+    hitSound.loadFromFile("resources/music/soundeffects/hitSound.wav");
 }
