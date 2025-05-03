@@ -13,12 +13,14 @@ public:
         if (!scannerActive)
             deleteDatabase();
         range = _range; objectSize = _objectSize; scannerActive = true;
+        scale = range / sprite.getGlobalBounds().size.x;
     }
     void setDefault()
     {
         if (scannerActive)
             deleteDatabase();
         range = defaultRange; objectSize = defaultObjectSize; scannerActive = false;
+        scale = range / sprite.getGlobalBounds().size.x;
     }
 
     void setPosition(sf::Vector2f pos) {sprite.setPosition(pos);}
@@ -57,7 +59,7 @@ private:
     float range{util::ConfigLoader::get().range};
     float defaultRange{util::ConfigLoader::get().range};
     sf::Vector2f objectSize{util::ConfigLoader::get().radarObjectSize, util::ConfigLoader::get().radarObjectSize};
-    sf::Vector2f defaultObjectSize{2.f,2.f};
+    sf::Vector2f defaultObjectSize{util::ConfigLoader::get().radarObjectSize, util::ConfigLoader::get().radarObjectSize};
     bool scannerActive{};
     float scale{};
     /// @brief para obiektow
