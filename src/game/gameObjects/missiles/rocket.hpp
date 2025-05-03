@@ -12,6 +12,7 @@ public:
         launch(pos,moveBy);
         sound.setVolume(util::ConfigLoader::get().soundVolume);
         sound.play();
+        flySound.setVolume(util::ConfigLoader::get().soundVolume * 0.5f);
     }
 
     void handleEvents(const Pressed& pressed) const override;
@@ -26,4 +27,5 @@ private:
     mutable const Pressed* pressed;
 
     static sf::Sound sound;
+    sf::Sound flySound{util::AssetLoader::get().rocketFlyBy};
 };
