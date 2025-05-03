@@ -52,9 +52,9 @@ protected:
         else
             lifeSpan = maxLifeSpan;
 
-        if (sound.getStatus() != sf::Sound::Status::Playing)
-            sound.play();
-        assert(sound.getStatus() == sf::Sound::Status::Playing);
+        sound.setLooping(true);
+        sound.play();
+        
     }
 
     sf::Sprite sprite;
