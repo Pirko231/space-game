@@ -23,6 +23,8 @@ void Rocket::update()
     }
 
     lifeSpan++;
+    if (flySound.getStatus() != sf::Sound::Status::Playing)
+        flySound.play();
 }
 
 void Rocket::display()

@@ -43,6 +43,7 @@ struct AssetLoader
 
     sf::SoundBuffer laserSound;
     sf::SoundBuffer rocketSound;
+    sf::SoundBuffer rocketFlyBy;
     sf::SoundBuffer mineSound;
 
     sf::SoundBuffer explosionSound;
@@ -80,8 +81,9 @@ inline util::AssetLoader::AssetLoader()
     explosion.loadFromFile("resources/textures/explosion.png");
 
     laserSound.loadFromFile("resources/music/soundeffects/laser.mp3");
-    rocketSound.loadFromFile("resources/music/soundeffects/laser.mp3");
-    mineSound.loadFromFile("resources/music/soundeffects/laser.mp3");
+    rocketSound.loadFromFile("resources/music/soundeffects/rocket_launch.wav");
+    rocketFlyBy.loadFromFile("resources/music/soundeffects/rocket.wav");
+    mineSound.loadFromFile("resources/music/soundeffects/mine.wav");
 
     explosionSound.loadFromFile("resources/music/soundeffects/explosion.flac");
     hitSound.loadFromFile("resources/music/soundeffects/hitSound.wav");
