@@ -5,7 +5,7 @@ class Rocket : public Missile
 {
 public:
     Rocket(sf::Vector2f pos, sf::Vector2f moveBy)
-    : Missile{util::ConfigLoader::get().rocketLifetime, util::ConfigLoader::get().rocketSpeed, util::ConfigLoader::get().rocketDamage, util::AssetLoader::get().rocket} 
+    : Missile{util::ConfigLoader::get().rocketLifetime, util::ConfigLoader::get().rocketSpeed, util::ConfigLoader::get().rocketDamage, util::AssetLoader::get().rocket, util::AssetLoader::get().rocketSound} 
     {
         sprite.setScale({0.4f,0.4f});
         temperature = 1000;
