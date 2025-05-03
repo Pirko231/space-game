@@ -5,11 +5,13 @@ class Rocket : public Missile
 {
 public:
     Rocket(sf::Vector2f pos, sf::Vector2f moveBy)
-    : Missile{util::ConfigLoader::get().rocketLifetime, util::ConfigLoader::get().rocketSpeed, util::ConfigLoader::get().rocketDamage, util::AssetLoader::get().rocket, util::AssetLoader::get().rocketSound} 
+    : Missile{util::ConfigLoader::get().rocketLifetime, util::ConfigLoader::get().rocketSpeed, util::ConfigLoader::get().rocketDamage, util::AssetLoader::get().rocket} 
     {
         sprite.setScale({0.4f,0.4f});
         temperature = 1000;
         launch(pos,moveBy);
+        sound.setVolume(util::ConfigLoader::get().soundVolume);
+        sound.play();
     }
 
     void handleEvents(const Pressed& pressed) const override;
@@ -22,4 +24,6 @@ public:
 private:
     sf::Angle rotationSpeed{util::ConfigLoader::get().rocketRotationSpeed};
     mutable const Pressed* pressed;
+
+    static sf::Sound sound;
 };
