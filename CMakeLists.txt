@@ -10,8 +10,8 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # 🟢 Ustawienie ścieżek do SFML (zmień na swoją lokalizację SFML)
-set(SFML_ROOT "/opt/sfml-3")
-set(CMAKE_PREFIX_PATH "/opt/sfml-3")
+set(SFML_ROOT "C:/SFML/SFML-3.0.0")
+set(CMAKE_PREFIX_PATH "C:/SFML/SFML-3.0.0")
 set(SFML_INCLUDE_DIR "${SFML_ROOT}/include")
 set(SFML_LIBRARY_DIR "${SFML_ROOT}/lib")
 
@@ -60,9 +60,9 @@ add_executable(main
     src/perf/speedTracker.cpp
 )
 
-add_compile_definitions(MEMTRACKER)
-add_compile_definitions(SPEEDTRACKER)
-add_compile_definitions(DEVINFO)
+#add_compile_definitions(MEMTRACKER)
+#add_compile_definitions(SPEEDTRACKER)
+#add_compile_definitions(DEVINFO)
 
 if(NOT MSVC)
 	target_compile_options(main PRIVATE -Wall -Wextra -pedantic)

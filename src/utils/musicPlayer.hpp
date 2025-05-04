@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Audio.hpp>
+#include <array>
 #include "configLoader.hpp"
 
 namespace util
@@ -43,7 +44,7 @@ private:
         music.setVolume(util::ConfigLoader::get().musicVolume);
     }
     sf::Music music;
-    std::array<std::filesystem::__cxx11::path, 3> songs;
+    std::array<std::filesystem::path, 3> songs;
     int currentSong{0};
 };
 
