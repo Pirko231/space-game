@@ -27,6 +27,7 @@ public:
     float health{100.f};
     float energy{100.f};
     float energyRefill{0.1f};
+    float temperatureDoubler{1.f};
     float range{2000.f};
     float radarObjectSize{2.f};
     float scannerRange{4000.f};
@@ -59,7 +60,7 @@ public:
                 "Sounds volume:" << soundVolume << ";\n" <<
                 "Map size:" << mapSize << ";\n" <<
                 "Map scale:" << mapScale << ";\n" <<
-                "Player view zoom (experimental):" << playerViewZoom << ";\n" <<
+                "Player view zoom (unstable):" << playerViewZoom << ";\n" <<
                 "Asteroid amount:" << asteroidAmount << ";\n" <<
                 "Asteroid damage:" << asteroidDamage << ";\n" <<
                 "Asteroid health:" << asteroidHealth << ";\n" <<
@@ -68,6 +69,7 @@ public:
                 "Player health:" << health << ";\n" <<
                 "Player energy:" << energy << ";\n" <<
                 "Energy refill:" << energyRefill << ";\n" <<
+                "Temperature double:" << temperatureDoubler << ";\n" <<
                 "Radar range:" << range << ";\n" <<
                 "Radar object size:" << radarObjectSize << ";\n" <<
                 "Scanner range:" << scannerRange << ";\n" <<
@@ -227,6 +229,16 @@ private:
             try
             {
                 energyRefill = std::stof(data);
+            }
+            catch(std::exception& e)
+            {
+                std::cerr << e.what();
+            }
+            std::getline(file, dump, ':');
+            std::getline(file, data, ';');
+            try
+            {
+                temperatureDoubler = std::stof(data);
             }
             catch(std::exception& e)
             {
