@@ -99,6 +99,10 @@ void PlayerUI::display(sf::RenderWindow *window)
     window->draw(player);
     window->draw(*player2);
     window->draw(radar);
+    for (auto& i : player.getMissileManager()->getExplosions())
+        window->draw(i);
+    for (auto& i : player2->getMissileManager()->getExplosions())
+        window->draw(i);
     if (player.getMissileManager()->getRocket().has_value())
         window->draw(player.getMissileManager()->getRocketTimer());
     if (!player.getMissileManager()->getRocket().has_value())

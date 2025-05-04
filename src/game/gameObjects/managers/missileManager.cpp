@@ -70,11 +70,20 @@ void MissileManager::update(bool* rocketRecentlyDeleted)
         {
             if (rocket.has_value() && dynamic_cast<Rocket*>(missiles[i].get()))
             {
+                explosions.push_back({util::AssetLoader::get().rocketHitSound,rocket.value()->getGlobalBounds().getCenter(), {0.5f,0.5f}, 2});
                 rocket.reset();
                 *rocketRecentlyDeleted = true;
+                
             }
             missiles.erase(missiles.begin() + i);
             i--;
         }
     }
+
+    //eksplozje
+    for (auto& i : explosions)
+        i.update();
+    
+    if (explosions.size() > 0 && explosions[0].animationFinished())
+        explosions.pop_front();
 }
