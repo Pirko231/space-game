@@ -80,7 +80,7 @@ void Player::update()
     if (pressed.shield && energy >= shield.getEnergyUse())
     {
         shield.activate(true);
-        temperature += 4;
+        temperature += 4 * util::ConfigLoader::get().temperatureDoubler;
     }
     else
         shield.activate(false);
@@ -103,7 +103,7 @@ void Player::update()
     if (moveBy.x <= -maxSpeed)
         moveBy.x = -maxSpeed;
 
-    temperature -= 5;
+    temperature -= 5 * util::ConfigLoader::get().temperatureDoubler;
     if (temperature < -60)
         temperature = -60;
     if (temperature > 4000)
@@ -121,27 +121,24 @@ void Player::update()
         sf::Vector2f add{0.f, -throttle};
         add = add.rotatedBy(sprite.getRotation());
         moveBy += add;
-        temperature += 6;
+        temperature += 6 * util::ConfigLoader::get().temperatureDoubler;
     }
     if (pressed.s)
     {
         sf::Vector2f add{0.f, throttle};
         add = add.rotatedBy(sprite.getRotation());
         moveBy += add;
-        temperature += 6;
-        //moveBy.y += throttle / 2.5f;
-        /*if (moveBy.y < 0)
-            moveBy.y += throttle;*/
+        temperature += 6 * util::ConfigLoader::get().temperatureDoubler;
     }
     if (pressed.a)
     {
         rotate(-rotationSpeed);
-        temperature += 4;
+        temperature += 4 * util::ConfigLoader::get().temperatureDoubler;
     }
     if (pressed.d)
     {
         rotate(rotationSpeed);
-        temperature += 4;
+        temperature += 4 * util::ConfigLoader::get().temperatureDoubler;
     }
 
     if (shield.isActive())
