@@ -31,8 +31,8 @@ public:
     float range{2000.f};
     float radarObjectSize{2.f};
     float scannerRange{4000.f};
-    float scannerObjectSize{0.5f};
-    float scannerEnergyUse{1.f};
+    float scannerObjectSize{1.f};
+    float scannerEnergyUse{0.5f};
     int shieldProtection{30};
     float shieldEnergyUse{1.f};
     float laserSpeed{5.f};
@@ -278,7 +278,7 @@ private:
             std::getline(file, data, ';');
             try
             {
-                scannerObjectSize = std::stoi(data);
+                scannerObjectSize = std::stof(data);
             }
             catch(std::exception& e)
             {
