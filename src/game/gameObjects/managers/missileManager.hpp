@@ -1,8 +1,10 @@
 #pragma once
+#include <deque>
 #include "factories/laserFactory.hpp"
 #include "factories/rocketFactory.hpp"
 #include "factories/mineFactory.hpp"
 #include "timer.hpp"
+#include "explosion.hpp"
 
 class MissileManager
 {
@@ -29,6 +31,8 @@ public:
 
     const sf::Text& getRocketTimer() const {return rocketTimerText;}
 
+    const std::deque<Explosion>& getExplosions() const {return explosions;}
+
     int getRocketCooldown() const {return  rocketTimer.maxValue() - rocketTimer.currentValue();}
     int getMineCooldown() const {return mineTimer.maxValue() - mineTimer.currentValue();}
 private:
@@ -37,4 +41,6 @@ private:
     util::Timer rocketTimer{util::secondsToFrames(util::ConfigLoader::get().rocketCooldown)};
     sf::Text rocketTimerText{util::AssetLoader::get().font};
     util::Timer mineTimer{util::secondsToFrames(util::ConfigLoader::get().mineCooldown)};
+
+    std::deque<Explosion> explosions;
 };
