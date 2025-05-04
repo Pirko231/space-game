@@ -9,6 +9,7 @@
 #include "shield.hpp"
 #include "../gameObjects/managers/missileManager.hpp"
 #include "map.hpp"
+#include "explosion.hpp"
 
 class Player : public sf::Drawable
 {
@@ -111,11 +112,7 @@ private:
 
     bool destroyed{};
     void destroy();
-    sf::Sprite explosion{util::AssetLoader::get().explosion};
-    sf::Sound explosionSound{util::AssetLoader::get().explosionSound};
-    void animateExplosion();
-    int currentFrame{};
-    int frames{};
+    Explosion explosion{util::AssetLoader::get().explosionSound};
 
     int temperature{};
 
