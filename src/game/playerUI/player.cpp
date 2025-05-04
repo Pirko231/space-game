@@ -70,7 +70,8 @@ void Player::update()
 
     if (destroyed)
     {
-        animateExplosion();
+        explosion.update();
+        explosion.setPosition(getCenter());
         return;
     }
     
@@ -215,32 +216,6 @@ void Player::destroy()
         const_cast<std::optional<Rocket*>&>(missileManager.getRocket()).reset();
     shield.activate(false);
 
-    //przygotoanie animacji
-    explosion.setTextureRect(sf::IntRect{sf::Vector2i{0,0}, sf::Vector2i{128,128}});
-    explosion.setOrigin(explosion.getLocalBounds().getCenter());
-    explosion.setScale({1.f,1.f});
     explosion.setPosition(getCenter());
-
-    //dzwiek
-    explosionSound.setVolume(util::ConfigLoader::get().soundVolume * 6.f);
-    explosionSound.play();
-}
-
-void Player::animateExplosion()
-{
-    //animacja jest przygotowana w Player::destroy 
-    explosion.setPosition(getCenter());  
-    if (frames >= 5)
-        frames = 0;
-    else
-    {
-        frames++; return;
-    }
-    if (currentFrame < 17)
-    {
-        sf::IntRect pos {explosion.getTextureRect()};
-        pos.position.x += pos.size.x;
-        explosion.setTextureRect(pos);
-        currentFrame++;
-    }
+    explosion.playSound();
 }
