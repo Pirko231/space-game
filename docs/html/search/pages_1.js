@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['game_0',['Dokumentacja Space Game',['../index.html',1,'']]]
+  ['szablony_20i_20interfejsy_0',['Szablony i Interfejsy',['../templates.html',1,'index']]]
 ];

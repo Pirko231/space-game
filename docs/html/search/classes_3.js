@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hitchecker_0',['HitChecker',['../classHitChecker.html',1,'']]]
+  ['explosion_0',['Explosion',['../class_explosion.html',1,'']]]
 ];
