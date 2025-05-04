@@ -1,7 +1,6 @@
 #include "hitChecker.hpp"
 
 sf::Sound HitChecker::laserSound{util::AssetLoader::get().hitSound};
-sf::Sound HitChecker::explosionSound{util::AssetLoader::get().rocketHitSound};
 
 void HitChecker::check()
 {
@@ -11,10 +10,7 @@ void HitChecker::check()
         {
             obj->del();
             p2Hitbox->damaged(obj->getDamage());
-            if (dynamic_cast<Laser*>(obj.get()))
-                laserSound.play();
-            else
-                explosionSound.play();
+            laserSound.play();           
         }
     }
     for (auto& obj : p2Missiles->getMissiles())
@@ -23,10 +19,7 @@ void HitChecker::check()
         {
             obj->del();
             p1Hitbox->damaged(obj->getDamage());
-            if (dynamic_cast<Laser*>(obj.get()))
-                laserSound.play();
-            else
-                explosionSound.play();
+            laserSound.play();
         }
     }
 
