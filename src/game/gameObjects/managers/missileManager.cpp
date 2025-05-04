@@ -1,5 +1,7 @@
 #include "missileManager.hpp"
 
+sf::Sound MissileManager::explosionSound{util::AssetLoader::get().rocketHitSound};
+
 bool MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::Vector2f dir)
 {
     //UWAGA, do funkcji nadal wysylane jest dir a nie moveBy
@@ -73,7 +75,13 @@ void MissileManager::update(bool* rocketRecentlyDeleted)
                 explosions.push_back({util::AssetLoader::get().rocketHitSound,rocket.value()->getGlobalBounds().getCenter(), {0.5f,0.5f}, 2});
                 rocket.reset();
                 *rocketRecentlyDeleted = true;
-                
+                explosionSound.play();
+            }
+            else if(dynamic_cast<Mine*>(missiles[i].get()))
+            {
+                explosions.push_back({util::AssetLoader::get().rocketHitSound, missiles[i]->getGlobalBounds().getCenter(), {0.5f,0.5f}, 2});
+
+                explosionSound.play();
             }
             missiles.erase(missiles.begin() + i);
             i--;

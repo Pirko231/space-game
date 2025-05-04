@@ -12,6 +12,7 @@ public:
     MissileManager()
     {
         rocketTimerText.setFillColor(sf::Color::Red);
+        explosionSound.setVolume(util::ConfigLoader::get().soundVolume * 0.5f);
     }
     /// @brief tworzy pocisk i przechowuje go w wektorze
     /// @param factoryType rodzaj fabryki, rozne fabryki wytwarzaja rozne pociski @see missileFactory
@@ -43,4 +44,6 @@ private:
     util::Timer mineTimer{util::secondsToFrames(util::ConfigLoader::get().mineCooldown)};
 
     std::deque<Explosion> explosions;
+
+    static sf::Sound explosionSound;
 };

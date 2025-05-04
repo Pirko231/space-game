@@ -10,5 +10,4 @@ public:
 
 private:
     static sf::Sound laserSound;
-    static sf::Sound explosionSound;
 };
