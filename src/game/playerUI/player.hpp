@@ -106,8 +106,6 @@ private:
 
     void move(sf::Vector2f offset);
 
-    MissileManager missileManager;
-
     sf::Vector2f moveBy{0.f,0.f};
 
     bool destroyed{};
@@ -135,9 +133,11 @@ private:
 
     PlayerKeyBinds keyBinds;
 
-    Pressed& pressed;
+    Pressed& keys;
 
     Shield shield;
+
+    MissileManager missileManager;
 
     #if DEVINFO
 public:

@@ -4,19 +4,19 @@ sf::Sound Rocket::sound{util::AssetLoader::get().rocketSound};
 
 void Rocket::handleEvents(const Pressed& _pressed) const
 {
-    pressed = &_pressed;
+    keys = &_pressed;
 }
 
 void Rocket::update()
 {
     sprite.move(moveBy);
 
-    if (pressed->a)
+    if (keys->at(binds.left).pressed)
     {
         sprite.rotate(-rotationSpeed);
         moveBy = moveBy.rotatedBy(-rotationSpeed);
     }
-    if (pressed->d)
+    if (keys->at(binds.right).pressed)
     {
         sprite.rotate(rotationSpeed);
         moveBy = moveBy.rotatedBy(rotationSpeed);

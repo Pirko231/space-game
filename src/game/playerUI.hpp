@@ -80,7 +80,7 @@ private:
     Bar healthBar;
     Bar energyBar;
 
-    Pressed pressed;
+    Pressed keys;
 
     PlayerKeyBinds keyBinds;
 

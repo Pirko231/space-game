@@ -1,7 +1,7 @@
 #include "player.hpp"
 
 Player::Player(const sf::Texture& texture, Pressed& _pressed)
-: sprite{texture}, turret{util::AssetLoader::get().turret}, pressed{_pressed}
+: sprite{texture}, turret{util::AssetLoader::get().turret}, keys{_pressed}, missileManager{keyBinds}
 {   
     sprite.setOrigin(sprite.getGlobalBounds().getCenter());
     turret.setTexture(util::AssetLoader::get().turret);
@@ -34,30 +34,7 @@ void Player::handleEvents(const std::optional<sf::Event>& ev)
     if (destroyed)
         return;
 
-    if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
-    {
-        if (keyPressed->code == keyBinds.up)
-            pressed.w = true;
-        if (keyPressed->code == keyBinds.down)
-            pressed.s = true;
-        if (keyPressed->code == keyBinds.left)
-            pressed.a = true;
-        if (keyPressed->code == keyBinds.right)
-            pressed.d = true;
-    }
-
-    if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
-    {
-        if (keyReleased->code == keyBinds.up)
-            pressed.w = false;
-        if (keyReleased->code == keyBinds.down)
-            pressed.s = false;
-        if (keyReleased->code == keyBinds.left)
-            pressed.a = false;
-        if (keyReleased->code == keyBinds.right)
-            pressed.d = false;
-    }
-    missileManager.handleEvents(pressed);
+    missileManager.handleEvents(keys);
 }
 
 void Player::update()
@@ -77,7 +54,7 @@ void Player::update()
     
     //tarcza
     shield.setPosition(getCenter());
-    if (pressed.shield && energy >= shield.getEnergyUse())
+    if (keys[keyBinds.shield].pressed && energy >= shield.getEnergyUse())
     {
         shield.activate(true);
         temperature += 4 * util::ConfigLoader::get().temperatureDoubler;
@@ -116,26 +93,26 @@ void Player::update()
         return;
     
     //ruch
-    if (pressed.w && moveBy.y > -maxSpeed)
+    if (keys[keyBinds.up].pressed && moveBy.y > -maxSpeed)
     {
         sf::Vector2f add{0.f, -throttle};
         add = add.rotatedBy(sprite.getRotation());
         moveBy += add;
         temperature += 6 * util::ConfigLoader::get().temperatureDoubler;
     }
-    if (pressed.s)
+    if (keys[keyBinds.down].pressed)
     {
         sf::Vector2f add{0.f, throttle};
         add = add.rotatedBy(sprite.getRotation());
         moveBy += add;
         temperature += 6 * util::ConfigLoader::get().temperatureDoubler;
     }
-    if (pressed.a)
+    if (keys[keyBinds.left].pressed)
     {
         rotate(-rotationSpeed);
         temperature += 4 * util::ConfigLoader::get().temperatureDoubler;
     }
-    if (pressed.d)
+    if (keys[keyBinds.right].pressed)
     {
         rotate(rotationSpeed);
         temperature += 4 * util::ConfigLoader::get().temperatureDoubler;

@@ -22,24 +22,31 @@ bool MissileManager::create(IMissileFactory& factoryType, sf::Vector2f pos, sf::
     {
     }
         
-
-    if (!rocketTimer.hasTimePassed() || rocket.has_value())
-    {
+    bool rocketCreated{};
         try
         {
-            dynamic_cast<RocketFactory &>(factoryType);
-            if (rocket.has_value())
+            RocketFactory& rocketFactory = dynamic_cast<RocketFactory &>(factoryType);
+            if (rocket.has_value() && !rocketTimer.hasTimePassed())
+            {
                 rocket.value()->del();
-            return false;
+            }
+            else if (rocketTimer.hasTimePassed())
+            {
+                missiles.push_back(rocketFactory.create(pos, dir, binds));
+                rocketCreated = true;
+            }
+            if (!rocketCreated)
+                return false;
         }
         catch (const std::exception &e)
         {
+            int g{};
         }
-    }
+    
+    if (!rocketCreated)
+        missiles.push_back(factoryType.create(pos, dir));
 
-    missiles.push_back(factoryType.create(pos, dir));
-
-    if (dynamic_cast<Rocket*>((missiles.end() - 1)->get()))
+    if (rocketCreated)
     {
         rocket.emplace(static_cast<Rocket*>((missiles.end() - 1)->get()));
         rocketTimer.restart();

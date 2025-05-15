@@ -3,7 +3,7 @@
 sf::RenderWindow* PlayerUI::window {nullptr};
 
 PlayerUI::PlayerUI()
-: player{util::AssetLoader::get().ship1, pressed}, healthBar{player.getHealth(), 0, static_cast<int>(*player.getHealth())}, energyBar{player.getEnergy(), 0, static_cast<int>(*player.getEnergy())},
+: player{util::AssetLoader::get().ship1, keys}, healthBar{player.getHealth(), 0, static_cast<int>(*player.getHealth())}, energyBar{player.getEnergy(), 0, static_cast<int>(*player.getEnergy())},
   crosshairPlayer{util::AssetLoader::get().pCrosshair}, crosshairShip{util::AssetLoader::get().sCrosshair}
 {
     player.setView(&view);
@@ -30,32 +30,19 @@ void PlayerUI::handleEvents(const std::optional<sf::Event>& ev)
 
     crosshairHandleEvents(ev);
 
-    if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
-    {
-        if (keyPressed->code == keyBinds.shield)
-            pressed.shield = true;
-        if (keyPressed->code == keyBinds.scanner)
-            pressed.scanner = true;
-        
-    }
+    keys.update(ev);
     
-    if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
+    if (keys[keyBinds.shoot].released)
     {
-        if (keyReleased->code == keyBinds.shoot)
-        {
-            player.shoot(missilePicker.getCurrentMissile(), crosshairShip.getPosition());
-            player.getMissileManager()->handleEvents(pressed);
-        }
-        if (keyReleased->code == keyBinds.shield)
-            pressed.shield = false;
-        if (keyReleased->code == keyBinds.scanner)
-            pressed.scanner = false;
-
-        if (keyReleased->code == keyBinds.weaponLeft)
-            missilePicker.left();
-        if (keyReleased->code == keyBinds.weaponRight)
-            missilePicker.right();
+        player.shoot(missilePicker.getCurrentMissile(), crosshairShip.getPosition());
+        player.getMissileManager()->handleEvents(keys);
     }
+
+    if (keys[keyBinds.weaponLeft].released)
+        missilePicker.left();
+    if (keys[keyBinds.weaponRight].released)
+        missilePicker.right();
+    
 
 }
 
@@ -137,7 +124,7 @@ void PlayerUI::updateTemperature()
 void PlayerUI::updateRadar()
 {
     radar.setDefault();
-    if (pressed.scanner && *player.getEnergy() > scanner.getEnergyUse())
+    if (keys[keyBinds.scanner].pressed && *player.getEnergy() > scanner.getEnergyUse())
     {
         *player.getEnergy() -= scanner.getEnergyUse();
         radar.setRange(scanner.getRange(), scanner.getRectSize());
@@ -150,21 +137,7 @@ void PlayerUI::updateRadar()
 
 void PlayerUI::crosshairHandleEvents(const std::optional<sf::Event> &ev)
 {
-    if (const auto* keyPressed = ev->getIf<sf::Event::KeyPressed>())
-    {
-        if (keyPressed->code == keyBinds.crossLeft)
-            pressed.leftCross = true;
-        if (keyPressed->code == keyBinds.crossRight)
-            pressed.rightCross = true;
-    }
-
-    if (const auto* keyReleased = ev->getIf<sf::Event::KeyReleased>())
-    {
-        if (keyReleased->code == keyBinds.crossLeft)
-            pressed.leftCross = false;
-        if (keyReleased->code == keyBinds.crossRight)
-            pressed.rightCross = false;
-    }
+    
 }
 
 void PlayerUI::moveCrosshairShip()
@@ -185,16 +158,16 @@ void PlayerUI::managePlayerCross()
     {
         if (crosshairPos.y - player.getCenter().y < 0)
         {
-            if (pressed.leftCross)
+            if (keys[keyBinds.crossLeft].pressed)
                 moveCross += {-1.f, 1.f};
-            if (pressed.rightCross)
+            if (keys[keyBinds.crossRight].pressed)
                 moveCross += {1.f, -1.f};
         }
         else
         {
-            if (pressed.leftCross)
+            if (keys[keyBinds.crossLeft].pressed)
                 moveCross += {1.f, 1.f};
-            if (pressed.rightCross)
+            if (keys[keyBinds.crossRight].pressed)
                 moveCross -= {1.f, 1.f};
         }    
     }
@@ -202,16 +175,16 @@ void PlayerUI::managePlayerCross()
     {
         if (crosshairPos.y - player.getCenter().y < 0)
         {
-            if (pressed.leftCross)
+            if (keys[keyBinds.crossLeft].pressed)
                 moveCross += {-1.f, -1.f};
-            if (pressed.rightCross)
+            if (keys[keyBinds.crossRight].pressed)
                 moveCross += {1.f, 1.f};
         }
         else
         {
-            if (pressed.leftCross)
+            if (keys[keyBinds.crossLeft].pressed)
                 moveCross += {1.f, -1.f};
-            if (pressed.rightCross)
+            if (keys[keyBinds.crossRight].pressed)
                 moveCross += {-1.f, 1.f};
         }
     }

@@ -9,7 +9,7 @@
 class MissileManager
 {
 public:
-    MissileManager()
+    MissileManager(PlayerKeyBinds& _binds) : binds{_binds}
     {
         rocketTimerText.setFillColor(sf::Color::Red);
         explosionSound.setVolume(util::ConfigLoader::get().soundVolume * 0.5f);
@@ -46,4 +46,6 @@ private:
     std::deque<Explosion> explosions;
 
     static sf::Sound explosionSound;
+
+    PlayerKeyBinds& binds;
 };

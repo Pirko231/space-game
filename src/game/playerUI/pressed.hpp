@@ -1,12 +1,32 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+
+struct KeyStatus
+{
+    bool pressed{}, released{};   
+};
 
 struct Pressed
 {
-    bool w{false},s{false},a{false},d{false};
-    bool leftCross{false}, rightCross{false};
-    bool shoot{false}, shield{false}, scanner{false};
-    bool space{false}, tab{false}, lShift{false}, rShift{false};
-    bool weaponLeft{false}, weaponRight{false};
+    void update(const std::optional<sf::Event>& ev)
+    {
+        for (auto& key : keys)
+            key.second.released = false;
+        if (const auto* keyP = ev->getIf<sf::Event::KeyPressed>())
+            keys[keyP->code].pressed = true;
+        if (const auto* keyR = ev->getIf<sf::Event::KeyReleased>())
+        {
+            keys[keyR->code].pressed = false;
+            keys[keyR->code].released = true;
+        }
+    }
+
+    KeyStatus operator[](sf::Keyboard::Key key) {return keys[key];}
+
+    KeyStatus at(sf::Keyboard::Key key) const {return keys.at(key);}
+
+private:
+    std::unordered_map<sf::Keyboard::Key, KeyStatus> keys;
 };
 
 struct PlayerKeyBinds

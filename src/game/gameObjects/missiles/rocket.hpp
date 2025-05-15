@@ -4,8 +4,9 @@
 class Rocket : public Missile
 {
 public:
-    Rocket(sf::Vector2f pos, sf::Vector2f moveBy)
-    : Missile{util::ConfigLoader::get().rocketLifetime, util::ConfigLoader::get().rocketSpeed, util::ConfigLoader::get().rocketDamage, util::AssetLoader::get().rocket} 
+    Rocket(sf::Vector2f pos, sf::Vector2f moveBy, PlayerKeyBinds _binds)
+    : Missile{util::ConfigLoader::get().rocketLifetime, util::ConfigLoader::get().rocketSpeed, util::ConfigLoader::get().rocketDamage, util::AssetLoader::get().rocket},
+    binds{_binds} 
     {
         sprite.setScale({0.4f,0.4f});
         temperature = 1000;
@@ -24,7 +25,8 @@ public:
     sf::Vector2f getMoveBy() const {return moveBy;}
 private:
     sf::Angle rotationSpeed{util::ConfigLoader::get().rocketRotationSpeed};
-    mutable const Pressed* pressed;
+    const mutable Pressed* keys;
+    PlayerKeyBinds binds;
 
     static sf::Sound sound;
     sf::Sound flySound{util::AssetLoader::get().rocketEngine};
